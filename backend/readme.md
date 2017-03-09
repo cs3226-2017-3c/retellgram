@@ -1,0 +1,46 @@
+# Developer's Guide
+
+## Local Setup
+
+### Download Composer and MySQL
+
+* [MySql](https://dev.mysql.com/downloads/mysql/) 
+* [Composer](https://www.dev-metal.com/install-update-composer-windows-7-ubuntu-debian-centos/)
+
+### Install dependency via Composer
+
+```
+$ composer install
+```
+
+### Create local .env file and generate project key
+
+```
+$ cp .env.example .env
+```
+
+```
+$ php artisan key:generate
+```
+
+### Setup local env variable
+
+```
+$ nano .env
+```
+
+and modify
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=[DBNAME]
+DB_USERNAME=[USERNAME]
+DB_PASSWORD=[PASSWORD]
+```
+
+### Start website locally
+```
+$ php artisan serve
+```
