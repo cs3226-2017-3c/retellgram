@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/getCaptions', 'CaptionController@getCaptions');
+
+
+Route::get('/getImages', 'CaptionController@getImages');
