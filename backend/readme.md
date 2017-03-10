@@ -40,6 +40,12 @@ DB_USERNAME=[USERNAME]
 DB_PASSWORD=[PASSWORD]
 ```
 
+### Migrate and seed database
+```
+$ php artisan migrate
+$ php artisan db:seed --class=CaptionSeeder --env=local
+```
+
 ### Start website locally
 ```
 $ php artisan serve
