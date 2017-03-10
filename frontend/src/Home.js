@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 import Navi from './Navi';
+import Main from './Main';
 
 class Home extends Component {
   render() {
     return (
       <div>
         <Navi/>
-        <p>home</p>
+        <Main/>
       </div>
     );
   }
