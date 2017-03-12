@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TestViewController@getTestView');
 
 Route::get('/getCaptions', 'CaptionController@getCaptions');
 Route::get('/getImages', 'ImageController@getImages');
@@ -26,5 +24,5 @@ Route::delete('/image/{id}', 'ImageController@deleteImage');
 Route::post('/caption', 'CaptionController@createCaption');
 Route::get('/caption/{id}', 'CaptionController@getCaption');
 Route::get('/caption', 'CaptionController@getCaptionsWithQuery');
-Route::put('/caption/{id}', 'CaptionController@updateCaption');
+Route::put('/caption/{id}', 'CaptionController@likeCaption');
 Route::delete('/caption/{id}', 'CaptionController@deleteCaption');
