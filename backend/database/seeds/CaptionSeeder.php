@@ -14,7 +14,7 @@ class CaptionSeeder extends Seeder
     	$faker = Faker\Factory::create();
     	$limit = 50;
 
-    	$test_images_path="/public/test_images/";
+    	$test_images_path="test_images/";
 
     	$test_images = ["test-01.png",
     					"test-02.png",
