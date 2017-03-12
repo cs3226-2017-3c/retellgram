@@ -17,7 +17,7 @@ class CreateCaptionTable extends Migration
             $table->increments('id');
             $table->string('image_id');
             $table->string('content');
-            $table->integer('likes');
+            $table->integer('likes')->default(0);
             $table->timestamps();
         });
     }
