@@ -50,3 +50,6 @@ $ php artisan db:seed --class=CaptionSeeder --env=local
 ```
 $ php artisan serve
 ```
+
+## Api Document
+https://docs.google.com/document/d/1ZWV4OZQNnGvINiJUEVIlFCq5W9ACjPVA2nrzx8Cv4As/edit
