@@ -18,7 +18,7 @@ Route::get('/getImages', 'ImageController@getImages');
 
 Route::post('/image', 'ImageController@createImage');
 Route::get('/image/{id}', 'ImageController@getImage');
-Route::get('image', 'ImageController@getImages');
+Route::get('/image', 'ImageController@getImages');
 Route::delete('/image/{id}', 'ImageController@deleteImage');
 
 Route::post('/caption', 'CaptionController@createCaption');
