@@ -39,11 +39,12 @@ class CaptionController extends Controller
     	return response()->json($caption);
     }
 
-    public function updateCaption($id) {
+    public function likeCaption($id) {
     	$caption = Caption::find($id);
-    	$request = Request::all();
+    	$caption->likes = $caption->likes + 1;
+    	$caption->save();
 
-    	return response()->$request;
+    	return response(204);
     }
 
     private function validateQuery($query) {
