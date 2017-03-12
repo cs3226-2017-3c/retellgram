@@ -14,7 +14,8 @@ class CaptionSeeder extends Seeder
     	$faker = Faker\Factory::create();
     	$limit = 50;
 
-    	$test_images_path="test_images/";
+    	$test_images_path="/public/test_images/";
+        $file_path_prefix="test_images/";
 
     	$test_images = ["test-01.png",
     					"test-02.png",
@@ -28,7 +29,7 @@ class CaptionSeeder extends Seeder
 
         foreach ($test_images as $image) {
             DB::table('images')->insert([ 
-                'file_path' => $test_images_path . $image,
+                'file_path' => $file_path_prefix . $image,
                 'md5' => md5_file ( base_path() . $test_images_path . $image),
                 'likes' => 0
             ]);
