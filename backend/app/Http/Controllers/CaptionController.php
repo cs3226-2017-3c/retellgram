@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Caption;
 use App\Image;
+use App\Like;
 
 class CaptionController extends Controller
 {
@@ -35,7 +36,6 @@ class CaptionController extends Controller
     public function getCaption($id) {
     	$caption = Caption::findOrFail($id);
 
-        $caption = $this->getTopN($caption, 20);
     	return response()->json($caption);
     }
 
@@ -72,10 +72,12 @@ class CaptionController extends Controller
     	return response()->json($caption);
     }
 
-    public function likeCaption($id) {
-    	$caption = Caption::findOrFail($id);
+    public function likeCaption(Request $request, $id) {
+        $caption = Caption::findOrFail($id);
+    	$this->validateEligibleToLike($request, $id);
     	$caption->likes = $caption->likes + 1;
     	$caption->save();
+        $this->updateLikeTable($request, $id);
 
     	return response(204);
     }
@@ -111,6 +113,24 @@ class CaptionController extends Controller
 
     private function validateImageExist($image_id) {
     	$images = Image::findOrFail($image_id);
+    }
+
+    private function validateEligibleToLike(Request $request, $id) {
+        $ip = $request->ip();
+        $like = Like::where([
+            ['caption_id', $id],
+            ['ip', $ip]
+        ])->get();
+
+        if (sizeof($like)>0) {
+            abort(400, "The IP has liked this caption");
+        }
+    }
+
+    private function updateLikeTable(Request $request, $id) {
+        $ip = $request->ip();
+        Like::create([  'caption_id'    => $id, 
+                        'ip'            => $ip]);
     }
 
     private function getTopN($collection, $n) {
