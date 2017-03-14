@@ -33,9 +33,8 @@ class CaptionController extends Controller
     }
 
     public function getCaption($id) {
-    	$caption = Caption::find($id);
+    	$caption = Caption::findOrFail($id);
 
-    	$this->checkResult($caption);
         $caption = $this->getTopN($caption, 20);
     	return response()->json($caption);
     }
@@ -56,7 +55,7 @@ class CaptionController extends Controller
     	//step 2. retrieve data according to query
         if (array_key_exists('image_id', $query)) {
             $image_id = $query['image_id'];
-            $caption = Caption::where('image_id', $image_id)->get();
+            $caption = Caption::where('image_id', $image_id)->firstOrFail()->get();
         } else {
             $caption = Caption::All();
         }
@@ -69,13 +68,12 @@ class CaptionController extends Controller
             $caption = $caption->sortByDesc('likes');
         }
 
-    	$this->checkResult($caption);
         $caption = $this->getTopN($caption, 20);
     	return response()->json($caption);
     }
 
     public function likeCaption($id) {
-    	$caption = Caption::find($id);
+    	$caption = Caption::findOrFail($id);
     	$caption->likes = $caption->likes + 1;
     	$caption->save();
 
@@ -90,7 +88,10 @@ class CaptionController extends Controller
         ]);
 
     	if ($validator->fails()) {
-    		abort(404, 'Page Not Found');
+    		$errors = $validator->errors();
+            $firstKey = $errors->keys()[0];
+            $firstMessage = $errors->first($firstKey);
+            abort(404, $firstMessage);
     	}
     }
 
@@ -101,19 +102,15 @@ class CaptionController extends Controller
         ]);
 
     	if ($validator->fails()) {
-            abort(400, 'Bad Request');
+            $errors = $validator->errors();
+            $firstKey = $errors->keys()[0];
+            $firstMessage = $errors->first($firstKey);
+            abort(400, $firstMessage);
         }
     }
 
     private function validateImageExist($image_id) {
-    	$images = Image::find($image_id);
-    	$this->checkResult($images);
-    }
-
-    private function checkResult($array) {
-    	if (sizeof($array) == 0) {
-    		abort(404, 'Page Not Found');
-    	}
+    	$images = Image::findOrFail($image_id);
     }
 
     private function getTopN($collection, $n) {
