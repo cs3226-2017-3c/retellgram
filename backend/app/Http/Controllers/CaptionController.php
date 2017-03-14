@@ -75,8 +75,7 @@ class CaptionController extends Controller
     public function likeCaption(Request $request, $id) {
         $caption = Caption::findOrFail($id);
     	$this->validateEligibleToLike($request, $id);
-    	$caption->likes = $caption->likes + 1;
-    	$caption->save();
+        $this->likeACaption($caption);
         $this->updateLikeTable($request, $id);
 
     	return response(204);
@@ -125,6 +124,15 @@ class CaptionController extends Controller
         if (sizeof($like)>0) {
             abort(400, "The IP has liked this caption");
         }
+    }
+
+    private function likeACaption($caption) {
+        $caption->likes = $caption->likes + 1;
+        $caption->save();
+
+        $image = Image::findOrFail($caption->image_id);
+        $image->likes = $image->likes + 1;
+        $image->save();
     }
 
     private function updateLikeTable(Request $request, $id) {
