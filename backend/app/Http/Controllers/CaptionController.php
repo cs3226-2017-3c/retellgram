@@ -13,12 +13,12 @@ class CaptionController extends Controller
 	public function createCaption(Request $request) {
 		$body = json_decode($request->getContent(), true);
 		$this->validateCreateCaption($body);
-		$this->validateImageExist($body["image_id"]);
+		$this->validateImageExist($body['image_id']);
 
 		$new_caption = new Caption;
 
-		$new_caption->image_id = $body["image_id"];
-		$new_caption->content = $body["content"];
+		$new_caption->image_id = $body['image_id'];
+		$new_caption->content = $body['content'];
 		$new_caption->likes = 0;
 		$new_caption->save();
 
@@ -36,10 +36,16 @@ class CaptionController extends Controller
     	$caption = Caption::find($id);
 
     	$this->checkResult($caption);
+        $caption = $this->getTopN($caption, 20);
     	return response()->json($caption);
     }
 
     public function getCaptionsWithQuery() {
+        //type of query:
+        //a. image_id=<image_id>: retrieve captions with image_id equals to <image_id>
+        //b. recent=1 or 0(default): retrieve most recent captions
+        //c. likes=1 or 0(default): retrieve most liked captions
+
     	$query = Input::all();
     	//step 1. validate url query
     	if (sizeof($query) == 0) {
@@ -48,10 +54,23 @@ class CaptionController extends Controller
     	$this->validateGetQuery($query);
 
     	//step 2. retrieve data according to query
-    	$image_id = $query["image_id"];
-    	$caption = Caption::where("image_id", $image_id)->get();
+        if (array_key_exists('image_id', $query)) {
+            $image_id = $query['image_id'];
+            $caption = Caption::where('image_id', $image_id)->get();
+        } else {
+            $caption = Caption::All();
+        }
+    	
+        if (array_key_exists('recent', $query) && $query['recent']) {
+            $caption = $caption->sortByDesc('updated_at');
+        }
+
+        if (array_key_exists('likes', $query) && $query['likes']) {
+            $caption = $caption->sortByDesc('likes');
+        }
 
     	$this->checkResult($caption);
+        $caption = $this->getTopN($caption, 20);
     	return response()->json($caption);
     }
 
@@ -64,10 +83,15 @@ class CaptionController extends Controller
     }
 
     private function validateGetQuery($query) {
-    	//naive validate: the url query must conatin image_id parameter
-    	if (!array_key_exists("image_id", $query)) {
+        $validator = Validator::make($query, [
+            'image_id' => array('integer'),
+            'recent' => array('boolean'),
+            'likes' => array('boolean')
+        ]);
+
+    	if ($validator->fails()) {
     		abort(404, 'Page Not Found');
-    	}	
+    	}
     }
 
     private function validateCreateCaption($body) {
@@ -90,5 +114,9 @@ class CaptionController extends Controller
     	if (sizeof($array) == 0) {
     		abort(404, 'Page Not Found');
     	}
+    }
+
+    private function getTopN($collection, $n) {
+        return $collection->slice(0, $n);
     }
 }
