@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
 import Navi from './Navi';
-import Main from './Main';
 
-class Home extends Component {
+class App extends Component {
   render() {
     return (
       <div>
         <Navi/>
-        <Main/>
+        {this.props.children}
       </div>
     );
   }
 }
 
-export default Home;
+export default App;

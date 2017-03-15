@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Content from './Content';
 import Sidebar from './Sidebar';
 
-class Main extends Component {
+class Home extends Component {
   render() {
     return (
       <Grid>
@@ -17,4 +17,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Home;
