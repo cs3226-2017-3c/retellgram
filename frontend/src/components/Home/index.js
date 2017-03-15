@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <Grid>
-        <Row className="show-grid">
+        <Row>
           <Col xs={12} sm={8}><Content/></Col>
           <Col xsHidden><Sidebar/></Col>
         </Row>
