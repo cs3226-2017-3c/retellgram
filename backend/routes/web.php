@@ -11,6 +11,14 @@
 |
 */
 
+/*
+	Routes
+*/
+Route::get('/upload', 'UploadController@viewUpload');
+
+/*
+	APIs
+*/
 Route::get('/', 'TestViewController@getTestView');
 
 Route::get('/getCaptions', 'CaptionController@getCaptions');
