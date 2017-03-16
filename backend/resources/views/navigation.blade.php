@@ -11,9 +11,9 @@
   		</div>
   		<div id="navbar" class="navbar-collapse collapse">
   			<ul class="nav navbar-nav">
-  				<li id="home"><a href="/"></a></li>
-    			<li id="create"><a href="/create"></a></li>
-  				<li id="upload"><a href="/upload"></a></li>
+  				<li id="home"><a href="/">Home</a></li>
+    			<li id="create"><a href="/create">Create</a></li>
+  				<li id="upload"><a href="/upload">Upload</a></li>
         </ul>
 		  </div>
   	</div>

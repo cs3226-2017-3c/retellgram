@@ -15,7 +15,7 @@
 	Routes
 */
 Route::get('/upload', 'UploadController@viewUpload');
-
+Route::get('/create', 'CreateController@viewCreate');
 /*
 	APIs
 */
