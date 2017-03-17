@@ -46,6 +46,9 @@ $ php artisan migrate
 $ php artisan db:seed --class=CaptionSeeder --env=local
 ```
 
+### Extract test images 
+$ tar -xf test_images.tar.gz -C storage/app/public/images --strip-components 1
+
 ### Start website locally
 ```
 $ php artisan serve
