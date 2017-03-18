@@ -15,7 +15,13 @@
 	Routes
 */
 Route::get('/upload', 'UploadController@viewUpload');
+Route::post('/upload', 'UploadController@storeUpload');
 Route::get('/create', 'CreateController@viewCreate');
+Route::post('/create', 'CreateController@storeCreate');
+Route::get('/selectimage', 'CreateController@viewSelectImage');
+Route::post('/selectimage', 'CreateController@submitSelectImage');
+
+//Route::post('/chooseImage', 'CreateController@chooseImage');
 /*
 	APIs
 */
