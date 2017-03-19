@@ -8,6 +8,7 @@ use App\Image;
 use Validator;
 use Intervention\Image\ImageManager;
 use Faker\Factory as Faker;
+use Response;
 
 error_reporting(-1); // reports all errors
 ini_set("display_errors", "1"); // shows all errors
@@ -101,7 +102,7 @@ class UploadController extends Controller
 	      	if($new_image->save())
 	      	{
 	          	return Response::json(
-	              ['message'=>"completed"],200
+	              ['message'=>"completed", 'image_id' => $new_image->id],200
 	          	);
 	      	}
 	      	else {

@@ -40,6 +40,12 @@ Upload Image
 
 		</div>
 	</div>
+
+	<div class="row">
+		<div id="createButton" class="col-md-12" style="display:none">
+			<a class="btn btn-primary btn-lg btn-block">Go to create Caption</a>
+		</div>
+	</div>
 </div>
 @endsection
 @section('footer')
@@ -107,7 +113,7 @@ $('#uploading').on('change', function () {
 	if (this.files[0]) {
 		console.log("Verifying file..")
 		var file = $('#uploading');
-		
+
 		if (this.files[0].size > 2097152) {
 			return failValidation('Please select an image less than 2Mb');
 		}
@@ -142,6 +148,11 @@ $('.upload-result').on('click', function (ev) {
 			success: function (data) {
 				html = '<img src="' + resp + '" />';
 				$("#upload-demo-i").html(html);
+
+				$("#createButton").css('display','block');
+				console.log(data);
+				$("#createButton a").attr('href','/create?image_id=' + data['image_id']);
+
 			},
             error: function(xhr, textStatus, thrownError) {
            		console.log(xhr.responseText);
