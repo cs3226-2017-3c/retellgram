@@ -48,7 +48,7 @@ $(document).ready(function () {
 	    $("#selectImage").imagepicker({
 	        hide_select: true,
 	        limit: 1,
-	        limit_reached: function(){alert('Please select only one image.')}, 
+	        limit_reached: function(){swal('Please select only one image.')}, 
 	    });
 	});
 </script>

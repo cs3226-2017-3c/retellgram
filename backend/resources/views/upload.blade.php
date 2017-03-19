@@ -70,8 +70,8 @@ $uploadCrop = $('#upload-into').croppie({
     }
 });
 
-function failValidation(msg) {
-    alert(msg); 
+function failValidation(msg, detail) {
+    swal(msg, detail); 
     return false;
 }
 
@@ -110,7 +110,7 @@ function readFile(input) {
 	    reader.readAsDataURL(input);
 	}
 	else {
-		alert("Sorry - you're browser doesn't support the FileReader API");
+		swal("Sorry :(","Your browser doesn't support the FileReader API");
 	}
 }
 
@@ -120,21 +120,21 @@ $('#uploading').on('change', function () {
 		var file = $('#uploading');
 
 		if (this.files[0].size > 2097152) {
-			return failValidation('Please select an image less than 2Mb');
+			return failValidation('Image too large','Please upload an image less than 2Mb');
 		}
 
         if (!isImage(file.val())) {
-            return failValidation('Please select a valid image');
+            return failValidation('Invalid Image', 'Please upload a valid image, supported formats: jpg,gif,bmp,png');
         }
 		readFile(this.files[0]);
 	} else {
-		alert("Please choose your image.");
+		failValidation('No Image Chosen','Please select your image first');
 	}
 });
 
 $('.upload-result').on('click', function (ev) {
 	if ($('#upload-into .cr-boundary .cr-image').attr("src") == null) {
-		return failValidation('Please select your image first');
+		return failValidation('No Image Chosen','Please select your image first');
 	}
 
 	$uploadCrop.croppie('result', {
@@ -157,6 +157,7 @@ $('.upload-result').on('click', function (ev) {
 				$("#createButton").css('display','block');
 				console.log(data);
 				$("#createButton a").attr('href','/create?image_id=' + data['image_id']);
+				swal("Congratulation!","Image upload successfully, please go to create your caption!");
 
 			},
             error: function(xhr, textStatus, thrownError) {

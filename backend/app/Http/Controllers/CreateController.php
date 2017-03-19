@@ -40,6 +40,9 @@ class CreateController extends Controller
     }
 
     public function submitSelectImage(Request $request) {
+        Validator::make($request->all(), [ 
+            'selectImage' => array('required'),
+        ])->validate();
 
     	if ($image_id = (int)$request->input('selectImage')){
 
