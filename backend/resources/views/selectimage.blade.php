@@ -26,13 +26,14 @@ Select Image
 				{!! Form::label('select_image', 'Select Your Image:', ['class' => 'control-label']) !!}
 				<select id="selectImage" name="selectImage" class="image-picker form-control">
 					<option value=""></option>
-					<option data-img-src='http://png.findicons.com/files/icons/2689/kitchen/128/4.png' value='1'>test-01.png</option>
-					<option data-img-src='http://png.findicons.com/files/icons/2689/kitchen/128/4.png' value='2'>test-01.png</option>
+					@foreach ($images as $image)
+					<option data-img-src='storage/images/{{$image->file_path}}' value='{{$image->id}}'>{{$image->file_path}}</option>
+					@endforeach
 				</select> 
 			</div>
 
 			<div class="form-group"> 
-				{!! Form::submit('Upload', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+				{!! Form::submit('Select', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 			</div>
 			
 			{!! Form::close() !!}

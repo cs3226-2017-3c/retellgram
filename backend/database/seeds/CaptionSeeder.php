@@ -28,7 +28,7 @@ class CaptionSeeder extends Seeder
 
         foreach ($test_images as $image) {
             DB::table('images')->insert([ 
-                'file_path' => $test_images_path . $image,
+                'file_path' => $image,
                 'md5' => md5_file ( storage_path('app/'. $test_images_path . $image)),
                 'likes' => 0
             ]);

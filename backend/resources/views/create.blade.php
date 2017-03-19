@@ -28,7 +28,7 @@ Create Image
 			<h2>Create Your Caption</h2>
 
 			@if($chosen)
-		    <img class="pull-left" id="caption_image" src="{{ asset(storage_path().'/app/'.$image_path) }}" alt="Image {{ $image_path }} " width="300" height="300">
+		    <img class="pull-left" id="caption_image" src="storage/images/{{$image_path}}" alt="Image {{ $image_path }} " width="300" height="300">
 		   	@else
 		   	<h3>Select Image</h3>
 
@@ -101,7 +101,7 @@ Create Image
 	        </div>
 
 			<div class="form-group"> 
-				{!! Form::submit('Upload', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+				{!! Form::submit('Create', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
 			</div>
 
 			{!! Form::close() !!}

@@ -34,8 +34,9 @@ class CreateController extends Controller
     // }
 
     public function viewSelectImage() {
+        $images = Image::all();
 
-    	return view('selectimage');
+    	return view('selectimage', ['images' => $images, ]);
     }
 
     public function submitSelectImage(Request $request) {
