@@ -35,3 +35,22 @@ span.cyan {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+#upload-into {
+  width: 350px;
+  height: 350px;
+  margin-top: 30px
+}
+
+#upload-button {
+  padding-top: 100px;
+}
+
+#upload-demo-i {
+  background: #e1e1e1;
+  width: 350px;
+  padding: 30px;
+  height: 350px;
+  margin-top: 30px
+  padding-bottom: 50px;
+}

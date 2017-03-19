@@ -23,10 +23,10 @@ Upload Image
 			<h2>Upload Your Image</h2>
 
 			<div class="row">
-		  		<div class="col-md-6 text-center">
-					<div id="upload-into" style="width:350px;height:350px;margin-top:30px"></div>
+		  		<div class="col-md-5 text-center">
+					<div id="upload-into"></div>
 		  		</div>
-		  		<div class="col-md-2" style="padding-top:30px;">
+		  		<div id="upload-button" class="col-md-3">
 					<strong>Choose Your Image:</strong>
 					<br/>
 					<input type="file" id="uploading">
@@ -34,7 +34,7 @@ Upload Image
 					<button class="btn btn-success upload-result">Upload Image</button>
 		  		</div>
 		  		<div class="col-md-4" style="">
-					<div id="upload-demo-i" style="background:#e1e1e1;width:350px;padding:30px;height:350px;margin-top:30px"></div>
+					<div id="upload-demo-i"></div>
 		  		</div>
 		  	</div>
 
@@ -59,6 +59,30 @@ $uploadCrop = $('#upload-into').croppie({
     }
 });
 
+function failValidation(msg) {
+    alert(msg); 
+    return false;
+}
+
+function getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+
+
+
+function isImage(filename) {
+    var ext = getExtension(filename);
+    switch (ext.toLowerCase()) {
+    case 'jpg':
+    case 'gif':
+    case 'bmp':
+    case 'png':
+        return true;
+    }
+    return false;
+}
+
 function readFile(input) {
  	if (input){
 	    var reader = new FileReader();
@@ -70,7 +94,6 @@ function readFile(input) {
 	        }).then(function(){
 	            console.log('jQuery bind complete');
 	        });
-
 	    }
 
 	    reader.readAsDataURL(input);
@@ -80,14 +103,33 @@ function readFile(input) {
 	}
 }
 
-$('#uploading').on('change', function () { readFile(this.files[0]); });
+$('#uploading').on('change', function () { 
+	if (this.files[0]) {
+		console.log("Verifying file..")
+		var file = $('#uploading');
+		
+		if (this.files[0].size > 2097152) {
+			return failValidation('Please select an image less than 2Mb');
+		}
+
+        if (!isImage(file.val())) {
+            return failValidation('Please select a valid image');
+        }
+		readFile(this.files[0]);
+	} else {
+		alert("Please choose your image.");
+	}
+});
 
 $('.upload-result').on('click', function (ev) {
+	if ($('#upload-into .cr-boundary .cr-image').attr("src") == null) {
+		return failValidation('Please select your image first');
+	}
+
 	$uploadCrop.croppie('result', {
 		type: 'canvas',
 		size: 'viewport'
 	}).then(function (resp) {
-		console.log("before ajax")
 	    $.ajaxSetup({
 	        headers: {
 	            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
@@ -107,6 +149,7 @@ $('.upload-result').on('click', function (ev) {
 		});
 	});
 });
+
 });
 </script>
 @endsection
