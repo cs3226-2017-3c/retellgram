@@ -41,6 +41,11 @@ Upload Image
 		</div>
 	</div>
 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="row">
 		<div id="createButton" class="col-md-12" style="display:none">
 			<a class="btn btn-primary btn-lg btn-block">Go to create Caption</a>
