@@ -52,7 +52,8 @@ Create Image
 				</button>
 			</a>
 		   	
-
+			<br>
+			<br>
 		   	<!--button 
 				   type="button" 
 				   class="btn btn-primary btn-lg" 
@@ -111,7 +112,7 @@ Create Image
        		</div>
 
        		<div class="form-group">
-				{!! Form::label('hashtags', 'Enter hashtag:', ['class' => 'control-label']) !!}
+				{!! Form::label('hashtags', 'Enter hashtag: ( optional, maximum 5 hashtags )', ['class' => 'control-label']) !!}
 				{!! Form::text('hashtags', null, ['placeholder' => 'e.g. #hashtag #retellgram', 'class' => 'form-control']) !!}
        		</div>
 
