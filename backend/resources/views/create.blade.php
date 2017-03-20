@@ -1,3 +1,17 @@
+<?php
+		$options = array( "7" => "Avata", 
+							"5" => "Curry Puff", 
+							"2" => "Deadpoo",
+							"8" => "Dollraemon",
+							"4" => "Donald Drunk", 
+							"6" => "Genghis Khan",
+							"1" => "Hairy Porter", 
+							"3" => "Hermoney Changer",
+							"10" => "Hulky",
+							"11" => "Kimchi Jong-un",  
+        					"9" => "Queen Kong",
+        					"12" => "Super Maria" );
+?>
 @extends('template')
 @section('title')
 Create Image
@@ -92,8 +106,13 @@ Create Image
 			</div>
 
 			<div class="form-group">
-				{!! Form::label('position', 'Position:', ['class' => 'control-label']) !!}
-				{!! Form::select('position', ['top'=>'Top', 'bottom'=>'Bottom'], null, ['placeholder' => 'Select caption position', 'class' => 'form-control']) !!}
+				{!! Form::label('character', 'Choose one character:', ['class' => 'control-label']) !!}
+				{!! Form::select('character', $options, null, ['placeholder' => 'Select character', 'class' => 'form-control']) !!}
+       		</div>
+
+       		<div class="form-group">
+				{!! Form::label('hashtags', 'Enter hashtag:', ['class' => 'control-label']) !!}
+				{!! Form::text('hashtags', null, ['placeholder' => 'e.g. #hashtag #retellgram', 'class' => 'form-control']) !!}
        		</div>
 
        		<div class="form-group">
