@@ -27,23 +27,3 @@ Route::post('selectimage', 'CreateController@submitSelectImage');
 Route::get('/', 'HomeController@home');
 
 //Route::post('/chooseImage', 'CreateController@chooseImage');
-
-/*
-	APIs
-*/
-
-Route::group(['prefix' => 'api'], function () {
-  Route::get('/getCaptions', 'CaptionController@getCaptions');
-  Route::get('/getImages', 'ImageController@getImages');
-
-  Route::post('/image', 'ImageController@createImage');
-  Route::get('/image/{id}', 'ImageController@getImage');
-  Route::get('/image', 'ImageController@getImages');
-  Route::delete('/image/{id}', 'ImageController@deleteImage');
-
-  Route::post('/caption', 'CaptionController@createCaption');
-  Route::get('/caption/{id}', 'CaptionController@getCaption');
-  Route::get('/caption', 'CaptionController@getCaptionsWithQuery');
-  Route::put('/caption/{id}', 'CaptionController@likeCaption');
-  Route::delete('/caption/{id}', 'CaptionController@deleteCaption');
-});
