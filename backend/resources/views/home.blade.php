@@ -13,7 +13,17 @@ Home
 		</div>
 		<div class="col-md-9">
 			@foreach($result as $r)
-				<div><img src="/storage/images/{{$r->file_path}}" width="100" height="100">, {{$r->likes}} likes, {{$r->popular->content}}</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="/storage/images/{{$r->file_path}}" height="200">
+						<div class="caption">
+							{{$r->popular->content}}
+						</div>
+					</div>
+					<div class="panel-footer">
+						<span class="glyphicon glyphicon-thumbs-up"></span> {{$r->likes}} likes
+					</div>
+				</div>
 			@endforeach
 		</div>
 	</div>
