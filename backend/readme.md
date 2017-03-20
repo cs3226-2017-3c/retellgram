@@ -47,8 +47,10 @@ $ php artisan db:seed --class=CaptionSeeder --env=local
 ```
 
 ### Extract test images and create symlink to storage
+```
 $ tar -xf test_images.tar.gz -C storage/app/public/images --strip-components 1
 $ php artisan storage:link
+```
 
 ### Start website locally
 ```
