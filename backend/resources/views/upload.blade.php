@@ -157,7 +157,7 @@ $('.upload-result').on('click', function (ev) {
 				$("#createButton").css('display','block');
 				console.log(data);
 				$("#createButton a").attr('href','/create?image_id=' + data['image_id']);
-				swal("Congratulation!","Image upload successfully, please go to create your caption!");
+				//swal("Congratulation!","Image upload successfully, please go to create your caption!");
 
 			},
             error: function(xhr, textStatus, thrownError) {
