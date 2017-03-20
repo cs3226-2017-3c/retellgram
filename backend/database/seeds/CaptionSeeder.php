@@ -27,20 +27,20 @@ class CaptionSeeder extends Seeder
     					"test-09.png"];
 
         foreach ($test_images as $image) {
-            DB::table('images')->insert([ 
+            DB::table('images')->insert([
                 'file_path' => $image,
                 'md5' => md5_file ( storage_path('app/'. $test_images_path . $image)),
-                'likes' => 0
+                'likes' => $faker->numberBetween(1,100)
             ]);
         }
 
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('captions')->insert([ 
+            DB::table('captions')->insert([
                 'image_id' => $faker->numberBetween(1, sizeof( $test_images)),
                 'content' => $faker->text($maxNbChars = 50),
-                'likes' => 0
+                'likes' => $faker->numberBetween(1,100)
             ]);
         }
-        
+
     }
 }

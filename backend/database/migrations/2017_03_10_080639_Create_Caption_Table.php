@@ -15,10 +15,12 @@ class CreateCaptionTable extends Migration
     {
         Schema::create('captions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image_id');
+            $table->integer('image_id')->unsigned();
             $table->string('content');
             $table->integer('likes')->default(0);
             $table->timestamps();
+
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 
