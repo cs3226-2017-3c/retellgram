@@ -8,13 +8,16 @@ Detail
 
 <div class="container">
 	<div class="row">
+		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<div class="thumbnail">
-				<img id="image" class="img-responsive" src="" />
-				<div id="caption"></div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<img id="image" class="img-responsive" src="" style="height:300px;"/>
+					<div id="caption"></div>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-3">
 			<div id="all_caption"></div>
 		</div>
 	</div>
@@ -23,18 +26,12 @@ Detail
 @section('footer')
 <script>
 //get the image
-$.ajax({
-    type: 'GET',
-    beforeSend: function(request) {
-        request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
-    },
-    url: "../image/{{$image_id}}", 
-    success: function(data) {
-        $("#image").attr("src",data);
-    }
-})
+$.getJSON("../image/{{$image_id}}", function(data) {
+	$("#image").attr("src",data['path']);
+});
 </script>
 <script>
+//get captions
 $.getJSON("../caption/{{$image_id}}", function(data){
 	$("#caption").append("<p>" + data[0]['content'] + "</p>");
 

@@ -13,11 +13,9 @@ class DetailController extends Controller
 
   public function getImage($id) {
     $image = Image::findOrFail($id);
-    $path = "storage/images/" . $image->file_path;
-    $type = pathinfo($path, PATHINFO_EXTENSION);
-    $data = file_get_contents($path);
-    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-    return response($base64);
+    $path = "/storage/images/" . $image->file_path;
+    $result = array("path"=>$path);
+    return response()->json($result);
   }
 
   public function getCaptions($image_id) {
