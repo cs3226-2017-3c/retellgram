@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class CreateHashtagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('hashtags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('caption_id')->unsigned();
-            $table->string('ip');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('caption_id')->references('id')->on('captions');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('hashtags');
     }
 }

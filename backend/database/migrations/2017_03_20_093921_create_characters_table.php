@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCaptionTable extends Migration
+class CreateCharactersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateCaptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('captions', function (Blueprint $table) {
+        Schema::create('characters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('image_id')->unsigned();
-            $table->string('content');
-            $table->integer('likes')->default(0);
+            $table->string('name');
+            $table->string('faction');
             $table->timestamps();
-
-            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateCaptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('captions');
+        Schema::dropIfExists('characters');
     }
 }
