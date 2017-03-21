@@ -17,7 +17,7 @@
 Create Image
 @endsection
 @section('header')
-<!--link href="/css/image-picker.css" rel="stylesheet"-->
+<link href="/css/image-picker.css" rel="stylesheet">
 @endsection
 @section('main')
 
@@ -46,24 +46,24 @@ Create Image
 		   	@else
 		   	<h3>Select Image</h3>
 
-		   	<a href="/selectimage">
+		   	<!--a href="/selectimage">
 				<button type="button" class="btn btn-primary btn-lg" >
 			  		Select Image
 				</button>
-			</a>
+			</a-->
 		   	
-			<br>
-			<br>
-		   	<!--button 
+		   	<button 
 				   type="button" 
 				   class="btn btn-primary btn-lg" 
 				   data-toggle="modal" 
 				   data-target="#imageModal">
 			  	Select Image
 			</button>
-			
+			<br>
+			<br>
+
 			<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
-				<div class="modal-dialog" role="document">
+				<div class="modal-dialog full-screen" role="document">
 				    <div class="modal-content">
 				      	<div class="modal-header">
 				        	<button type="button" class="close" 
@@ -72,27 +72,29 @@ Create Image
 				          	<span aria-hidden="true">&times;</span></button>
 				        	<h4 class="modal-title" id="imageModalLabel">Choose Image</h4>
 				      	</div>
-					   	<form role="form" id="chooseImageForm" method="post">
-					   		{!! csrf_field() !!}
-					   		<div class="form-group">
-							    <div class="modal-body">
-									<select id="selectImage" class="image-picker form-control">
-								    	<option value=""></option>
-								    	<option data-img-src='http://png.findicons.com/files/icons/2689/kitchen/128/4.png' value='1'>test-01.png</option>
-								    </select>
-							    </div>
-							    <div class="modal-footer">
-							    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <span class="pull-right">
-							        	<input type="submit" value="Choose Image" class="btn btn-primary"/>
-							        </span>
-							    </div>
-							</div>
-						    
-					    </form>
+					   
+						<div class="modal-body">
+							<form role="form" action="/create" id="chooseImageForm" method="get">
+					   			<div class="form-group">
+									<select id="image_id" name="image_id" class="image-picker form-control">
+										<option value=""></option>
+										@foreach ($images as $image)
+										<option data-img-src='storage/images/{{$image->file_path}}' value='{{$image->id}}'>{{$image->file_path}}</option>
+										@endforeach
+									</select>
+								</div>
+							</form>
+						</div>	
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<span class="pull-right">
+							    <input id="submitForm" type="submit" value="Choose Image" class="btn btn-primary"/>
+							</span>
+						</div>	
 					</div>
 				</div>
-			</div-->
+			</div>
 
 		   	@endif
 		</div>
@@ -130,35 +132,17 @@ Create Image
 </div>
 @endsection
 @section('footer')
-<!--script type="text/javascript" src="js/image-picker.min.js"></script>
+<script type="text/javascript" src="js/image-picker.min.js"></script>
 <script>
-	$(function(){
-	    $('#chooseImageForm').on('submit', function(e){
-	        console.log("here");
-	        e.preventDefault();
-	        $.ajaxSetup({
-		        headers: {
-		            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-		        }
-		    });
-
-	        $.ajax({
-	            url: "/chooseImage", 
-	            type: 'POST', 
-	           	data: $('#chooseImageForm').serialize(),
-	            success: function(data){
-	                 alert('successfully submitted')
-	            }
-	        });
-	    });
-	});
-
 	$(document).ready(function () {
-	    $("#selectImage").imagepicker({
+		$("#submitForm").on('click', function() {
+        	$("#chooseImageForm").submit();
+    	});
+	    $("#image_id").imagepicker({
 	        hide_select: true,
 	        limit: 1,
-	        limit_reached: function(){alert('Please select only one image.')}, 
+	        limit_reached: function(){swal('Please select only one image.')}, 
 	    });
 	});
-</script-->
+</script>
 @endsection

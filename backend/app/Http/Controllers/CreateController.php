@@ -11,14 +11,15 @@ use Validator;
 class CreateController extends Controller
 {
     public function viewCreate(Request $request) {
+        $images = Image::all();
 
     	if ($image_id = $request->input('image_id')){
     		$image = Image::find($image_id);
 
-        	return view('create', [ 'image_path' => $image->file_path, 'image_id' => $image_id, 'chosen' => true ]);
+        	return view('create', [ 'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'chosen' => true ]);
     	}
 
-    	return view('create', [ 'image_path' => "", 'image_id' => $image_id, 'chosen' => false ]);
+    	return view('create', [ 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'chosen' => false ]);
         
     }
 
