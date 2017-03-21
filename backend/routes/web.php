@@ -17,7 +17,8 @@
 
 
 Route::get('upload', 'UploadController@viewUpload');
-Route::post('uploadCrop', 'UploadController@cropUpload');
+Route::post('upload', 'UploadController@storeUpload');
+//Route::post('uploadCrop', 'UploadController@cropUpload');
 
 Route::get('create', 'CreateController@viewCreate');
 Route::post('create', 'CreateController@storeCreate');

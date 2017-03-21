@@ -22,7 +22,7 @@ Upload Image
 			
 			<h2>Upload Your Image</h2>
 
-			<div class="row">
+			<!--div class="row">
 		  		<div class="col-md-5 text-center">
 					<div id="upload-into"></div>
 		  		</div>
@@ -36,12 +36,31 @@ Upload Image
 		  		<div class="col-md-4" style="">
 					<div id="upload-demo-i"></div>
 		  		</div>
+		  	</div-->
+		  	<div class="row">
+		  		<div id="upload-button" class="col-md-6">
+				  	{!! Form::open(['files' => 'true']) !!} 
+					
+			      	<div class="form-group">
+		          		{!! Form::file('uploading',['id' => 'uploading']) !!}
+		        	</div>
+					<div class="form-group"> 
+						{!! Form::submit('Upload', ['class' => 'btn btn-primary btn-lg']) !!}
+					</div>
+
+					{!! Form::close() !!}
+				</div>
+
+				<div class="col-md-6">
+					<div id="crop"></div>
+		  		</div>
+
 		  	</div>
 
 		</div>
 	</div>
 
-	<br>
+	<!--br>
 	<br>
 	<br>
 	<br>
@@ -50,12 +69,52 @@ Upload Image
 		<div id="createButton" class="col-md-12" style="display:none">
 			<a class="btn btn-primary btn-lg btn-block">Go to create Caption</a>
 		</div>
-	</div>
+	</div-->
 </div>
 @endsection
 @section('footer')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
+
 <script>
+$( document ).ready(function(){
+
+	$uploadCrop = $('#crop').croppie({
+		showZoomer:false,
+	    enableExif: true,
+	    viewport: {
+	        width: 400,
+	        height: 400,
+	        type: 'square'
+	    },
+	    boundary: {
+	        width: 400,
+	        height: 400
+	    }
+	});
+
+	function readURL(file) {
+	  	if(file) {
+	    	var reader = new FileReader();
+	    	reader.onload = function (e) {
+		    	$('#crop').addClass('ready');
+		    	$uploadCrop.croppie('bind', {
+		            url: e.target.result
+		        }).then(function(){
+		            console.log('jQuery bind complete');
+		        });
+		    }
+
+    		reader.readAsDataURL(file);
+	  	}
+	}
+
+	$("#uploading").change(function() {
+		console.log("triggered");
+	  	readURL(this.files[0]);
+	});
+});
+</script>
+<!--script>
 $( document ).ready(function(){
 $uploadCrop = $('#upload-into').croppie({
     enableExif: true,
@@ -82,13 +141,13 @@ function getExtension(filename) {
 
 
 
-function isImage(filename) {
-    var ext = getExtension(filename);
-    switch (ext.toLowerCase()) {
-    case 'jpg':
-    case 'gif':
-    case 'bmp':
-    case 'png':
+function isImage(file) {
+    var mime = file.type;
+    console.log(mime);
+    switch (mime) {
+    case 'image/png':
+    case 'image/jpeg':
+    case 'image/gif':
         return true;
     }
     return false;
@@ -123,7 +182,7 @@ $('#uploading').on('change', function () {
 			return failValidation('Image too large','Please upload an image less than 2Mb');
 		}
 
-        if (!isImage(file.val())) {
+        if (!isImage(this.files[0])) {
             return failValidation('Invalid Image', 'Please upload a valid image, supported formats: jpg,gif,bmp,png');
         }
 		readFile(this.files[0]);
@@ -168,5 +227,5 @@ $('.upload-result').on('click', function (ev) {
 });
 
 });
-</script>
+</script-->
 @endsection

@@ -17,6 +17,7 @@
 Create Image
 @endsection
 @section('header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
 <link href="/css/image-picker.css" rel="stylesheet">
 @endsection
 @section('main')
@@ -133,8 +134,22 @@ Create Image
 @endsection
 @section('footer')
 <script type="text/javascript" src="js/image-picker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
 <script>
 	$(document).ready(function () {
+		$('#caption_image').croppie({
+			showZoomer:false,
+			enableExif: true,
+		    viewport: {
+		        width: 400,
+		        height: 400,
+		        type: 'square'
+		    },
+		    boundary: {
+		        width: 400,
+		        height: 400
+		    }
+		});
 		$("#submitForm").on('click', function() {
         	$("#chooseImageForm").submit();
     	});

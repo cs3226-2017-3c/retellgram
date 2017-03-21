@@ -28,13 +28,10 @@ body {
   padding-top: 100px;
 }
 
-#upload-demo-i {
+#crop {
   background: #e1e1e1;
-  width: 350px;
-  padding: 30px;
-  height: 350px;
-  margin-top: 30px
-  padding-bottom: 50px;
+  width: 400px;
+  height: 400px;
 }
 
 .modal-dialog{
@@ -44,4 +41,12 @@ body {
 .modal-body{
     height:500px;
     overflow-y: auto;
+}
+
+.image_picker_image {
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
 }
