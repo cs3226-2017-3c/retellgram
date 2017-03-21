@@ -28,10 +28,11 @@ class UploadController extends Controller
 		])->validate();
 
    		$new_image = new Image();
-	    
-	   	//if ( Images::where('md5', $new_image->md5)->count() != 0 ) {
-		    	// TODO: show "image exist, go to add caption"
-		//}
+	    $new_image->md5 = md5_file ($request->file('uploading'));
+
+	   	if ( $exist_image = Image::where('md5', $new_image->md5)->first() ) {
+		    return redirect()->action('CreateController@viewCreate',[ 'image_id' => $exist_image->id ]);
+		}
 	    
       	$path = $request->file('uploading')->store("public/images");
       	
