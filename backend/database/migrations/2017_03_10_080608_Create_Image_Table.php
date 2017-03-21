@@ -16,7 +16,7 @@ class CreateImageTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_path');
-            $table->string('md5');
+            $table->string('md5')->index();
             $table->integer('likes')->default(0);
             $table->timestamps();
         });
