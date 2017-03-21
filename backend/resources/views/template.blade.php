@@ -17,7 +17,9 @@
 
 </head>
 <body>
-
+  <div class="container">
+    @include('flash::message')
+  </div>
   @include('navigation')
    
   @yield('main')
