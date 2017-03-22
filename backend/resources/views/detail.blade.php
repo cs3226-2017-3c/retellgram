@@ -20,8 +20,11 @@ Detail
 				</div>
 				<div class="panel-footer">
 					<div id="likes"></div>
-				</div>
-						
+				</div>		
+			</div>
+			<div>
+				<div class="btn btn-primary btn-lg btn-block" onclick="addCaption();">
+					<span class="glyphicon glyphicon-plus"></span> Add Caption</div>
 			</div>
 		</div>
 		<div class="col-md-3">
@@ -55,6 +58,11 @@ $.getJSON("../caption?likes=1&image_id={{$image_id}}", function(data){
 </script>
 
 <script>
+function addCaption(){
+	console.log("add caption!");
+	window.open("../create?image_id={{$image_id}}");
+}
+
 function changeCaption(event){
 	$(".selected").removeClass("selected");
 	$(event.target).parent().addClass("selected");
