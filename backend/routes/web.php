@@ -27,6 +27,7 @@ Route::post('selectimage', 'CreateController@submitSelectImage');
 Route::get('detail/{id}', 'DetailController@getView');
 Route::get('image/{id}', 'DetailController@getImage');
 Route::get('caption/{image_id}', 'DetailController@getCaptions');
+Route::put('caption/{id}', 'CaptionController@likeCaption');
 
 Route::get('/', 'HomeController@home');
 
