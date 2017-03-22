@@ -2,6 +2,9 @@
 @section('title')
 Detail
 @endsection
+<style>
+.selected {background-color: rgba(0,0,0,0.1);}
+</style>
 @section('header')
 @endsection
 @section('main')
@@ -16,9 +19,7 @@ Detail
 					<div id="caption"></div>
 				</div>
 				<div class="panel-footer">
-					<div id="likes">
-						<span class="glyphicon glyphicon-thumbs-up"></span>
-					</div>
+					<div id="likes"></div>
 				</div>
 						
 			</div>
@@ -38,39 +39,71 @@ $.getJSON("../image/{{$image_id}}", function(data) {
 </script>
 <script>
 //get captions
-$.getJSON("../caption/{{$image_id}}", function(data){
-	$("#caption").append("<p>" + data[0]['content'] + "</p>");
-	$("#likes").append(data[0]['likes']);
+$.getJSON("../caption?likes=1&image_id={{$image_id}}", function(data){
+	$("#caption").html("<p>"+data[0]['content']+"</p>");
+	var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
+	$("#likes").html(thumb);
 
-	var thumb = "<span class='glyphicon glyphicon-thumbs-up'></span>"
 	$.each(data, function(i, object){
-	  var li_content = "<div onclick=updateCaptionDisplay(event)>"+object['content']+"</div>"+
-	  "<div onclick=like(event) id="+object['id']+">"+thumb+object['likes']+"</div>";
+	  var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
+	  var caption_content = "<div onclick=changeCaption(event)>"+object['content']+"</div>";
+	  var li_content = caption_content + thumb;
       $("#all_caption").append("<li href='#'>"+li_content+"</li>");
     });
+	$("ol#all_caption li:first").addClass("selected");
 })
 </script>
 
 <script>
-function updateCaptionDisplay(event){
-	console.log($(event.target));
-	var this_caption = $(event.target).context.innerHTML;
-	$("#caption").html("<p>" + this_caption + "</p>");
+function changeCaption(event){
+	$(".selected").removeClass("selected");
+	$(event.target).parent().addClass("selected");
+	var this_caption = $(event.target).html();
+	$("#caption").html("<p>"+this_caption+"</p>");
+	var this_likes = $(event.target).next().clone();
+	$("#likes").html(this_likes);
 };
+
 function like(event){
 	var this_caption_id = $(event.target).context.id;
-	console.log(this_caption_id);
 	$.ajax({
     	type: 'PUT',
     	beforeSend: function(request) {
     		request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
         },
         url: "http://localhost:8000/caption/" + this_caption_id, 
-        data: "",
         success: function(data) {
-            console.log("success");
-        }
+            updateLikeDisplay(event, this_caption_id)
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+        	if (errorThrown == "Bad Request") {
+        		alert("You have liked this caption");
+        	} else {
+        		console.log(textStatus, errorThrown);
+        	}
+		}
     });
+}
+function updateLikeDisplay(event, id) {
+	$.getJSON("../caption/"+id, function(data){
+		$(event.target).html(data['likes']);
+		if($("#likes div:last").attr('id') == id) {
+			$("#likes div:last").html(data['likes']);
+		}
+
+		var aCaption = $("ol#all_caption li:first");
+		var like = aCaption.children().last();
+		if (like.attr('id') == id) {
+			like.html(data['likes']);
+		}
+		while (aCaption.next().is('li')) {
+			aCaption = aCaption.next();
+			like = aCaption.children().last();
+			if (like.attr('id') == id) {
+				like.html(data['likes']);
+			}
+		}	
+	})
 }
 </script>
 
