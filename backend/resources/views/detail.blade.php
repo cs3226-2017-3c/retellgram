@@ -71,7 +71,7 @@ function like(event){
     	beforeSend: function(request) {
     		request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
         },
-        url: "http://localhost:8000/caption/" + this_caption_id, 
+        url: "../caption/" + this_caption_id, 
         success: function(data) {
             updateLikeDisplay(event, this_caption_id)
         },
