@@ -8,7 +8,7 @@ Detail
 @section('header')
 @endsection
 @section('main')
-
+<div id="fb-root"></div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-3"></div>
@@ -20,11 +20,17 @@ Detail
 				</div>
 				<div class="panel-footer">
 					<div id="likes"></div>
-				</div>		
+				</div>	
 			</div>
 			<div>
 				<div class="btn btn-primary btn-lg btn-block" onclick="addCaption();">
 					<span class="glyphicon glyphicon-plus"></span> Add Caption</div>
+				<div class="fb-share-button"
+					style="margin-top:20px;"
+					data-href="document.URL"
+					data-layout="button" data-size="large" data-mobile-iframe="true">
+					Share
+				</div>
 			</div>
 		</div>
 		<div class="col-md-3">
@@ -34,6 +40,13 @@ Detail
 </div>
 @endsection
 @section('footer')
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script>
 //get the image
 $.getJSON("../image/{{$image_id}}", function(data) {
