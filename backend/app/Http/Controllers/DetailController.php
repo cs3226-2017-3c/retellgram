@@ -12,7 +12,13 @@ use App\Like;
 class DetailController extends Controller
 {
   	public function getView($id) {
-  		return view('detail',[ 'image_id' => $id]);
+  		$query = Input::all();
+  		if (array_key_exists('caption_id', $query)) {
+            $caption_id = $query['caption_id'];
+            return view('detail',[ 'image_id' => $id, 'caption_id' => $caption_id]);
+        } else {
+        	return view('detail',[ 'image_id' => $id, 'caption_id' => 0]);
+        }
   	}
 
   	public function getImage($id) {
