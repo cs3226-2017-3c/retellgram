@@ -11,14 +11,15 @@ use Validator;
 class CreateController extends Controller
 {
     public function viewCreate(Request $request) {
+        $images = Image::all();
 
     	if ($image_id = $request->input('image_id')){
     		$image = Image::find($image_id);
 
-        	return view('create', [ 'image_path' => $image->file_path, 'image_id' => $image_id, 'chosen' => true ]);
+        	return view('create', [ 'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'chosen' => true ]);
     	}
 
-    	return view('create', [ 'image_path' => "", 'image_id' => $image_id, 'chosen' => false ]);
+    	return view('create', [ 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'chosen' => false ]);
         
     }
 
@@ -48,7 +49,7 @@ class CreateController extends Controller
     public function storeCreate(Request $request) {
     	Validator::make($request->all(), [ 
 		    'image_id' => array('required'),
-		    'caption' => array('required','max:50','regex:/^[A-Za-z1-9,._ ]+$/'),
+		    'caption' => array('required','max:50','regex:/^[A-Za-z1-9!?;^:()&,._ ]+$/'),
             'character' => array('required','in:1,2,3,4,5,6,7,8,9,10,11,12'),
             'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){0,5}/'),
 		])->validate();
@@ -84,7 +85,9 @@ class CreateController extends Controller
             $new_caption->hashtags()->attach($tag_id);
         }
 
-    	return view('create', [ 'image_path' => "", 'image_id' => null, 'chosen' => false ]);
+        flash('Caption was created successfully!', 'success');
+        $images = Image::all();
+    	return view('create', [ 'images' => $images,'image_path' => "", 'image_id' => null, 'chosen' => false ]);
     }
     
 }
