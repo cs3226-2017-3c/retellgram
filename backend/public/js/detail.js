@@ -11,10 +11,6 @@ function getCaptions(image_id, caption_id) {
 	var has_selected_caption = false;
 	url = url.concat(image_id);
 	$.getJSON(url, function(data){
-		$("#caption").html("<p>"+data[0]['content']+"</p>");
-		var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
-		$("#likes").html(thumb);
-
 		$.each(data, function(i, object){
 	  		var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
 	  		var caption_content = "<div onclick=changeCaption(event)>"+object['content']+"</div>";
@@ -22,11 +18,21 @@ function getCaptions(image_id, caption_id) {
       		
       		if (caption_id == object['id']) {
       			$("#all_caption").append("<li class='selected' href='#'>"+li_content+"</li>");
+      			$("#caption").html("<p>"+object['content']+"</p>");
+      			var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
+				$("#likes").html(thumb);
       			has_selected_caption = true;
       		} else {
       			$("#all_caption").append("<li href='#'>"+li_content+"</li>");
       		}
     	});
+
+    	if (!has_selected_caption) {
+    		$("ol#all_caption li:first").addClass("selected");
+    		$("#caption").html("<p>"+data[0]['content']+"</p>");
+			var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
+			$("#likes").html(thumb);
+    	}
 	})
 }
 
@@ -42,6 +48,9 @@ function changeCaption(event){
 	$("#caption").html("<p>"+this_caption+"</p>");
 	var this_likes = $(event.target).next().clone();
 	$("#likes").html(this_likes);
+	var url = window.location.pathname.concat("?caption_id=");
+	url = url.concat($(event.target).next().attr("id"));
+	window.history.replaceState(null, null, url);
 };
 
 function like(event){

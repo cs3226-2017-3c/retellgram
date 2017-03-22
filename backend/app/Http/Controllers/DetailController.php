@@ -17,7 +17,7 @@ class DetailController extends Controller
             $caption_id = $query['caption_id'];
             return view('detail',[ 'image_id' => $id, 'caption_id' => $caption_id]);
         } else {
-        	return view('detail',[ 'image_id' => $id, 'caption_id' => 0]);
+        	return view('detail',[ 'image_id' => $id, 'caption_id' => -1]);
         }
   	}
 
