@@ -34,3 +34,5 @@ Route::put('caption/{id}', 'DetailController@likeCaption');
 Route::get('/', 'HomeController@home');
 
 //Route::post('/chooseImage', 'CreateController@chooseImage');
+
+Route::get('admin', 'AdminController@admin');
