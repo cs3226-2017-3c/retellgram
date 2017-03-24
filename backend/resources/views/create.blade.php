@@ -18,7 +18,7 @@ Create Image
 @endsection
 @section('header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
-<link href="/css/image-picker.css" rel="stylesheet">
+<link href="css/image-picker.css" rel="stylesheet">
 @endsection
 @section('main')
 
