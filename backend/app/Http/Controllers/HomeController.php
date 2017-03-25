@@ -1,17 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use Response;
 
-use App\Caption;
-use App\Image;
+use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
-  public function home() {
-    $images = Image::All();
-    foreach ($images as $i) {
-      $i->popular = $i->captions->sortByDesc('likes')->first();
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
-    return view('home',[ 'result' => $images]);
-  }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
 }

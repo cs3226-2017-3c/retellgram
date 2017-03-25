@@ -43,3 +43,6 @@ Route::get('/', 'HomeController@home');
 //Route::post('/chooseImage', 'CreateController@chooseImage');
 
 Route::get('admin', 'AdminController@admin');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

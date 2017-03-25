@@ -62,9 +62,9 @@ class DetailController extends Controller
 
   	public function likeCaption(Request $request, $id) {
   	    $caption = Caption::findOrFail($id);
-    	//$this->validateEligibleToLike($request, $id);
+    	$this->validateEligibleToLike($request, $id);
         $this->likeACaption($caption);
-        //$this->updateLikeTable($request, $id);
+        $this->updateLikeTable($request, $id);
     	return response(204);
   	}
 
@@ -83,15 +83,16 @@ class DetailController extends Controller
     }
 
     private function validateEligibleToLike(Request $request, $id) {
-        $ip = $request->ip();
+        $cookie = $request->cookie('laravel_session');
         $like = Like::where([
             ['caption_id', $id],
-            ['ip', $ip]
+            ['cookie', $cookie]
         ])->get();
         if (sizeof($like)>0) {
             abort(400, "The IP has liked this caption");
         }
     }
+
     private function likeACaption($caption) {
         $caption->likes = $caption->likes + 1;
         $caption->save();
@@ -100,8 +101,8 @@ class DetailController extends Controller
         $image->save();
     }
     private function updateLikeTable(Request $request, $id) {
-        $ip = $request->ip();
+        $cookie = $request->cookie('laravel_session');
         Like::create([  'caption_id'    => $id, 
-                        'ip'            => $ip]);
+                        'cookie'        => $cookie]);
     }
 }

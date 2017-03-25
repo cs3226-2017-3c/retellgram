@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    protected $fillable = array('caption_id', 'ip');
+	protected $table = 'like';
+    protected $fillable = array('cookie', 'caption_id');
 }
