@@ -42,6 +42,7 @@ DB_PASSWORD=[PASSWORD]
 
 ### Extract test images and create symlink to storage
 ```
+$ mkdir -p storage/app/public/images
 $ tar -xf test_images.tar.gz -C storage/app/public/images --strip-components 1
 $ php artisan storage:link
 ```
