@@ -1,5 +1,5 @@
 function getImage(image_id) {
-	var url = "../image/";
+	var url = "/image/";
 	url = url.concat(image_id);
 	$.getJSON(url, function(data) {
 	$("#image").attr("src",data['path']);
@@ -7,7 +7,7 @@ function getImage(image_id) {
 }
 
 function getCaptions(image_id, caption_id) {
-	var url = "../caption?likes=1&image_id=";
+	var url = "/caption?likes=1&image_id=";
 	var has_selected_caption = false;
 	url = url.concat(image_id);
 	$.getJSON(url, function(data){
@@ -37,8 +37,9 @@ function getCaptions(image_id, caption_id) {
 }
 
 function addCaption(image_id){
-	console.log("add caption!");
-	window.open("../create?image_id="+image_id);
+	var url = "/new_create?image_id="+image_id;
+	window.open(url);
+	return false;
 }
 
 function changeCaption(event){
