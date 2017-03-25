@@ -12,7 +12,7 @@
                   "9" => "Queen Kong",
                   "12" => "Super Maria" );
 ?>
-@extends('new_template')
+@extends('new_template_with_side_bar')
 @section('title')
 Create Image
 @endsection
@@ -27,40 +27,7 @@ Create Image
   }
 </script>
 @endsection
-@section('main')
-
-<div id="wrapper">
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i>Hashtags</a>
-                </li>
-                <li>
-                    <a href="#">#NewestSnaps</a>
-                </li>
-                <li>
-                    <a href="#">#NewestStories</a>
-                </li>
-                <li>
-                    <a href="#">#MostLikedStories</a>
-                </li>
-                <li>
-                    <a href="#">#MostLikedSnaps</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag1</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag2</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag3</a>
-                </li>
-      </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
+@section('main-content')
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -229,8 +196,6 @@ Create Image
       </div>
     </div>
   </div>
-</div>
-
 @endsection
 @section('footer')
 <script type="text/javascript" src="js/image-picker.min.js"></script>

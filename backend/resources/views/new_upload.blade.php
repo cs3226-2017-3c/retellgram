@@ -1,44 +1,11 @@
-@extends('new_template')
+@extends('new_template_with_side_bar')
 @section('title')
 Upload Image
 @endsection
 @section('header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
 @endsection
-@section('main')
-
-<div id="wrapper">
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i>Hashtags</a>
-                </li>
-                <li>
-                    <a href="#">#NewestSnaps</a>
-                </li>
-                <li>
-                    <a href="#">#NewestStories</a>
-                </li>
-                <li>
-                    <a href="#">#MostLikedStories</a>
-                </li>
-                <li>
-                    <a href="#">#MostLikedSnaps</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag1</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag2</a>
-                </li>
-                <li>
-                    <a href="#">#UserTag3</a>
-                </li>
-      </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
+@section('main-content')
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -90,8 +57,6 @@ Upload Image
         </div>
     </div>
   </div>
-
-</div>
 @endsection
 @section('footer')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
