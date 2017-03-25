@@ -18,6 +18,10 @@
 
 Route::get('upload', 'UploadController@viewUpload');
 Route::post('upload', 'UploadController@storeUpload');
+
+Route::get('new_upload', 'UploadControllerNew@viewUpload');
+Route::post('new_upload', 'UploadControllerNew@storeUpload');
+
 //Route::post('uploadCrop', 'UploadController@cropUpload');
 
 Route::get('new_create', 'CreateControllerNew@viewCreate');

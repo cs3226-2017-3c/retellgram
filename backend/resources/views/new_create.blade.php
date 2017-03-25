@@ -62,7 +62,8 @@ Create Image
   <!-- /#sidebar-wrapper -->
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
       @if (count($errors) > 0) 
         <div class="alert alert-danger">
           <ul>
@@ -73,10 +74,6 @@ Create Image
         </div>
       @endif
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-2"></div>
     <div class="col-md-8 tell-panel">
       <div class="page-content-wrapper">
         <div class="panel panel-primary">

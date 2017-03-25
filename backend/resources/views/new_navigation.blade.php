@@ -15,8 +15,8 @@
           <ul class="nav navbar-nav">
             <li><a href="#">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <!--TODO> class = "active should be handled by router" <-->
-            <li class="active"><a href="/upload" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
-            <li><a href="/create" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
+            <li @if(Request::path()=="new_upload")class="active"@endif><a href="/new_upload" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
+            <li @if(Request::path()=="new_create")class="active"@endif><a href="/new_create" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="caret"></span></a>
               <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
