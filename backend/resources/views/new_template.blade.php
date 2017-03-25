@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
     
-  <link rel="icon" href="logo/logoOnly.png">
+  <link rel="icon" href="/logo/logoOnly.png">
   <title>@yield('title') - Retellgram</title>
 
   <!-- Bootstrap core CSS -->
@@ -25,9 +25,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!-- Custom styles for this template -->
-  <link href="css/theme.css" rel="stylesheet">
+  <link href="/css/theme.css" rel="stylesheet">
 
-  <link href="css/navbar.css" rel="stylesheet">
+  <link href="/css/navbar.css" rel="stylesheet">
 
   @yield('header')
 </head>
@@ -40,7 +40,7 @@
   @yield('main')
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/docs.min.js"></script>
+  <script src="/js/docs.min.js"></script>
   
   <!-- JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
