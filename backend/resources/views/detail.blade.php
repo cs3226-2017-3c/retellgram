@@ -20,7 +20,9 @@ Detail
           <div class="panel-body">
             <div class="row">
 		        <div class="col-md-6">
-			         <div class="panel panel-primary">
+			         <div class="panel panel-default">
+                <div class="panel-heading" id="author">
+                </div>
 				        <div class="panel-body">
 					         <img id="image" class="img-responsive mg-rounded" src="" style="height:300px;"/>
 					         <div id="caption"></div>
