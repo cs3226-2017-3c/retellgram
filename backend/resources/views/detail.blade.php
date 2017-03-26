@@ -8,7 +8,7 @@ Detail
 </style>
 <meta id="og-url" property="og:url"                   content="" />
 <meta property="og:type"                              content="article" />
-<meta id="og-description" property="og:description"   content="" />
+<meta id="og-title" property="og:title"   content="" />
 <meta property="og:image"                             content="{{$image_path}}" />
 @endsection
 @section('main-content')
