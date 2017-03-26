@@ -6,7 +6,7 @@ Detail
 <style>
 .selected {background-color: rgba(0,0,0,0.1);}
 </style>
-<meta property="og:url"                               content="document.URL" />
+<meta id="og-url" property="og:url"                   content="" />
 <meta property="og:type"                              content="article" />
 <meta id="og-description" property="og:description"   content="" />
 <meta property="og:image"                             content="{{$image_path}}" />
@@ -45,9 +45,9 @@ Detail
                 <div class="btn btn-primary btn-lg" onclick="addCaption({{$image_id}});">
                   <span class="glyphicon glyphicon-plus"></span> Add Caption
                 </div>
-                <div class="fb-share-button"
+                <div id="fb-share-button"
+                     class="fb-share-button"
                      style="margin-top:20px;"
-                     data-href="document.URL"
                      data-layout="button" data-size="large" data-mobile-iframe="true">
                      Share
                 </div>

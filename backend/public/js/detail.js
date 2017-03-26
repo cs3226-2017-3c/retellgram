@@ -66,6 +66,8 @@ function changeCaption(event){
 	$("#likes").html(this_likes);
 	var url = window.location.pathname.concat("?caption_id=");
 	url = url.concat($(event.target).next().attr("id"));
+
+	$("#og-url").attr("content", url);
 	window.history.replaceState(null, null, url);
 };
 
@@ -105,7 +107,7 @@ function updateCaptionDisplay(caption) {
 		var date = caption['created_at'].split(" ")[0];
 		post_date = "<div class='text-muted'>on "+date+"</div>";
 	}
-	$("#og-description").attr("content", caption_content);
+	$("#og-description").attr("content", caption['content']);
 	$("#caption").html(caption_content);
 	$("#author").html(post_by+post_date);
 }
