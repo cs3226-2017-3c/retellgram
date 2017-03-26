@@ -6,10 +6,10 @@ Detail
 <style type="text/css">
 .selected {background-color: rgba(0,0,0,0.1);}
 </style>
-<meta id="og-url" property="og:url"                   content="{{$og_url}}" />
-<meta property="og:type"                              content="article" />
-<meta id="og-title" property="og:title"               content="{{$og_title}}" />
-<meta property="og:image"                             content="http://www.retellgram.com{{$image_path}}" />
+<meta id="og-url" property="og:url" content="{{$og_url}}" />
+<meta property="og:type" content="article" />
+<meta id="og-title" property="og:title" content="{{$og_title}}" />
+<meta property="og:image:secure_url" content="https://www.retellgram.com{{$image_path}}" />
 @endsection
 @section('main-content')
 
