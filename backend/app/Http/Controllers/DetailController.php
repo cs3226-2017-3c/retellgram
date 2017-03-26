@@ -64,6 +64,22 @@ class DetailController extends Controller
     	return response(204);
   	}
 
+
+    public function deleteCaption(Request $request, $id) {
+        $caption = Caption::findOrFail($id);
+        $caption->delete(); //doesn't delete permanently
+
+        
+        return;
+    }
+
+    public function approveCaption(Request $request, $id) {
+        $caption = Caption::findOrFail($id);
+        $caption->approved = 1;
+        return;
+    }
+
+
   	private function validateGetQuery($query) {
         $validator = Validator::make($query, [
             'image_id' => array('integer'),
