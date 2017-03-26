@@ -3,13 +3,14 @@
 Detail
 @endsection
 @section('header')
-<style>
+<style type="text/css">
 .selected {background-color: rgba(0,0,0,0.1);}
 </style>
 <meta id="og-url" property="og:url"                   content="" />
 <meta property="og:type"                              content="article" />
-<meta id="og-title" property="og:title"   content="" />
-<meta property="og:image"                             content="{{$image_path}}" />
+<meta id="og-title" property="og:title"               content="" />
+<meta id="og-description" property="og:description"   content="" />
+<meta property="og:image"                             content="www.retellgram.com{{$image_path}}" />
 @endsection
 @section('main-content')
 
@@ -70,7 +71,8 @@ Detail
 <script src="/js/detail.js"></script>
 <script>
 $( document ).ready(function() {
-    getCaptions("{{$image_id}}", "{{$caption_id}}");
+  updateOgURL();
+  getCaptions("{{$image_id}}", "{{$caption_id}}");
 });
 </script>
 @endsection
