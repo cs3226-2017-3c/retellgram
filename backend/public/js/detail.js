@@ -90,7 +90,12 @@ function like(event){
         },
         error: function(jqXHR, textStatus, errorThrown) {
         	if (errorThrown == "Bad Request") {
-        		alert("You have liked this caption");
+        		swal({
+        			title: "You have liked this caption",
+        			type: "warning",
+  					timer: 700,
+  					showConfirmButton: false
+        		});
         	} else {
         		console.log(textStatus, errorThrown);
         	}
