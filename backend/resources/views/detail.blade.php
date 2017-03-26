@@ -2,10 +2,14 @@
 @section('title')
 Detail
 @endsection
+@section('header')
 <style>
 .selected {background-color: rgba(0,0,0,0.1);}
 </style>
-@section('header')
+<meta property="og:url"                               content="document.URL" />
+<meta property="og:type"                              content="article" />
+<meta id="og-description" property="og:description"   content="" />
+<meta property="og:image"                             content="{{$image_path}}" />
 @endsection
 @section('main-content')
 

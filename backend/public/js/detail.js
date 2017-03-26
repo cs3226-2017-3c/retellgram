@@ -105,6 +105,7 @@ function updateCaptionDisplay(caption) {
 		var date = caption['created_at'].split(" ")[0];
 		post_date = "<div class='text-muted'>on "+date+"</div>";
 	}
+	$("#og-description").attr("content", caption_content);
 	$("#caption").html(caption_content);
 	$("#author").html(post_by+post_date);
 }
