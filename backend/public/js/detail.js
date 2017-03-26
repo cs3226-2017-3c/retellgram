@@ -45,7 +45,7 @@ function getCaptions(image_id, caption_id) {
 
     	if (!has_selected_caption) {
     		$("ol#all_caption li:first").addClass("selected");
-    		updateCaptionDisplay(date[0]);
+    		updateCaptionDisplay(data[0]);
     		var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
 			$("#likes").html(thumb);
     	}
