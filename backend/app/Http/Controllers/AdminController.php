@@ -11,10 +11,10 @@ class AdminController extends Controller
     $images = Caption::All();
     $unverified = [];
     foreach ($images as $i) {
-      if ($i->approved) {
+      if (!$i->approved) {
       	array_push($unverified, $i);
       }
     }
-    return view('admin',[ 'result' => $unverified]);
+    return view('admin',[ 'unverified' => $unverified]);
   }
 }
