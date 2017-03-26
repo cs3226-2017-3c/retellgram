@@ -67,8 +67,7 @@ function changeCaption(event){
 	var url = window.location.pathname.concat("?caption_id=");
 	url = url.concat($(event.target).next().attr("id"));
 	window.history.replaceState(null, null, url);
-
-	updateOgURL();
+	$("#fb-share-button").attr("data-href", document.location.href);
 };
 
 function like(event){
@@ -107,16 +106,9 @@ function updateCaptionDisplay(caption) {
 		var date = caption['created_at'].split(" ")[0];
 		post_date = "<div class='text-muted'>on "+date+"</div>";
 	}
-	$("#og-title").attr("content", caption['content']);
-	$("#og-description").attr("content", caption['content']);
+
 	$("#caption").html(caption_content);
 	$("#author").html(post_by+post_date);
-}
-
-function updateOgURL() {
-	var endpoint = window.location.pathname + window.location.search;
-	var full_url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-	$("#og-url").attr("content", full_url+endpoint);
 }
 
 function updateLikeDisplay(event, id) {

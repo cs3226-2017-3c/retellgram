@@ -6,10 +6,9 @@ Detail
 <style type="text/css">
 .selected {background-color: rgba(0,0,0,0.1);}
 </style>
-<meta id="og-url" property="og:url"                   content="" />
+<meta id="og-url" property="og:url"                   content="{{$og_url}}" />
 <meta property="og:type"                              content="article" />
-<meta id="og-title" property="og:title"               content="" />
-<meta id="og-description" property="og:description"   content="" />
+<meta id="og-title" property="og:title"               content="{{$og_title}}" />
 <meta property="og:image"                             content="www.retellgram.com{{$image_path}}" />
 @endsection
 @section('main-content')
@@ -71,7 +70,6 @@ Detail
 <script src="/js/detail.js"></script>
 <script>
 $( document ).ready(function() {
-  updateOgURL();
   getCaptions("{{$image_id}}", "{{$caption_id}}");
 });
 </script>
