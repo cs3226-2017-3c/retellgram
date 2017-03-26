@@ -12,20 +12,16 @@ use App\Like;
 class DetailController extends Controller
 {
   	public function getView($id) {
+        $image = Image::findOrFail($id);
+        $path = "/storage/images/" . $image->file_path;
+
   		$query = Input::all();
   		if (array_key_exists('caption_id', $query)) {
             $caption_id = $query['caption_id'];
-            return view('detail',[ 'image_id' => $id, 'caption_id' => $caption_id]);
+            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id]);
         } else {
-        	return view('detail',[ 'image_id' => $id, 'caption_id' => -1]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1]);
         }
-  	}
-
-  	public function getImage($id) {
-    	$image = Image::findOrFail($id);
-    	$path = "/storage/images/" . $image->file_path;
-    	$result = array("path"=>$path);
-    	return response()->json($result);
   	}
 
   	public function getCaption($id) {

@@ -13,14 +13,6 @@ var charArray = { 	7: "Avata",
 
 var captions;
 
-function getImage(image_id) {
-	var url = "/image/";
-	url = url.concat(image_id);
-	$.getJSON(url, function(data) {
-		$("#image").attr("src",data['path']);
-	});
-}
-
 function getCaptions(image_id, caption_id) {
 	var url = "/caption?likes=1&image_id=";
 	var has_selected_caption = false;
@@ -110,7 +102,8 @@ function updateCaptionDisplay(caption) {
 	if (caption['created_at'] == null) {
 		post_date = "";
 	} else {
-		post_date = "<div class='text-muted'>on "+caption['created_at']+"</div>";
+		var date = caption['created_at'].split(" ")[0];
+		post_date = "<div class='text-muted'>on "+date+"</div>";
 	}
 	$("#caption").html(caption_content);
 	$("#author").html(post_by+post_date);

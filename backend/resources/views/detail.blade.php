@@ -24,7 +24,7 @@ Detail
                 <div class="panel-heading" id="author">
                 </div>
 				        <div class="panel-body">
-					         <img id="image" class="img-responsive mg-rounded" src="" style="height:300px;"/>
+					         <img id="image" class="img-responsive mg-rounded" src="{{$image_path}}" style="height:300px;"/>
 					         <div id="caption"></div>
 				        </div>
 				        <div class="panel-footer">
@@ -66,7 +66,6 @@ Detail
 <script src="/js/detail.js"></script>
 <script>
 $( document ).ready(function() {
-    getImage("{{$image_id}}");
     getCaptions("{{$image_id}}", "{{$caption_id}}");
 });
 </script>
