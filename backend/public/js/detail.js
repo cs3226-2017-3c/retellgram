@@ -72,6 +72,7 @@ function changeCaption(event){
 	if (!$(event.target).is("a")) {
 		return ;
 	}
+	event.preventDefault();
 	$(".active").removeClass("active");
 	$(event.target).addClass("active");
 	var this_caption_id = $(event.target).children().first().attr("id");
