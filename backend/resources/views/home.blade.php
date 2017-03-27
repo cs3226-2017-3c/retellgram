@@ -34,7 +34,7 @@ Home
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="#" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
+                      <a href="/detail/{{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
                       <a href="#" class="anchor-time">51 mins</a>
                     </div>
                   </div>
@@ -55,8 +55,8 @@ Home
                 <div class="post-footer-option container">
                   <ul class="list-unstyled">
                     <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
-                    <li><a href="#"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                    <li><a href="/new_create?image_id={{$r->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
+                    <!-- <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li> --->
                   </ul>
                 </div>
                 @foreach($r->captions as $c)
