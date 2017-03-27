@@ -16,12 +16,10 @@ Detail
 
 <div id="fb-root"></div>
 	<div class="row">
+    <div class="col-md-2"></div>
     <div class="col-md-8 tell-panel">
       <div class="page-content-wrapper">
         <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title panel-tell-title">Detail</h3>
-          </div>
           <div class="panel-body">
             <div class="row">
 		        <div class="col-md-6">
