@@ -22,39 +22,38 @@ function getCaptions(image_id, caption_id) {
 		$.each(data, function(i, object){
 			var heart;
 			if (object['liked']) {
-				heart = " class='fa fa-heart' aria-hidden='true'>";
+				heart = " class='fa fa-heart badge' aria-hidden='true'>";
 			} else {
-				heart = " class='fa fa-heart-o' aria-hidden='true'>";
+				heart = " class='fa fa-heart-o badge' aria-hidden='true'>";
 			}
 
-	  		var thumb = "<div onclick=like(event) id="+object['id']+heart+object['likes']+"</div>";
-	  		var caption_content = "<div onclick=changeCaption(event)>"+object['content']+"</div>";
-	  		var li_content = caption_content + thumb;
+	  		var like_button = "<span onclick=like(event) id="+object['id']+heart+object['likes']+"</span>";
+	  		var caption_content = object['content'];
+	  		var li_content = caption_content + like_button;
       		
       		if (caption_id == object['id']) {
       			updateCaptionDisplay(object);
-      			$("#all_caption").append("<li class='selected' href='#'>"+li_content+"</li>");
-      			thumb = "<div onclick=like(event) id="+object['id']+heart+object['likes']+"</div>";
-				$("#likes").html(thumb);
+      			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item active' href='#'>"+li_content+"</a>");
+      			like_button = "<span onclick=like(event) id="+object['id']+heart+object['likes']+"</span>";
+				$("#likes").html(like_button);
 				$("#fb-share-button").attr("data-href", document.location.href);
       			has_selected_caption = true;
       		} else {
-      			$("#all_caption").append("<li href='#'>"+li_content+"</li>");
+      			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item' href='#'>"+li_content+"</a>");
       		}
     	});
 
     	if (!has_selected_caption) {
     		var heart;
 			if (data[0]['liked']) {
-				heart = " class='fa fa-heart' aria-hidden='true'>";
+				heart = " class='fa fa-heart badge' aria-hidden='true'>";
 			} else {
-				heart = " class='fa fa-heart-o' aria-hidden='true'>";
+				heart = " class='fa fa-heart-o badge' aria-hidden='true'>";
 			}
-
-    		$("ol#all_caption li:first").addClass("selected");
+    		$("div#all_caption").children().first().addClass("active");
     		updateCaptionDisplay(data[0]);
-    		var thumb = "<div onclick=like(event) id="+data[0]['id']+heart+data[0]['likes']+"</div>";
-			$("#likes").html(thumb);
+    		var like_button = "<div onclick=like(event) id="+data[0]['id']+heart+data[0]['likes']+"</div>";
+			$("#likes").html(like_button);
 			var url = document.location.href+"?caption_id="+data[0]['id'];
 			$("#fb-share-button").attr("data-href", url);
     	}
@@ -68,9 +67,13 @@ function addCaption(image_id){
 }
 
 function changeCaption(event){
-	$(".selected").removeClass("selected");
-	$(event.target).parent().addClass("selected");
-	var this_caption_id = $(event.target).next().attr("id");
+	if (!$(event.target).is("a")) {
+		return ;
+	}
+	$(".active").removeClass("active");
+	$(event.target).addClass("active");
+	var this_caption_id = $(event.target).children().first().attr("id");
+
 	var this_caption;
 	$.each(captions, function(i, object){
 		if (this_caption_id == object['id']) {
@@ -79,10 +82,10 @@ function changeCaption(event){
 	});
 	updateCaptionDisplay(this_caption);
 	
-	var this_likes = $(event.target).next().clone();
+	var this_likes = $(event.target).children().first().clone().removeClass("badge");
 	$("#likes").html(this_likes);
 	var url = window.location.pathname.concat("?caption_id=");
-	url = url.concat($(event.target).next().attr("id"));
+	url = url.concat(this_caption_id);
 	window.history.replaceState(null, null, url);
 	$("#fb-share-button").attr("data-href", document.location.href);
 };
@@ -136,13 +139,13 @@ function updateLikeDisplay(event, id) {
 			$("#likes div:last").attr("class", "fa fa-heart");
 		}
 
-		var aCaption = $("ol#all_caption li:first");
+		var aCaption = $("div#all_caption").children().first();
 		var like = aCaption.children().last();
 		if (like.attr('id') == id) {
 			like.html(data['likes']);
 			like.attr("class", "fa fa-heart");
 		}
-		while (aCaption.next().is('li')) {
+		while (aCaption.next().is('a')) {
 			aCaption = aCaption.next();
 			like = aCaption.children().last();
 			if (like.attr('id') == id) {

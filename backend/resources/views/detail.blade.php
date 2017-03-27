@@ -36,7 +36,7 @@ Detail
 			         </div>
               </div>
             <div class="col-md-6">
-              <ol id="all_caption"></ol>
+              <div id="all_caption" class="list-group"></div>
             </div>
             </div>
             <div class="row">
