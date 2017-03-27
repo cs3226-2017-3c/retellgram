@@ -35,7 +35,7 @@ class UploadControllerNew extends Controller
 
     	$new_image->save();
 
-    	return redirect()->action('CreateController@viewCreate',[ 'image_id' => $new_image->id, 'character_id' => null ]);
+    	return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $new_image->id, 'character_id' => null ]);
    	}
 
 }
