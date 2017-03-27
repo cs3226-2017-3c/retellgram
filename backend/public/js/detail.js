@@ -20,14 +20,21 @@ function getCaptions(image_id, caption_id) {
 	$.getJSON(url, function(data){
 		captions = data;
 		$.each(data, function(i, object){
-	  		var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
+			var heart;
+			if (object['liked']) {
+				heart = " class='fa fa-heart' aria-hidden='true'>";
+			} else {
+				heart = " class='fa fa-heart-o' aria-hidden='true'>";
+			}
+
+	  		var thumb = "<div onclick=like(event) id="+object['id']+heart+object['likes']+"</div>";
 	  		var caption_content = "<div onclick=changeCaption(event)>"+object['content']+"</div>";
 	  		var li_content = caption_content + thumb;
       		
       		if (caption_id == object['id']) {
-      			$("#all_caption").append("<li class='selected' href='#'>"+li_content+"</li>");
       			updateCaptionDisplay(object);
-      			var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
+      			$("#all_caption").append("<li class='selected' href='#'>"+li_content+"</li>");
+      			thumb = "<div onclick=like(event) id="+object['id']+heart+object['likes']+"</div>";
 				$("#likes").html(thumb);
 				$("#fb-share-button").attr("data-href", document.location.href);
       			has_selected_caption = true;
@@ -37,9 +44,16 @@ function getCaptions(image_id, caption_id) {
     	});
 
     	if (!has_selected_caption) {
+    		var heart;
+			if (data[0]['liked']) {
+				heart = " class='fa fa-heart' aria-hidden='true'>";
+			} else {
+				heart = " class='fa fa-heart-o' aria-hidden='true'>";
+			}
+
     		$("ol#all_caption li:first").addClass("selected");
     		updateCaptionDisplay(data[0]);
-    		var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
+    		var thumb = "<div onclick=like(event) id="+data[0]['id']+heart+data[0]['likes']+"</div>";
 			$("#likes").html(thumb);
 			var url = document.location.href+"?caption_id="+data[0]['id'];
 			$("#fb-share-button").attr("data-href", url);
@@ -119,18 +133,21 @@ function updateLikeDisplay(event, id) {
 		$(event.target).html(data['likes']);
 		if($("#likes div:last").attr('id') == id) {
 			$("#likes div:last").html(data['likes']);
+			$("#likes div:last").attr("class", "fa fa-heart");
 		}
 
 		var aCaption = $("ol#all_caption li:first");
 		var like = aCaption.children().last();
 		if (like.attr('id') == id) {
 			like.html(data['likes']);
+			like.attr("class", "fa fa-heart");
 		}
 		while (aCaption.next().is('li')) {
 			aCaption = aCaption.next();
 			like = aCaption.children().last();
 			if (like.attr('id') == id) {
 				like.html(data['likes']);
+				like.attr("class", "fa fa-heart");
 			}
 		}	
 	})

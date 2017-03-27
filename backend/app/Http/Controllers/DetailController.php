@@ -34,7 +34,7 @@ class DetailController extends Controller
   		return response()->json($caption);
   	}
 
-  	public function getCaptions() {
+  	public function getCaptions(Request $request) {
   		$query = Input::all();
     	//step 1. validate url query
     	if (sizeof($query) == 0) {
@@ -58,12 +58,23 @@ class DetailController extends Controller
             $caption = $caption->sortByDesc('likes');
         }
 
+        foreach($caption as $aCaption) {
+            $this_id = $aCaption->id;
+            if  ($this->validateEligibleToLike($request, $this_id)) {
+                $aCaption->liked = false;
+            } else {
+                $aCaption->liked = true;
+            }
+        }
+
     	return response()->json($caption->values());
   	}
 
   	public function likeCaption(Request $request, $id) {
   	    $caption = Caption::findOrFail($id);
-    	$this->validateEligibleToLike($request, $id);
+    	if (!$this->validateEligibleToLike($request, $id)) {
+            abort(400, "The IP has liked this caption");
+        }
         $this->likeACaption($caption);
         $this->updateLikeTable($request, $id);
     	return response(204);
@@ -106,7 +117,9 @@ class DetailController extends Controller
             ['cookie', $cookie]
         ])->get();
         if (sizeof($like)>0) {
-            abort(400, "The IP has liked this caption");
+            return false;
+        } else {
+            return true;
         }
     }
 
