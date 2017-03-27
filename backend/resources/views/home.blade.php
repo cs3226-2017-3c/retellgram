@@ -45,7 +45,7 @@ Home
               </div>
             </section>
             <section class="post-body">
-              <img src="{{Storage::url($r->file_path)}}" class="img-rounded">
+              <img src="{{'/storage/images/'.$r->file_path}}" class="img-rounded">
               <p>
                 <button type="button" class="btn btn-xs btn-primary">Hulky</button>
               </p>
