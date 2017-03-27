@@ -136,23 +136,24 @@ function updateCaptionDisplay(caption) {
 function updateLikeDisplay(event, id) {
 	$.getJSON("/caption/"+id, function(data){
 		$(event.target).html(data['likes']);
-		if($("#likes div:last").attr('id') == id) {
-			$("#likes div:last").html(data['likes']);
-			$("#likes div:last").attr("class", "fa fa-heart");
+		var main_like_display = $("#likes").children().first();
+		if(main_like_display.attr('id') == id) {
+			main_like_display.html(data['likes']);
+			main_like_display.attr("class", "fa fa-heart");
 		}
 
 		var aCaption = $("div#all_caption").children().first();
 		var like = aCaption.children().last();
 		if (like.attr('id') == id) {
 			like.html(data['likes']);
-			like.attr("class", "fa fa-heart");
+			like.attr("class", "fa fa-heart badge");
 		}
 		while (aCaption.next().is('a')) {
 			aCaption = aCaption.next();
 			like = aCaption.children().last();
 			if (like.attr('id') == id) {
 				like.html(data['likes']);
-				like.attr("class", "fa fa-heart");
+				like.attr("class", "fa fa-heart badge");
 			}
 		}	
 	})
