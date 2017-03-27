@@ -4,25 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Image;
+use App\Caption;
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        return view('home');
+        $images = Image::all()->sortByDesc('likes');
+        foreach ($images as $i) {
+          $i->captions = $i->captions->filter(function ($value, $key) {
+              return $value->approved == 1;
+          })->sortByDesc('likes')->splice(0, 3);
+          foreach ($i->captions as $c) {
+            $c->character;
+          }
+        }
+
+        return view('home', ['result' => $images]);
+        return $images;
     }
 }

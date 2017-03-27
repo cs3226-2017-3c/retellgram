@@ -29,6 +29,7 @@ function getCaptions(image_id, caption_id) {
       			updateCaptionDisplay(object);
       			var thumb = "<div onclick=like(event) id="+object['id']+" class='glyphicon glyphicon-thumbs-up'>"+object['likes']+"</div>";
 				$("#likes").html(thumb);
+				$("#fb-share-button").attr("data-href", document.location.href);
       			has_selected_caption = true;
       		} else {
       			$("#all_caption").append("<li href='#'>"+li_content+"</li>");
@@ -40,6 +41,8 @@ function getCaptions(image_id, caption_id) {
     		updateCaptionDisplay(data[0]);
     		var thumb = "<div onclick=like(event) id="+data[0]['id']+" class='glyphicon glyphicon-thumbs-up'>"+data[0]['likes']+"</div>";
 			$("#likes").html(thumb);
+			var url = document.location.href+"?caption_id="+data[0]['id'];
+			$("#fb-share-button").attr("data-href", url);
     	}
 	})
 }
