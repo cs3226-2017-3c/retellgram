@@ -16,8 +16,8 @@ Detail
 
 <div id="fb-root"></div>
 	<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 tell-panel">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 tell-panel">
       <div class="page-content-wrapper">
         <div class="panel panel-primary">
           <div class="panel-body">

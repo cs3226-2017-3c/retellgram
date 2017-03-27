@@ -1,3 +1,4 @@
+var MAX_CONTENT_LENGTH = 40;
 var charArray = { 	7: "Avata", 
 					5: "Curry Puff",
 					2: "Deadpoo",
@@ -28,7 +29,7 @@ function getCaptions(image_id, caption_id) {
 			}
 
 	  		var like_button = "<span onclick=like(event) id="+object['id']+heart+object['likes']+"</span>";
-	  		var caption_content = object['content'];
+	  		var caption_content = shrinkContent(object['content']);
 	  		var li_content = caption_content + like_button;
       		
       		if (caption_id == object['id']) {
@@ -57,6 +58,7 @@ function getCaptions(image_id, caption_id) {
 			var url = document.location.href+"?caption_id="+data[0]['id'];
 			$("#fb-share-button").attr("data-href", url);
     	}
+    	$("#likes").children().first().removeClass("badge");
 	})
 }
 
@@ -154,4 +156,12 @@ function updateLikeDisplay(event, id) {
 			}
 		}	
 	})
+}
+
+function shrinkContent(content) {
+	if (content.length>MAX_CONTENT_LENGTH) {
+		return content.substring(0,MAX_CONTENT_LENGTH) + "...";
+	} else {
+		return content;
+	}
 }
