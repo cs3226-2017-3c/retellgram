@@ -13,8 +13,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
-            <!--TODO> class = "active should be handled by router" <-->
+            <li @if(Request::path()=="/")class="active"@endif><a href="/" title="Trending">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="new_upload")class="active"@endif><a href="/new_upload" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="new_create")class="active"@endif><a href="/new_create" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
             <li class="dropdown">
@@ -48,10 +47,10 @@
                 <li>
                   <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
                   <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-                </li>	
+                </li>
               </ul>
             </li>
-          </ul>	
+          </ul>
 
     		  <div class="container">
     		    <div class="row">
@@ -67,7 +66,7 @@
       			  </div>
     			  </div>
     		  </div>
-          
+
         </div><!--/.nav-collapse -->
       </div>
     </nav>
