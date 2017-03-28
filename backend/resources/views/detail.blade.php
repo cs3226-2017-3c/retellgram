@@ -7,7 +7,7 @@ Detail
 <meta property="og:image:height" content="200" />
 <meta property="og:type" content="article" />
 <meta id="og-title" property="og:title" content="{{$og_title}}" />
-<meta property="og:image:secure_url" content="https://www.retellgram.com{{$image_path}}" />
+<meta property="og:image" content="http://www.retellgram.com{{$image_path}}" />
 <link href="/css/scroll-area.css" rel="stylesheet">
 @endsection
 @section('main-content')
@@ -43,7 +43,7 @@ Detail
                   <span class="glyphicon glyphicon-plus"></span> Add Caption
                 </div>
                 <div id="fb-share-button"
-                     class="fb-share-button"
+                     class="fb-share-button hidden-xs"
                      style="margin-top:20px;"
                      data-layout="button" data-size="large" data-mobile-iframe="true">
                      Share
