@@ -11,7 +11,7 @@ Admin Page
 <form action="caption/{{$caption->id}}/delete" method="post">
 <button type="submit">Delete caption</button>
 </form>	
-<form action="caption/{{$caption->id}}" method="post">
+<form action="caption/{{$caption->id}}/approve" method="post">
 <button type="submit">Accept caption</button>
 </form>			
 @endforeach
