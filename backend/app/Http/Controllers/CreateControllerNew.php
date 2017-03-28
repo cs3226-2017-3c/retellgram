@@ -6,20 +6,22 @@ use Illuminate\Http\Request;
 use App\Image;
 use App\Caption;
 use App\Hashtag;
+use App\Character;
 use Validator;
 
 class CreateControllerNew extends Controller
 {
     public function viewCreate(Request $request) {
         $images = Image::all();
+        $characters = Character::all();
 
     	if ($image_id = $request->input('image_id')){
     		$image = Image::find($image_id);
 
-        	return view('new_create', [ 'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
+        	return view('new_create', [ 'characters' => $characters ,'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
     	}
 
-    	return view('new_create', [ 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
+    	return view('new_create', ['characters' => $characters, 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
         
     }
 

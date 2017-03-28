@@ -119,12 +119,12 @@ Create Image
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-8">
               @if($character_id)
               <p>Post as {{$options[(string)$character_id]}}</p>
               @else
               <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#characterModal">choose someone famous</button>
-              <button type="button" class="btn btn-md btn-warning">choose to be yourself <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button>
+              <!--button type="button" class="btn btn-md btn-warning">choose to be yourself <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button-->
               @endif
             </div>
 
@@ -147,22 +147,23 @@ Create Image
                               <input id="image_id" name="image_id" type="hidden" value="{{$image_id}}">
                             </div>
                             <div class="form-group">
-                              <select id="character_id" name="character_id" class="form-control">
-                                <option value="">Select character</option>
-                                @foreach ($options as $option_id => $option)
-                                <option value='{{$option_id}}'>{{$option}}</option>
+                              <select id="character_id" name="character_id" class="image-picker form-control">
+                                <option value=""></option>
+                                @foreach ($characters as $character)
+                                <option data-img-src='characters/{{$character->path}}' value='{{$character->id}}'>{{$character->name}}</option>
                                 @endforeach
                               </select>
                             </div>
-                            <span class="pull-right">
-                              <input id="submitForm" type="submit" value="Select Character" class="btn btn-primary"/>
-                            </span>
                           </form>
                         </div>  
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <span class="pull-right">
+                              <input id="submitCharacterForm" type="submit" value="Choose Image" class="btn btn-primary"/>
+                          </span>
                         </div>  
+
                     </div>
                 </div>
               </div>
@@ -219,13 +220,24 @@ Create Image
         }
     });
     $("#submitForm").on('click', function() {
-          $("#chooseImageForm").submit();
-      });
-      $("#image_id").imagepicker({
-          hide_select: true,
-          limit: 1,
-          limit_reached: function(){swal('Please select only one image.')}, 
-      });
+        $("#chooseImageForm").submit();
+    });
+    $("#submitCharacterForm").on('click', function() {
+        $("#chooseCharacterForm").submit();
+    });
+
+    $("#image_id").imagepicker({
+        hide_select: true,
+         limit: 1,
+         limit_reached: function(){swal('Please select only one image.')}, 
+    });
+
+    $("#character_id").imagepicker({
+        hide_select: true,
+         limit: 1,
+         show_label: true,
+         limit_reached: function(){swal('Please select only one character.')}, 
+    });
   });
 </script>
 @endsection
