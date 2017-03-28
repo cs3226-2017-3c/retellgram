@@ -33,13 +33,13 @@ Upload Image
             <div class="panel-body">
               {!! Form::open(['files' => 'true']) !!} 
               <div class=" col-md-4">
-                <button type="button" class="btn btn-lg btn-primary"><i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i></button>
-                <!--button type="button" class="btn btn-lg btn-warning"><i class="fa fa-upload fa-2x" aria-hidden="true"></i></button-->
+                <!--button type="button" class="btn btn-lg btn-primary"><i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i></button-->
+                <button type="button" id="upload_button" class="btn btn-lg btn-warning"><i class="fa fa-upload fa-2x" aria-hidden="true"></i></button>
                 
                 <div class="form-group">
-                    {!! Form::file('uploading',['id' => 'uploading']) !!}
+                {!! Form::file('uploading',['id' => 'uploading']) !!}
                 </div>
-                
+
               </div>
 
               <div class=" col-md-8">
@@ -66,6 +66,11 @@ Upload Image
 
 <script>
 $( document ).ready(function(){
+
+  $('#uploading').css('display','none');
+  $('#upload_button').click( function() {
+      $( "#uploading" ).click();
+  });
 
   $uploadCrop = $('#new_crop').croppie({
     showZoomer:false,
