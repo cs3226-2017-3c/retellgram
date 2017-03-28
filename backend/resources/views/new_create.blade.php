@@ -119,13 +119,22 @@ Create Image
                 </div>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-5">
+              
+              
               @if($character_id)
+              
               <p>Post as {{$options[(string)$character_id]}}</p>
+           
               @else
+              @endif
+            </div>
+
+            <div class="col-md-3">
+              
               <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#characterModal">choose someone famous</button>
               <!--button type="button" class="btn btn-md btn-warning">choose to be yourself <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button-->
-              @endif
+             
             </div>
 
             <!--Select character modal-->
@@ -160,7 +169,7 @@ Create Image
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                           <span class="pull-right">
-                              <input id="submitCharacterForm" type="submit" value="Choose Image" class="btn btn-primary"/>
+                              <input id="submitCharacterForm" type="submit" value="Choose Character" class="btn btn-primary"/>
                           </span>
                         </div>  
 
