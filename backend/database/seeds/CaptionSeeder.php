@@ -37,14 +37,15 @@ class CaptionSeeder extends Seeder
             ]);
         }
 
-        // seed faction
+        // seed character
         $factions = config('characters.factions');
         
         foreach ($factions as $faction => $characters) {
-            foreach ( $characters as $character ) {
+            foreach ( $characters as $character => $path ) {
                 DB::table('characters')->insert([
                 'name' => $character,
-                'faction' => $faction
+                'faction' => $faction,
+                'path' => $path
                 ]);
             }
         }

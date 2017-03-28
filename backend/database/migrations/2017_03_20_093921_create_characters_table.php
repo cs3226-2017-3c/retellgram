@@ -17,6 +17,7 @@ class CreateCharactersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('faction');
+            $table->string('path');
             $table->timestamps();
         });
     }

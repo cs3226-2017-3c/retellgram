@@ -3,10 +3,21 @@
 return [
 
 	'factions' => [
-        "red" => array("Hairy Porter", "Deadpoo", "Hermoney Changer"),
-        "yellow" => array("Donald Drunk", "Curry Puff", "Genghis Khan"),
-        "blue" => array("Avata", "Dollraemon", "Queen Kong"),
-        "green" => array("Hulky", "Kimchi Jong-un", "Super Maria"),
+        "red" => array("Hairy Porter" => 'hairy-porter.png', 
+        				"Deadpoo" => 'deadpoo.png', 
+        				"Hermoney Changer" => 'hermoney-changer.png'),
+
+        "yellow" => array("Donald Drunk" => 'donald-drunk.png', 
+        				"Curry Puff" => 'curry-puff.png', 
+        				"Genghis Khan" => 'genghis-khan.png'),
+
+        "blue" => array("Avata" => 'avata.png', 
+        				"Dollraemon" => 'dollraemon.png', 
+        				"Queen Kong" => 'queen-kong.png'),
+
+        "green" => array("Hulky" => 'hulky.png', 
+        				"Kimchi Jong-un" => 'kimchi-jong-un.png', 
+        				"Super Maria" => 'super-maria.png'),
     ],
 
 ];

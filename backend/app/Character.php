@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
-    protected $fillable = array('name', 'faction');
+    protected $fillable = array('name', 'faction', 'path');
 
     public function captions()
     {
