@@ -24,7 +24,7 @@ class UploadControllerNew extends Controller
 	    $new_image->md5 = md5_file ($request->file('uploading'));
 
 	   	if ( $exist_image = Image::where('md5', $new_image->md5)->first() ) {
-		    return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $exist_image->id, 'character_id' => null ]);
+		    return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $exist_image->id]);
 		}
 	    
       	$path = $request->file('uploading')->store("public/images");
@@ -35,7 +35,7 @@ class UploadControllerNew extends Controller
 
     	$new_image->save();
 
-    	return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $new_image->id, 'character_id' => null ]);
+    	return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $new_image->id]);
    	}
 
 }

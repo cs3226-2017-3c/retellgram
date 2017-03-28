@@ -18,10 +18,10 @@ class CreateControllerNew extends Controller
     	if ($image_id = $request->input('image_id')){
     		$image = Image::find($image_id);
 
-        	return view('new_create', [ 'characters' => $characters ,'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
+        	return view('new_create', [ 'characters' => $characters ,'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id ]);
     	}
 
-    	return view('new_create', ['characters' => $characters, 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'character_id' => $request->input('character_id') ]);
+    	return view('new_create', ['characters' => $characters, 'images' => $images, 'image_path' => "", 'image_id' => $image_id ]);
         
     }
 
@@ -66,7 +66,8 @@ class CreateControllerNew extends Controller
 
         flash('Caption was created successfully!', 'success');
         $images = Image::all();
-    	return view('new_create', [ 'images' => $images,'image_path' => "", 'image_id' => null, 'character_id' => null ]);
+        $characters = Character::all();
+    	return view('new_create', [ 'characters' => $characters,'images' => $images,'image_path' => "", 'image_id' => null]);
     }
     
 }

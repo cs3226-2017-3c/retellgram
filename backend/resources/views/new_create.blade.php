@@ -25,9 +25,24 @@ Create Image
     h.style.height = "20px";
     h.style.height = (h.scrollHeight)+"px";
   }
+
+  function submitCharacter() {
+    var selected_image_src = $(".selected img").attr("src");
+    var selected_option = $("#character_id option[data-img-src='" + selected_image_src + "']");
+    var value = selected_option.val();
+    var name = selected_option.html();
+    $("input[name='character_id']").val(value);
+    $(".character-chosen").text("Posted as " + name);
+    $("#characterModal").modal("hide");
+  }
+
+
 </script>
 @endsection
 @section('main-content')
+  <div class="container">
+    @include('flash::message')
+  </div>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -68,9 +83,7 @@ Create Image
                      
                         <div class="modal-body">
                           <form role="form" action="/new_create" id="chooseImageForm" method="get">
-                            <div class="form-group">
-                              <input name="character_id" type="hidden" value="{{$character_id}}">
-                            </div>
+                            
                             <div class="form-group">
                               <select id="image_id" name="image_id" class="image-picker form-control">
                                 <option value=""></option>
@@ -120,14 +133,7 @@ Create Image
               </div>
             </div>
             <div class="col-md-5">
-              
-              
-              @if($character_id)
-              
-              <p>Post as {{$options[(string)$character_id]}}</p>
-           
-              @else
-              @endif
+              <p class="character-chosen">Please choose character</p>
             </div>
 
             <div class="col-md-3">
@@ -151,7 +157,7 @@ Create Image
                     
 
                         <div class="modal-body character-modal-body">
-                          <form role="form" action="/new_create" id="chooseCharacterForm" method="get">
+                          <form role="form" action=javascript:submitCharacter() id="chooseCharacterForm" method="get">
                             <div class="form-group">
                               <input id="image_id" name="image_id" type="hidden" value="{{$image_id}}">
                             </div>
@@ -184,7 +190,7 @@ Create Image
             </div>
 
             <div class="form-group">
-              {!! Form::hidden('character_id', $character_id) !!}
+              {!! Form::hidden('character_id', null) !!}
             </div>
 
             <div class=" col-md-6">

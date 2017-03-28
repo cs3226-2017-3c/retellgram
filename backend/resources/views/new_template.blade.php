@@ -32,9 +32,7 @@
 
 </head>
 <body>
-  <div class="container">
-    @include('flash::message')
-  </div>
+
   @include('new_navigation')
    
   @yield('main')

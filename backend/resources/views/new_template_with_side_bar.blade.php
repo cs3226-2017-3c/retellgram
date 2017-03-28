@@ -31,6 +31,8 @@
       </ul>
   </div>
   <!-- /#sidebar-wrapper -->
+
   @yield('main-content')
+
 </div>
 @endsection
