@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
     
-  <link rel="icon" href="/logo/logoOnly.png">
+  <link rel="icon" href="/logo/R.png">
   <title>@yield('title') - Retellgram</title>
 
   <!-- Bootstrap core CSS -->

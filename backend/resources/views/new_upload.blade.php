@@ -73,6 +73,7 @@ $( document ).ready(function(){
   });
 
   $uploadCrop = $('#new_crop').croppie({
+    customClass:'mycrop',
     showZoomer:false,
       enableExif: true,
       viewport: {

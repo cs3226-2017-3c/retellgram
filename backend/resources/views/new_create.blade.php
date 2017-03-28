@@ -132,11 +132,11 @@ Create Image
                 </div>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-8">
               <p class="character-chosen">Please choose character</p>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-8">
               
               <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#characterModal">choose someone famous</button>
               <!--button type="button" class="btn btn-md btn-warning">choose to be yourself <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button-->
@@ -221,7 +221,9 @@ Create Image
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
 <script>
   $(document).ready(function () {
+
     $('#caption_image').croppie({
+      customClass:'mycrop',
       showZoomer:false,
       enableExif: true,
         viewport: {

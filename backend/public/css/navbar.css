@@ -50,3 +50,7 @@ body {
     background-repeat:   no-repeat;
     background-size:     cover;
 }
+
+.mycrop .cr-viewport {
+  border-color: #afc8e0;
+}
