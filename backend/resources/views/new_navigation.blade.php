@@ -16,7 +16,7 @@
             <li @if(Request::path()=="/")class="active"@endif><a href="/" title="Trending">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="new_upload")class="active"@endif><a href="/new_upload" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="new_create")class="active"@endif><a href="/new_create" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
-            <li class="dropdown">
+            <!--li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="caret"></span></a>
               <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
 			          <li>
@@ -49,7 +49,7 @@
                   <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
                 </li>
               </ul>
-            </li>
+            </li-->
           </ul>
 
     		  <div class="container">
