@@ -1,6 +1,6 @@
 @extends('new_template_with_side_bar')
 @section('title')
-Upload Image
+Snap
 @endsection
 @section('header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">

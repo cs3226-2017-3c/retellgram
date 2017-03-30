@@ -14,7 +14,7 @@
 ?>
 @extends('new_template_with_side_bar')
 @section('title')
-Create Image
+Tell
 @endsection
 @section('header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
@@ -137,10 +137,8 @@ Create Image
             </div>
 
             <div class="col-md-8">
+              <button type="button" data-toggle="modal" data-target="#characterModal" class="btn btn-md btn-warning">choose someone famous <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button>
               
-              <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#characterModal">choose someone famous</button>
-              <!--button type="button" class="btn btn-md btn-warning">choose to be yourself <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button-->
-             
             </div>
 
             <!--Select character modal-->
