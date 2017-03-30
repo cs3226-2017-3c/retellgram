@@ -63,7 +63,7 @@ function getCaptions(image_id, caption_id) {
 }
 
 function addCaption(image_id){
-	var url = "/new_create?image_id="+image_id;
+	var url = "/tell?image_id="+image_id;
 	window.open(url);
 	return false;
 }
@@ -127,7 +127,7 @@ function updateCaptionDisplay(caption) {
 		post_date = "";
 	} else {
 		var date = caption['created_at'].split(" ")[0];
-		post_date = "<div class='text-muted'>on "+date+"</div>";
+		post_date = "<div>on "+date+"</div>";
 	}
 
 	$("#caption").html(caption_content);

@@ -24,14 +24,14 @@ Detail
           <div class="panel-body">
             <div class="row">
 		        <div class="col-md-6">
-			         <div class="panel panel-default">
-                <div class="panel-heading" id="author">
+			         <div class="panel">
+                <div class="panel-heading" id="author" style="background-color:#3f4c5d;color:#ffffff;">
                 </div>
-				        <div class="panel-body">
-					         <img id="image" class="img-responsive mg-rounded" src="{{$image_path}}" style="height:300px;"/>
+				        <div class="panel-body" style="background-color:#ffffff;">
+					         <img id="image" class="img-responsive mg-rounded" src="{{$image_path}}" style="width:800px;"/>
 					         <div id="caption"></div>
 				        </div>
-				        <div class="panel-footer">
+				        <div class="panel-footer" style="background-color:#3f4c5d;color:#ffffff;">
 					         <div id="likes"></div>
 				        </div>	
 			         </div>
