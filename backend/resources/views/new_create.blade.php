@@ -134,11 +134,7 @@ Tell
             </div>
             <div class="col-md-8">
               <p class="character-chosen">Please choose character</p>
-            </div>
-
-            <div class="col-md-8">
               <button type="button" data-toggle="modal" data-target="#characterModal" class="btn btn-md btn-warning">choose someone famous <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button>
-              
             </div>
 
             <!--Select character modal-->
