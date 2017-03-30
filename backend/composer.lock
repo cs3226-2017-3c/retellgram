@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b05b2c7cf9f83f8b744be80a2b939f52",
+    "content-hash": "5a39baed15580a15e41e63bc50dabd8e",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -1578,6 +1578,54 @@
                 "uuid"
             ],
             "time": "2016-11-22T19:21:44+00:00"
+        },
+        {
+            "name": "snipe/banbuilder",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/snipe/banbuilder.git",
+                "reference": "180f5085cbfc71423176d60071250487163df9d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/snipe/banbuilder/zipball/180f5085cbfc71423176d60071250487163df9d0",
+                "reference": "180f5085cbfc71423176d60071250487163df9d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Snipe\\BanBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "snipe",
+                    "email": "snipe@snipe.net",
+                    "role": "Creator & Developer"
+                }
+            ],
+            "description": "Library to easily handle profanity filtering in PHP projects.",
+            "homepage": "http://banbuilder.com",
+            "keywords": [
+                "filter",
+                "language",
+                "profanity",
+                "strings",
+                "swear"
+            ],
+            "time": "2015-08-26T08:21:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
