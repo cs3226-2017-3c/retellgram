@@ -24,16 +24,19 @@ class UploadControllerNew extends Controller
 	    $new_image->md5 = md5_file ($request->file('uploading'));
 
 	   	if ( $exist_image = Image::where('md5', $new_image->md5)->first() ) {
+        flash('Image #'.$new_image->id." exists, add caption directly.", 'success');
 		    return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $exist_image->id]);
-		}
+		  }
 	    
-      	$path = $request->file('uploading')->store("public/images");
+      $path = $request->file('uploading')->store("public/images");
       	
-      	$new_image->file_path = basename($path);
+      $new_image->file_path = basename($path);
     	$new_image->md5 = md5_file ($request->file('uploading'));
     	$new_image->likes = 0;
 
     	$new_image->save();
+
+      flash('New image #'.$new_image->id." was uploaded successfully!", 'success');
 
     	return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $new_image->id]);
    	}

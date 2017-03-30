@@ -40,10 +40,7 @@ Tell
 </script>
 @endsection
 @section('main-content')
-  <div class="container">
-    @include('flash::message')
-  </div>
-  <div class="row">
+  <div class="row">  
     <div class="col-md-2"></div>
     <div class="col-md-8">
       @if (count($errors) > 0) 
@@ -58,6 +55,9 @@ Tell
     </div>
   </div>
   <div class="row">
+    <div class="col-md-12">
+      @include('flash::message')
+    </div>
     <div class="col-md-2"></div>
     <div class="col-md-8 tell-panel">
       <div class="page-content-wrapper">

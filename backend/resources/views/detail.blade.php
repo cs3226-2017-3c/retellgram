@@ -12,8 +12,11 @@ Detail
 @endsection
 @section('main-content')
 
-<div id="fb-root"></div>
+  <div id="fb-root"></div>
 	<div class="row">
+    <div class="col-md-12">
+      @include('flash::message')
+    </div>
     <div class="col-md-1"></div>
     <div class="col-md-10 tell-panel">
       <div class="page-content-wrapper">
