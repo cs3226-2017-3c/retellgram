@@ -38,7 +38,7 @@ class CreateControllerNew extends Controller
 	    $new_caption->content = $request->input('caption');
 	    $new_caption->likes = 0;
         $new_caption->character_id = $request->input('character_id');
-        $new_caption->approved = false;
+        $new_caption->approved = true;
         $new_caption->save();
 
 
@@ -64,7 +64,7 @@ class CreateControllerNew extends Controller
             $new_caption->hashtags()->attach($tag_id);
         }
 
-        flash('Caption was created successfully!', 'success');
+        flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
         $images = Image::all();
         $characters = Character::all();
     	return view('new_create', [ 'characters' => $characters,'images' => $images,'image_path' => "", 'image_id' => null]);
