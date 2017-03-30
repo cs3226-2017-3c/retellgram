@@ -37,7 +37,10 @@ class CreateControllerNew extends Controller
 
         $censor = new CensorWords;
 
-        $langs = array(resource_path('censor/en-base.php'),resource_path('censor/en-uk.php'),resource_path('censor/en-us.php'));
+        $langs = array(resource_path('censor/en-base.php'),
+            resource_path('censor/en-uk.php'),
+            resource_path('censor/en-us.php'),
+            resource_path('censor/hokkien.php'));
         $badwords = $censor->setDictionary($langs);
 
     	$new_caption = new Caption;
