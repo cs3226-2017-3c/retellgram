@@ -15,12 +15,12 @@
 	Routes
 */
 
-Route::get('new_upload', 'UploadControllerNew@viewUpload');
-Route::post('new_upload', 'UploadControllerNew@storeUpload');
+Route::get('snap', 'UploadControllerNew@viewUpload');
+Route::post('snap', 'UploadControllerNew@storeUpload');
 
 
-Route::get('new_create', 'CreateControllerNew@viewCreate');
-Route::post('new_create', 'CreateControllerNew@storeCreate');
+Route::get('tell', 'CreateControllerNew@viewCreate');
+Route::post('tell', 'CreateControllerNew@storeCreate');
 
 
 Route::get('detail/{id}', 'DetailController@getView');

@@ -82,7 +82,7 @@ Tell
                         </div>
                      
                         <div class="modal-body">
-                          <form role="form" action="/new_create" id="chooseImageForm" method="get">
+                          <form role="form" action="/tell" id="chooseImageForm" method="get">
                             
                             <div class="form-group">
                               <select id="image_id" name="image_id" class="image-picker form-control">
