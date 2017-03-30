@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class CharacterNewLike extends Model
 {
-	protected $table = 'like';
-    protected $fillable = array('cookie', 'caption_id');
+    protected $table = 'character_new_like';
+    protected $fillable = array('character_id', 'new_like');
 
     public function character()
     {
