@@ -247,9 +247,9 @@ a{
 }
 
 .panel-img-position{
-	margin-left: 50px;
-	margin-top: 10px;
-	margin-right: 30px;}
+	margin-left: 10%;
+	margin-top: auto;
+	margin-right: auto;}
 	
 .panel-resize-photo{
 	width:6%;
@@ -257,18 +257,27 @@ a{
 	
 .panel-caption{
 	background-color:#3e4b5e;
-	margin-top: 10px;
-	margin-left: 50px;
-	margin-right: 50px;
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
 	 word-wrap: break-word;
 	}
 
 /* textarea */
+/*
 .caption-new{
 	margin-left:50px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-right:30px;
+	font-weight:bold;
+}*/
+
+.caption-new{
+	margin-left:10%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right:10%;
 	font-weight:bold;
 }
 
