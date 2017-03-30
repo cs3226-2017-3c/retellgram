@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="brand-logo" class="navbar-brand" href="/"><img src="/logo/logoOnly.png" width="30px" height="30px"></a>
+          <a id="brand-logo" class="navbar-brand" href="/"><img src="/logo/R.png" width="30px" height="30px"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
