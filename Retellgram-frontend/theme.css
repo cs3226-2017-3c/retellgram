@@ -197,6 +197,18 @@ a{
     font-size:1.3rem;
 }
 
+.post-footer-option-detail li{
+    float:left;
+    margin-right:10%;
+    padding-bottom:15px;
+}
+
+.post-footer-option-detail li a{
+    color:#afc8e0;
+    font-weight:500;
+    font-size:1.3rem;
+}
+
 .anchor-username h4{
     font-weight:bold;    
 }
