@@ -1,4 +1,4 @@
-var MAX_CONTENT_LENGTH = 40;
+var MAX_CONTENT_LENGTH = 35;
 var charArray = { 	7: "Avata", 
 					5: "Curry Puff",
 					2: "Deadpoo",
@@ -64,7 +64,7 @@ function getCaptions(image_id, caption_id) {
 
 function addCaption(image_id){
 	var url = "/tell?image_id="+image_id;
-	window.open(url);
+	window.open(url,'_self',false);
 	return false;
 }
 

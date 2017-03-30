@@ -43,7 +43,7 @@ Detail
             <div class="row">
               <div class="col-md-2">
                 <div class="btn btn-primary btn-lg" onclick="addCaption({{$image_id}});">
-                  <span class="glyphicon glyphicon-plus"></span> Add Caption
+                  <span class="glyphicon glyphicon-plus"></span> Tell a Story
                 </div>
                 <div id="fb-share-button"
                      class="fb-share-button hidden-xs"
