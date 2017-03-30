@@ -184,18 +184,18 @@ Tell
             </div>
 
             <div class="form-group">
-              {!! Form::hidden('character_id', null) !!}
+              {!! Form::hidden('character_id', old('character_id')) !!}
             </div>
 
             <div class=" col-md-6">
               <div class="form-group form-style-8"> 
-                <textarea id="caption" name="caption" placeholder="Caption" onkeyup="adjust_textarea(this)"></textarea>
+                <textarea id="caption" name="caption" placeholder="Caption" onkeyup="adjust_textarea(this)">{!! old('caption') !!}</textarea>
               </div>  
             </div>
             <div class="col-md-4"></div>
             <div class=" col-md-6">
               <div class="form-group form-style-8"> 
-                <textarea id="hashtags" name="hashtags" placeholder="#retellgram #hashtags #maximumFiveAllowed" onkeyup="adjust_textarea(this)"></textarea>
+                <textarea id="hashtags" name="hashtags" placeholder="#retellgram #hashtags #maximumFiveAllowed" onkeyup="adjust_textarea(this)">{!! old('hashtags') !!}</textarea>
               </div>  
             </div>
             <div class="col-md-6"></div>
@@ -216,6 +216,13 @@ Tell
 <script>
   $(document).ready(function () {
 
+    var char_id;
+    if ( char_id = $("input[name='character_id']").val() ){
+      var selected_option = $("#character_id option[value='"+ char_id +"']");
+      var name = selected_option.html();
+      $(".character-chosen").text("Posted as " + name);
+    }
+   
     $('#caption_image').croppie({
       customClass:'mycrop',
       showZoomer:false,
