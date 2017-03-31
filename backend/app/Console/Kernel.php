@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
             $last_hour->subHour();
             $newLikeRecords = Like::join('captions', 'captions.id', '=', 'like.caption_id')
             ->where('like.created_at', '>', $last_hour)->groupBy('captions.character_id')
-            ->get([DB::raw('captions.character_id as character_id'), DB::raw('count(*) as new_like')]);
+            ->get([\DB::raw('captions.character_id as character_id'), \DB::raw('count(*) as new_like')]);
             foreach($newLikeRecords as $aRecord) {
                 $characterNewLike = new CharacterNewLike;
                 $characterNewLike->character_id = $aRecord->character_id;
