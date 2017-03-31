@@ -18,6 +18,7 @@
 Route::get('snap', 'UploadControllerNew@viewUpload');
 Route::post('snap', 'UploadControllerNew@storeUpload');
 
+Route::get('search', 'SearchController@showResult');
 
 Route::get('tell', 'CreateControllerNew@viewCreate');
 Route::post('tell', 'CreateControllerNew@storeCreate');

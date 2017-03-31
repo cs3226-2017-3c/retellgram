@@ -16,6 +16,7 @@
             <li @if(Request::path()=="/")class="active"@endif><a href="/" title="Trending">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="snap")class="active"@endif><a href="/snap" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="tell")class="active"@endif><a href="/tell" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
+            <li><a href="#" title="NewestStories">Newest <i class="fa fa-coffee" aria-hidden="true"></i></a></li>
             <!--li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="caret"></span></a>
               <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
@@ -55,12 +56,13 @@
     		  <div class="container">
     		    <div class="row">
       			  <div class="span12">
-      			    <form id="custom-search-form" >
+      			    <form role="form" action="/search" id="custom-search-form" method="get">
+                    
       				  <div class="input-append span12">
       				    <div class="search">
-      						<input type="text" class="search-query" placeholder="Search Retellgram">
-      						<button type="submit" class="btn"><i class="fa fa-search fa-lg"></i></button>
-      					</div>
+                      <input type="text" id="query" name="query" class="search-query" placeholder="Search Retellgram">
+      						    <button type="submit" class="btn"><i class="fa fa-search fa-lg"></i></button>
+      					  </div>
       				  </div>
       				  </form>
       			  </div>
