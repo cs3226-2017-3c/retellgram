@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                 $characterNewLike->new_like = $aRecord->new_like;
                 $characterNewLike->save();
             }
-        })->everyMinute();
+        })->hourly();
     }
 
     /**
