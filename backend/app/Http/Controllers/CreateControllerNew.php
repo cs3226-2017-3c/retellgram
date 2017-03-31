@@ -8,6 +8,8 @@ use App\Caption;
 use App\Hashtag;
 use App\Character;
 use Validator;
+use Snipe\BanBuilder\CensorWords;
+
 
 class CreateControllerNew extends Controller
 {
@@ -33,9 +35,18 @@ class CreateControllerNew extends Controller
             'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){0,5}/'),
 		])->validate();
 
+        $censor = new CensorWords;
+
+        $langs = array(resource_path('censor/en-base.php'),
+            resource_path('censor/en-uk.php'),
+            resource_path('censor/en-us.php'),
+            resource_path('censor/hokkien.php'));
+        $badwords = $censor->setDictionary($langs);
+
     	$new_caption = new Caption;
 	    $new_caption->image_id = $request->input('image_id');
-	    $new_caption->content = $request->input('caption');
+
+	    $new_caption->content = $censor->censorString($request->input('caption'))['clean'];
 	    $new_caption->likes = 0;
         $new_caption->character_id = $request->input('character_id');
         $new_caption->approved = true;
@@ -47,7 +58,7 @@ class CreateControllerNew extends Controller
         $tag_ids = array();
 
         foreach ( $tags as $tag ) {
-            if ($tag) {
+            if ($tag && strpos( $censor->censorString($tag)['clean'], "*" ) === false) {
                 if ( Hashtag::where( "name", $tag)->count() ){
                     $hashtag= Hashtag::where( "name", $tag)->first();
                     array_push($tag_ids, $hashtag->id);
@@ -64,7 +75,7 @@ class CreateControllerNew extends Controller
             $new_caption->hashtags()->attach($tag_id);
         }
 
-        flash('Caption for #'.$new_caption->image_id." was created successfully!", 'success')->important();
+        flash('Caption for image #'.$new_caption->image_id." was created successfully!", 'success')->important();
 
         return redirect()->action('DetailController@getView',['id' => $new_caption->image_id]);
     }

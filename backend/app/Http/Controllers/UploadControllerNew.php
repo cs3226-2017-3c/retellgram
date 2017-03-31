@@ -18,7 +18,7 @@ class UploadControllerNew extends Controller
 
    	public function storeUpload( Request $request) {
    		Validator::make($request->all(), [ 
-		    'uploading' => 'required|max:10240|image',
+		    'uploading' => 'required|max:5120|image',
 		  ])->validate();
 
       $manager = new ImageManager();
