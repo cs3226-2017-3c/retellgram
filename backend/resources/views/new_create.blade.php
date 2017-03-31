@@ -32,8 +32,11 @@ Tell
     var value = selected_option.val();
     var name = selected_option.html();
     $("input[name='character_id']").val(value);
-    $(".character-chosen").text("Posted as " + name);
+    //$(".character-chosen").css('display','none');
     $("#characterModal").modal("hide");
+    $(".character-chosen").fadeOut( function() {
+      $(".character-chosen").text("Posted as " + name).fadeIn();
+    });
   }
 
 
