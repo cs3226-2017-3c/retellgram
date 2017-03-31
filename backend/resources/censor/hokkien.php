@@ -1,5 +1,4 @@
 <?php
-include(__DIR__ . DIRECTORY_SEPARATOR . 'hokkien.php');
 /**
  * PHP Array for English words
  */
@@ -10,8 +9,7 @@ array_push($badwords,
 		'cheeby',
 		'Ciak Sai',
 		'Gong Lan',
-		'Ka Ni Lao Beh',
-		'Ka Ni Na',
+		'Ka Ni',
 		'Kan',
 		'Kum Lan',
 		'Lan Jiao',
