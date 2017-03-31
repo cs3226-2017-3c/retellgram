@@ -25,9 +25,9 @@ return [
     'settings'  => [
         'default' => [
             'HTML.Doctype'             => 'XHTML 1.0 Strict',
-            'HTML.Allowed'             => 'b,strong,i,em,p',
+            'HTML.Allowed'             => 'b,strong,i,em',
             'CSS.AllowedProperties'    => 'font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align',
-            'AutoFormat.AutoParagraph' => true,
+            'AutoFormat.AutoParagraph' => false,
             'AutoFormat.RemoveEmpty'   => true,
         ],
         'test'    => [
