@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use Log;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -31,7 +30,6 @@ class Kernel extends ConsoleKernel
         //Calculate new likes for each character for each hour
         
         $schedule->call(function () {
-            Log::info('Calculating new likes for each character...');
             $last_hour = new Carbon();
             $last_hour->subHour();
             $last_hour = $last_hour->toDateTimeString();
