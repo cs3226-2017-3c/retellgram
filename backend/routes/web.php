@@ -33,6 +33,8 @@ Route::put('caption/{id}', 'DetailController@likeCaption');
 Route::post('caption/{id}/delete', 'DetailController@deleteCaption');
 Route::post('caption/{id}/approve', 'DetailController@approveCaption');
 
+Route::get('newlikes', 'CharacterNewLikeController@getAll');
+
 Route::get('/', 'HomeController@home');
 
 
