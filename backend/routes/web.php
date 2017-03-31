@@ -40,7 +40,7 @@ Route::get('/', 'HomeController@home');
 
 
 Route::get('admin', 'AdminController@admin');
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index');
 
