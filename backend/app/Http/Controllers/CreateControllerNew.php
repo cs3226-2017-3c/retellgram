@@ -9,6 +9,7 @@ use App\Hashtag;
 use App\Character;
 use Validator;
 use Snipe\BanBuilder\CensorWords;
+use Mews\Purifier\Facades\Purifier;
 // error_reporting(-1); // reports all errors
 // ini_set("display_errors", "1"); // shows all errors
 // ini_set("log_errors", 1);
@@ -33,7 +34,7 @@ class CreateControllerNew extends Controller
     public function storeCreate(Request $request) {
     	Validator::make($request->all(), [ 
 		    'image_id' => array('required'),
-		    'caption' => array('required','max:50','regex:/^[A-Za-z1-9!?;^:()&,._ ]+$/'),
+		    'caption' => array('required','max:100'),
             'character_id' => array('required','in:1,2,3,4,5,6,7,8,9,10,11,12'),
             'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){0,5}/'),
 		])->validate();
@@ -49,7 +50,8 @@ class CreateControllerNew extends Controller
     	$new_caption = new Caption;
 	    $new_caption->image_id = $request->input('image_id');
 
-	    $new_caption->content = $censor->censorString($request->input('caption'))['clean'];
+        $content = Purifier::clean($request->input('caption'));
+	    $new_caption->content = $censor->censorString($content)['clean'];
 	    $new_caption->likes = 0;
         $new_caption->character_id = $request->input('character_id');
         $new_caption->approved = true;
