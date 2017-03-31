@@ -33,17 +33,16 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $last_hour = new Carbon();
             $last_hour->subHour();
-            $newLikeRecords = Like::select('caption_id', \DB::raw('count(*) as new_like'))
-            ->where('updated_at', '>', $last_hour)->groupBy('caption_id')->get();
-            
+            $newLikeRecords = Like::join('captions', 'captions.id', '=', 'like.caption_id')
+            ->where('like.created_at', '>', $last_hour)->groupBy('captions.character_id')
+            ->get([DB::raw('captions.character_id as character_id'), DB::raw('count(*) as new_like')]);
             foreach($newLikeRecords as $aRecord) {
                 $characterNewLike = new CharacterNewLike;
-                $caption = Caption::find($aRecord->caption_id);
-                $characterNewLike->character_id = $caption->character_id;
+                $characterNewLike->character_id = $aRecord->character_id;
                 $characterNewLike->new_like = $aRecord->new_like;
                 $characterNewLike->save();
             }
-        })->hourly();
+        })->everyMinute();
     }
 
     /**
