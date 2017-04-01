@@ -60,12 +60,14 @@ function generateLike(id, likes) {
     return "<a href='#' onclick=like(event) id="+id+">"+heart+" "+likes+" Likes"+"</a>";       
 }
 
-function shareFB(event){
-  event.preventDefault();
-  FB.ui({
-    method: 'share',
-    href: document.location.href,
-  }, function(response){});
+function shareFB(url, image_id, caption_id){
+    event.preventDefault();
+    var hyper_link = url+"/detail/"+image_id+"?caption_id="+caption_id;
+    console.log(hyper_link);
+    FB.ui({
+        method: 'share',
+        href: hyper_link,
+    }, function(response){});
 }
 
   window.fbAsyncInit = function() {

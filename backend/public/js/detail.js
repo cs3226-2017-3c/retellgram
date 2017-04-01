@@ -88,6 +88,19 @@ function updateCaptionDisplay(caption) {
 	$("#author").html(post_by+post_date);
 }
 
+function shareFB(event){
+    event.preventDefault();
+    var hyper_link = window.location.href;
+    if (hyper_link.indexOf("?") == -1) {
+    	hyper_link = hyper_link+"?caption_id="+captions[0]['id'];
+    }
+    console.log(hyper_link);
+    FB.ui({
+        method: 'share',
+        href: hyper_link,
+    }, function(response){});
+}
+
 function shrinkContent(content) {
 	if (content.length>MAX_CONTENT_LENGTH) {
 		return content.substring(0,MAX_CONTENT_LENGTH) + "...";
@@ -98,11 +111,4 @@ function shrinkContent(content) {
 
 function generateLikeBadge(id, likes) {
 	return "<div class='badge' id="+id+">"+likes+"</div>";
-}
-
-function generateShareLink(url){
-	var share_url = "https://www.facebook.com/sharer/sharer.php?u=";
-	var this_url = encodeURI(url);
-	share_url.concat(this_url);
-	return share_url;
 }

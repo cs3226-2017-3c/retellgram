@@ -60,7 +60,7 @@ Snap
                   <ul class="list-unstyled">
                     <li><a href="#" onclick=like(event) id="{{$r->id}}"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
                     <li><a href="/tell?image_id={{$r->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                    <li><a href="#" onclick=shareFB(event)><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                    <li><a href="#" onclick=shareFB("{{env('APP_URL')}}","{{$r->image->id}}","{{$r->id}}")><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
                   </ul>
                 </div>
             </section>
