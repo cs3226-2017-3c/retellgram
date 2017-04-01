@@ -54,17 +54,17 @@ class RegisterController extends Controller
         ]);
     }
 
-    // public function showRegistrationForm()
-    // {
-    //     //return view('auth.register');
-    //      abort(404);  //this will throw a page not found exception
-    // }
+    public function showRegistrationForm()
+    {
+        //return view('auth.register');
+         abort(404);  //this will throw a page not found exception
+    }
 
-    // public function register()
-    // {
-    //     //return view('auth.register');
-    //      abort(404);  //this will throw a page not found exception
-    // }
+    public function register()
+    {
+        //return view('auth.register');
+         abort(404);  //this will throw a page not found exception
+    }
 
     /**
      * Create a new user instance after a valid registration.
