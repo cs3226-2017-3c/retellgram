@@ -13,6 +13,7 @@ use App\Hashtag;
 
 use Snipe\BanBuilder\CensorWords;
 use Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
 // error_reporting(-1); // reports all errors
 // ini_set("display_errors", "1"); // shows all errors
 // ini_set("log_errors", 1);
@@ -96,8 +97,15 @@ class SearchController extends Controller
             $r->{'character_name'} = Character::find($r->character_id)->name;
         }
 
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 20;
+        $currentPageSearchResults = $result->slice(($currentPage-1) * $perPage, $perPage)->all();
+
+        $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($result), $perPage);
+
+
         flash('Search result for "'.$search_query.'".')->important();
 
-        return view('search', [ 'result' => $result, 'hashtags' => $trending_hashtags ] );
+        return view('search', [ 'result' => $paginatedSearchResults, 'hashtags' => $trending_hashtags, 'query_string' => $search_query ] );
     }
 }

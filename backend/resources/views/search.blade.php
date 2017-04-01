@@ -70,7 +70,7 @@ Snap
     </div>
   </div>
   @endforeach
-
+  {{$result->setPath('search?query='.$query_string)->render()}}
 </div>
 <div class="col-md-7 col-sm-9 col-xs-10"></div>
   <div class="col-md-2 col-sm-2 col-xs-2">
