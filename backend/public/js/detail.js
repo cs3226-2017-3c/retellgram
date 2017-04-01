@@ -1,17 +1,4 @@
 var MAX_CONTENT_LENGTH = 35;
-var charArray = { 	7: "Avata", 
-					5: "Curry Puff",
-					2: "Deadpoo",
-					8: "Dollraemon",
-              		4: "Donald Drunk", 
-              		6: "Genghis Khan",
-              		1: "Hairy Porter", 
-              		3: "Hermoney Changer",
-              		10: "Hulky",
-              		11: "Kimchi Jong-un",  
-                  	9: "Queen Kong",
-                  	12: "Super Maria"};
-
 var captions;
 var liked={};
 var liked_heart = "<i class='fa fa-heart' aria-hidden='true'></i>";
@@ -110,7 +97,7 @@ function like(event){
 
 function updateCaptionDisplay(caption) {
 	var caption_content = "<p>"+caption['content']+"</p>";
-	var post_by = "<h5>"+charArray[caption['character_id']]+"</h5>";
+	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['character']['path']+"> "+caption['character']['name']+"</h5>";
 	var post_date;
 	if (caption['created_at'] == null) {
 		post_date = "";

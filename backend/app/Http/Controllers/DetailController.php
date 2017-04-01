@@ -14,18 +14,15 @@ class DetailController extends Controller
   	public function getView($id) {
         $image = Image::findOrFail($id);
         $path = "/storage/images/" . $image->file_path;
-
-        $og_url = "https://www.retellgram.com/detail/" . $id;
+        $og_title = "A place where you can find fun stories!";
   		$query = Input::all();
   		if (array_key_exists('caption_id', $query)) {
             $caption_id = $query['caption_id'];
             $caption = Caption::findOrFail($caption_id);
             $og_title = $caption->content;
-            $og_url = $og_url . "?caption_id=" . $caption_id;
-            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_url' => $og_url, 'og_title' => $og_title]);
+            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title]);
         } else {
-            $og_title = "Fun story";
-        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_url' => $og_url, 'og_title' => $og_title]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title]);
         }
   	}
 
@@ -36,6 +33,7 @@ class DetailController extends Controller
 
   	public function getCaptions(Request $request) {
   		$query = Input::all();
+        $path_end = "/characters/";
     	//step 1. validate url query
     	if (sizeof($query) == 0) {
     		return ;
@@ -44,7 +42,7 @@ class DetailController extends Controller
     	//step 2. retrieve data according to query
         if (array_key_exists('image_id', $query)) {
             $image_id = $query['image_id'];
-            $test = Caption::where('image_id', $image_id);
+            $test = Caption::with('character')->where('image_id', $image_id);
             $caption = $test->get();
             $test->firstOrFail();
         } else {
@@ -65,6 +63,7 @@ class DetailController extends Controller
             } else {
                 $aCaption->liked = true;
             }
+            $aCaption->character->path = $path_end . $aCaption->character->path;
         }
 
     	return response()->json($caption->values());

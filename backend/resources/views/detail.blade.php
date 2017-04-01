@@ -3,10 +3,11 @@
 Detail
 @endsection
 @section('header')
+<meta property="fb:app_id" content="164946997359533" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{$og_title}}" />
 <meta property="og:image:width" content="200" />
 <meta property="og:image:height" content="200" />
-<meta property="og:type" content="article" />
-<meta id="og-title" property="og:title" content="{{$og_title}}" />
 <meta property="og:image" content="{{env('APP_URL')}}{{$image_path}}" />
 <link href="/css/scroll-area.css" rel="stylesheet">
 @endsection
