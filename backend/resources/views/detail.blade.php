@@ -11,6 +11,13 @@ Story
 <meta property="og:image" content="{{env('APP_URL')}}{{$image_path}}" />
 <link href="/css/scroll-area.css" rel="stylesheet">
 @endsection
+@section('sidebar')
+  @foreach($hashtags as $t)
+  <li>
+      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+  </li>
+  @endforeach
+@endsection
 @section('main-content')
 
   <div id="fb-root"></div>

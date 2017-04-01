@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Input;
 use App\Caption;
 use App\Image;
 use App\Like;
+use App\Hashtag;
 class DetailController extends Controller
 {
   	public function getView($id) {
+        $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
+        
         $image = Image::findOrFail($id);
         $path = "/storage/images/" . $image->file_path;
         $og_title = "A place where you can find fun stories!";
@@ -20,9 +23,9 @@ class DetailController extends Controller
             $caption_id = $query['caption_id'];
             $caption = Caption::findOrFail($caption_id);
             $og_title = $caption->content;
-            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title]);
+            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title, 'hashtags' => $trending_hashtags]);
         } else {
-        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title, 'hashtags' => $trending_hashtags]);
         }
   	}
 
