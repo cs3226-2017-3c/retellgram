@@ -44,7 +44,7 @@ Detail
                   <ul class="list-unstyled">
                     <li><div id="likes"></div></li>
                     <li><a href="/tell?image_id={{$image_id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                    <li><a href="#" id="share" onclick=shareFB()>
+                    <li><a href="#" id="share" onclick=shareFB(event)>
                         <i class="glyphicon glyphicon-share-alt"></i> Share</a>
                     </li>
                   </ul>
@@ -81,7 +81,7 @@ Detail
 </script>
 <script>
 function shareFB(event){
-  window.event.preventDefault();
+  event.preventDefault();
   FB.ui({
     method: 'share',
     href: document.location.href,
