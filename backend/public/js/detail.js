@@ -39,7 +39,9 @@ function getCaptions(image_id, caption_id) {
 			$("#likes").html(like_button);
 			var url = document.location.href+"?caption_id="+data[0]['id'];
     	}
-	})
+	}).error(function(){
+		$("#caption_panel").css("display","none");
+	});
 }
 
 function changeCaption(event){

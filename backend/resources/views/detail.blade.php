@@ -28,7 +28,7 @@ Story
 
               </section>
               <section class="post-body">
-                <div class="panel panel-caption">
+                <div id="caption_panel" class="panel panel-caption">
                   <div class="row caption-new page-header">
                     <a href="#" id="author" style="color:#ffffff;"></a>
                   </div>
