@@ -20,53 +20,73 @@ Detail
     <div class="col-md-1"></div>
     <div class="col-md-10 tell-panel">
       <div class="page-content-wrapper">
-        <div class="panel panel-primary">
-          <div class="panel-body">
-            <div class="row">
-		        <div class="col-md-6">
-			         <div class="panel">
-                <div class="panel-heading" id="author" style="background-color:#3f4c5d;color:#ffffff;">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <section class="post-heading">
+
+              </section>
+              <section class="post-body">
+                <div class="panel panel-caption">
+                  <div class="row caption-new page-header">
+                    <a href="#" id="author" style="color:#ffffff;"></a>
+                  </div>
+                  <div id="caption" class="row caption-new panel-text-color">
+                  </div>
                 </div>
-				        <div class="panel-body" style="background-color:#ffffff;">
-					         <img id="image" class="img-responsive mg-rounded" src="{{$image_path}}" style="width:800px;"/>
-					         <div id="caption"></div>
-				        </div>
-				        <div class="panel-footer" style="background-color:#3f4c5d;color:#ffffff;">
-					         <div id="likes"></div>
-				        </div>	
-			         </div>
-              </div>
-            <div class="col-md-6">
-              <div id="all_caption" class="list-group scroll-area"></div>
-            </div>
-            </div>
-            <div class="row">
-              <div class="col-md-2">
-                <div class="btn btn-primary btn-lg" onclick="addCaption({{$image_id}});">
-                  <span class="glyphicon glyphicon-plus"></span> Tell a Story
+                <img class="img-responsive img-rounded panel-img-position"
+                    src="{{$image_path}}" style="width:800px;">
+              </section>
+              <section class="post-footer">
+                <hr>
+                <div class="post-footer-option container">
+                  <ul class="list-unstyled">
+                    <li><div id="likes"></div></li>
+                    <li><a href="/tell?image_id={{$image_id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
+                    <li><a href="#" id="share" onclick=shareFB()>
+                        <i class="glyphicon glyphicon-share-alt"></i> Share</a>
+                    </li>
+                  </ul>
                 </div>
-                <div id="fb-share-button"
-                     class="fb-share-button hidden-xs"
-                     style="margin-top:20px;"
-                     data-layout="button" data-size="large" data-mobile-iframe="true">
-                     Share
-                </div>
-              </div>
+              </section>
             </div>
-			    </div>
+          </div>
 		    </div>
+        <div class="col-md-6">
+          <div id="all_caption" class="list-group scroll-area"></div>
+        </div>
 	    </div>
     </div>
   </div>
 @endsection
 @section('footer')
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 164946997359533,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+function shareFB(event){
+  window.event.preventDefault();
+  FB.ui({
+    method: 'share',
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
+}
+</script>
 <script src="/js/detail.js"></script>
 <script>
 $( document ).ready(function() {
