@@ -146,7 +146,7 @@ Home
   <div class="col-md-2 col-sm-2 col-xs-2">
     <div class="page-header notice-board-style">
       Retellgram <i class="fa fa-copyright" aria-hidden="true"></i> 2017.
-    </dsiv>
+    </div>
   </div>
 </div>
 @endsection
