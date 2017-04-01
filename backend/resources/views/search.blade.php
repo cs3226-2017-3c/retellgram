@@ -22,7 +22,7 @@ Snap
                   <div class="media">
                     <div class="media-body">
                       <a href="detail/{{$r->image_id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image_id}}</h4></a> 
-                      <a href="#" class="anchor-time">{{ $r->caption->created_at->diffForHumans() }}</a>
+                      <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
                 </div>
@@ -45,7 +45,7 @@ Snap
               <hr>  
                 <div class="post-footer-option container">
                   <ul class="list-unstyled">
-                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->caption->likes}} Likes</a></li>
+                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
                     <li><a href="/tell?image_id={{$r->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
                   </ul>
