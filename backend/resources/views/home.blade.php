@@ -13,6 +13,8 @@ Home
 @endsection
 @section('main-content')
 <div class="page-content-wrapper">
+  <div class="col-md-1"></div> 
+<div class="col-md-2 gap-frm-top-posts">
   @if(Request::path()=="/")
   <div class="row">
     <div class="container">
@@ -139,6 +141,7 @@ Home
     </div>
   </div>
   @endforeach
+</div>
 </div>
 @endsection
 @section('footer')
