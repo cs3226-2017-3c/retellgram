@@ -13,7 +13,7 @@ Home
 @endsection
 @section('main-content')
 <div class="page-content-wrapper">
-  <div class="col-md-1"></div> 
+  <div class="col-md-1"></div>
 <div class="col-md-2 gap-frm-top-posts">
   @if(Request::path()=="/")
   <div class="row">
@@ -26,8 +26,7 @@ Home
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="#" class="anchor-username"><h4 class="media-heading">#1</h4></a>
-                      <a href="#" class="anchor-time">51 mins</a>
+                      <a href="#" class="anchor-username"><h4 class="media-heading">Welcome</h4></a>
                     </div>
                   </div>
                 </div>
