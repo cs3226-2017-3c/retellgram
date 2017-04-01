@@ -96,6 +96,8 @@ class SearchController extends Controller
             $r->{'character_name'} = Character::find($r->character_id)->name;
         }
 
+        flash('Search result for "'.$search_query.'".')->important();
+
         return view('search', [ 'result' => $result, 'hashtags' => $trending_hashtags ] );
     }
 }

@@ -16,7 +16,13 @@ Snap
 <div class="page-content-wrapper">
 <div class="col-md-1"></div>
 <div class="col-md-2 gap-frm-top-posts">
-
+  <div class="row">
+    <div class="container">
+    <div class="col-md-8">
+      @include('flash::message')
+    </div>
+  </div>
+</div>
   @foreach ($result as $r)
   <div class="row">
     <div class="container">
