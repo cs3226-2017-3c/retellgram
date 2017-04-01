@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function home()
     {
       $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
-      $captions = Caption::all()->sortByDesc('likes');
+      $captions = Caption::orderBy('likes', 'desc')->simplePaginate(20);
       foreach ($captions as $c) {
         $c->image;
         $c->hashtags;
@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function latest()
     {
         $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
-        $captions = Caption::all()->sortByDesc('created_at');
+        $captions = Caption::orderBy('created_at', 'desc')->simplePaginate(20);
         foreach ($captions as $c) {
           $c->image;
           $c->hashtags;
