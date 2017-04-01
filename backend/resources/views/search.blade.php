@@ -34,7 +34,7 @@ Snap
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="detail/{{$r->image_id}}?caption_id={{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image_id}}</h4></a> 
+                      <a href="detail/{{$r->image_id}}?caption_id={{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a> 
                       <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
