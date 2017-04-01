@@ -107,3 +107,11 @@ body {
     bottom: 30px;
   }
 }
+
+.hashtag {
+  color: #62BBDC;
+}
+
+.hashtag:hover {
+  color: #3A73A8;
+}

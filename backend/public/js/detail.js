@@ -96,6 +96,13 @@ function like(event){
 }
 
 function updateCaptionDisplay(caption) {
+	var hashtags="";
+	for (var i=0; i<caption['hashtags'].length; i++) {
+		var aTagName=caption['hashtags'][i].name;
+		var aTag="<a class='hashtag' href='/search?query="+aTagName+"'> #"+aTagName+"</a>"
+		hashtags=hashtags+aTag;
+	};
+	console.log(hashtags);
 	var caption_content = "<p>"+caption['content']+"</p>";
 	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+"> "+caption['character']['name']+"</h5>";
 	var post_date;
@@ -106,7 +113,7 @@ function updateCaptionDisplay(caption) {
 		post_date = "<div>on "+date+"</div>";
 	}
 
-	$("#caption").html(caption_content);
+	$("#caption").html(caption_content+hashtags);
 	$("#author").html(post_by+post_date);
 }
 

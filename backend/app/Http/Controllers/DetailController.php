@@ -42,7 +42,7 @@ class DetailController extends Controller
     	//step 2. retrieve data according to query
         if (array_key_exists('image_id', $query)) {
             $image_id = $query['image_id'];
-            $test = Caption::with('character')->where('image_id', $image_id);
+            $test = Caption::with('character','hashtags')->where('image_id', $image_id);
             $caption = $test->get();
             $test->firstOrFail();
         } else {
