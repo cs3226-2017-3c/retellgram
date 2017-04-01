@@ -6,7 +6,7 @@ Home
 @endsection
 @section('main-content')
 <div class="page-content-wrapper">
-  <!-- Notice Board -->
+  @if(Request::path()=="/")
   <div class="row">
     <div class="container">
       <div class="col-md-8">
@@ -78,29 +78,6 @@ Home
                     <a href="#"><img src="logo/sixWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
                   </div>
                 </div>
-                <div class="panel panel-caption">
-                  <div class="row caption-new page-header">
-                    <a href="#"><img src="characters/joker.png" class="img-rounded panel-resize-photo"><font color="white"> You can assume these identities</font></a>
-                  </div>
-                  <div class="row caption-new">
-                    <div class="row">
-                      <a href="#" title="Kimchi Jong-Un"><img src="characters/kimchi-jong-un.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="HerMoney Changer"><img src="characters/hermoney-changer.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Avata"><img src="characters/avata.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Hairy Porter"><img src="characters/hairy-porter.png" class="img-rounded notice-board-resize-photo"></a>
-
-                      <a href="#" title="Queen Kong"><img src="characters/queen-kong.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Super Maria"><img src="characters/super-maria.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Gengkis Khan"><img src="characters/genghis-khan.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="DeadPoo"><img src="characters/deadpoo.png" class="img-rounded notice-board-resize-photo"></a>
-
-                      <a href="#" title="Dollraemon"><img src="characters/dollraemon.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Donald Drunk"><img src="characters/donald-drunk.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Currypuff Girls"><img src="characters/curry-puff.png" class="img-rounded notice-board-resize-photo"></a>
-                      <a href="#" title="Hulky"><img src="characters/hulky.png" class="img-rounded notice-board-resize-photo"></a>
-                    </div>
-                  </div>
-                </div>
               </section>
             </div>
           </div>
@@ -108,8 +85,8 @@ Home
       </div>
     </div>
   </div>
+  @endif
   @foreach($result as $r)
-  @if($r->caption)
   <div class="row">
     <div class="container">
       <div class="col-md-8">
@@ -120,8 +97,8 @@ Home
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="/detail/{{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
-                      <a href="#" class="anchor-time">{{ $r->caption->created_at->diffForHumans() }}</a>
+                      <a href="/detail/{{$r->image->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image->id}}</h4></a>
+                      <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
                 </div>
@@ -132,20 +109,20 @@ Home
             <section class="post-body">
               <div class="panel panel-caption">
                 <div class="row caption-new page-header">
-                  <a href="#"><img src="characters/{{$r->caption->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->caption->character->name}}</font></a>
+                  <a href="#"><img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->character->name}}</font></a>
                 </div>
                 <div class="row caption-new panel-text-color">
-                  <p>{{$r->caption->content}}</p>
+                  <p>{{$r->content}}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
                 </div>
               </div>
-              <img src="{{'/storage/images/'.$r->file_path}}" class="img-rounded panel-img-position">
+              <img src="{{'/storage/images/'.$r->image->file_path}}" class="img-rounded panel-img-position">
             </section>
             <section class="post-footer">
               <hr>
               <div class="post-footer-option container">
                 <ul class="list-unstyled">
-                  <li><i class="fa fa-heart" aria-hidden="true"></i> {{$r->caption->likes}} Likes</li>
-                  <li><a href="/tell?image_id={{$r->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
+                  <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
+                  <li><a href="/tell?image_id={{$r->image->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
                   <li><a href="#" id="share" onclick=shareFB(event)><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
                 </ul>
               </div>
@@ -155,7 +132,6 @@ Home
       </div>
     </div>
   </div>
-  @endif
   @endforeach
 </div>
 @endsection

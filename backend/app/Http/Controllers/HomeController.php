@@ -16,15 +16,13 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $images = Image::all()->sortByDesc('likes');
-        foreach ($images as $i) {
-          $i->caption = $i->captions->sortByDesc('likes')->first();
-          if($i->caption){
-            $i->caption->character;
-          }
-        }
+      $captions = Caption::all()->sortByDesc('likes');
+      foreach ($captions as $c) {
+        $c->image;
+        $c->hashtags;
+      }
 
-        return view('home', ['result' => $images]);
+      return view('home', ['result' => $captions]);
     }
 
     public function latest()
@@ -32,8 +30,9 @@ class HomeController extends Controller
         $captions = Caption::all()->sortByDesc('created_at');
         foreach ($captions as $c) {
           $c->image;
+          $c->hashtags;
         }
 
-        return view('latest', ['result' => $captions]);
+        return view('home', ['result' => $captions]);
     }
 }

@@ -17,7 +17,6 @@ class CreateImageTable extends Migration
             $table->increments('id');
             $table->string('file_path');
             $table->string('md5')->index();
-            $table->integer('likes')->default(0);
             $table->timestamps();
         });
     }
