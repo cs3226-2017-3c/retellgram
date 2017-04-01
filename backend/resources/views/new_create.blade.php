@@ -130,7 +130,7 @@ Tell
                   @if($image_id)
                   <img class="mg-rounded" id="caption_image" src="storage/images/{{$image_path}}" alt="Image {{ $image_path }} ">
                   @else
-                  <img src="images/cat.jpg" class="img-rounded">
+                  <img src="images/cat.jpg" id="caption_image" class="img-rounded">
                   @endif
                 </div>
               </div>
