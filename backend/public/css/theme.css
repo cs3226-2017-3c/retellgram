@@ -215,6 +215,8 @@ a{
 	width:700px;
 	height:500px;}
 	
+.img-rounded{
+	max-width: 80%}
 
 /* Tell Panel Sizing */
 .tell-panel{
@@ -245,6 +247,7 @@ a{
 }
 
 .panel-img-position{
+	margin-left: 10%;
 	margin-top: auto;
 	margin-right: auto;}
 	
