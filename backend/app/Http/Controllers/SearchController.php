@@ -26,7 +26,7 @@ class SearchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showResult( Request $request) {
-
+        $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
         $censor = new CensorWords;
         $langs = array(resource_path('censor/en-base.php'),
             resource_path('censor/en-uk.php'),
@@ -54,17 +54,17 @@ class SearchController extends Controller
                     $result->push(Image::findOrFail( (int)$tag )->captions->sortByDesc('likes')->first());
                   } catch (ModelNotFoundException $ex) {
                   }
-                  
+
                 } else {
                   $similiar_tags = Hashtag::where( "name", 'like','%'.$tag.'%')->get();
                   if ( $similiar_tags->count() ){
                       $hashtags = $hashtags->merge($similiar_tags);
                   }
                 }
-                
+
               }
             }
-            
+
             foreach ($hashtags as $hashtag) {
               $result = $result->merge($hashtag->captions);
             }
@@ -96,6 +96,6 @@ class SearchController extends Controller
             $r->{'character_name'} = Character::find($r->character_id)->name;
         }
 
-        return view('search', [ 'result' => $result ] );
+        return view('search', [ 'result' => $result, 'hashtags' => $trending_hashtags ] );
     }
 }
