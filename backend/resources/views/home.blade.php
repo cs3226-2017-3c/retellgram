@@ -129,9 +129,9 @@ Home
               <hr>
               <div class="post-footer-option container">
                 <ul class="list-unstyled">
-                  <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
+                  <li><a href="#" onclick=like(event) id="{{$r->id}}"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
                   <li><a href="/tell?image_id={{$r->image->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                  <li><a href="#" id="share" onclick=shareFB(event)><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                  <li><a href="#" onclick=shareFB(event)><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
                 </ul>
               </div>
             </section>
@@ -145,31 +145,4 @@ Home
 </div>
 @endsection
 @section('footer')
-<script>
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : 164946997359533,
-    xfbml      : true,
-    version    : 'v2.8'
-  });
-  FB.AppEvents.logPageView();
-};
-
-(function(d, s, id){
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-<script>
-function shareFB(event){
-  event.preventDefault();
-  FB.ui({
-    method: 'share',
-    href: document.location.href,
-  }, function(response){});
-}
-</script>
 @endsection

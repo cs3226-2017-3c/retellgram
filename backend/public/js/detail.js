@@ -1,8 +1,6 @@
 var MAX_CONTENT_LENGTH = 35;
 var captions;
-var liked={};
-var liked_heart = "<i class='fa fa-heart' aria-hidden='true'></i>";
-var unliked_heart = "<i class='fa fa-heart-o' aria-hidden='true'></i>";
+
 
 function getCaptions(image_id, caption_id) {
 	var url = "/caption?likes=1&image_id=";
@@ -69,34 +67,6 @@ function changeCaption(event){
 	window.history.replaceState(null, null, url);
 };
 
-function like(event){
-	event.preventDefault();
-	var this_caption_id = $(event.target).context.id;
-	$.ajax({
-    	type: 'PUT',
-    	beforeSend: function(request) {
-    		request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
-        },
-        url: "/caption/" + this_caption_id, 
-        success: function(data) {
-        	liked[this_caption_id] = 1;
-            updateLikeDisplay(event, this_caption_id)
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-        	if (errorThrown == "Bad Request") {
-        		swal({
-        			title: "You have liked this caption",
-        			type: "warning",
-  					timer: 700,
-  					showConfirmButton: false
-        		});
-        	} else {
-        		console.log(textStatus, errorThrown);
-        	}
-		}
-    });
-}
-
 function updateCaptionDisplay(caption) {
 	var hashtags="";
 	for (var i=0; i<caption['hashtags'].length; i++) {
@@ -104,7 +74,6 @@ function updateCaptionDisplay(caption) {
 		var aTag="<a class='hashtag' href='/search?query="+aTagName+"'> #"+aTagName+"</a>"
 		hashtags=hashtags+aTag;
 	};
-	console.log(hashtags);
 	var caption_content = "<p>"+caption['content']+"</p>";
 	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+"> "+caption['character']['name']+"</h5>";
 	var post_date;
@@ -119,42 +88,12 @@ function updateCaptionDisplay(caption) {
 	$("#author").html(post_by+post_date);
 }
 
-function updateLikeDisplay(event, id) {
-	$.getJSON("/caption/"+id, function(data){
-		var like_button = generateLike(id, data['likes']);
-		$(event.target).parent().html(like_button);
-
-		var aCaption = $("#all_caption").children().first();
-		var like = aCaption.children().last();
-		if (like.attr('id') == id) {
-			like.html(data['likes']);
-		}
-		while (aCaption.next().is('a')) {
-			aCaption = aCaption.next();
-			like = aCaption.children().last();
-			if (like.attr('id') == id) {
-				like.html(data['likes']);
-			}
-		}	
-	})
-}
-
 function shrinkContent(content) {
 	if (content.length>MAX_CONTENT_LENGTH) {
 		return content.substring(0,MAX_CONTENT_LENGTH) + "...";
 	} else {
 		return content;
 	}
-}
-
-function generateLike(id, likes) {
-	var heart;
-	if (liked[id]) {
-		heart = liked_heart;
-	} else {
-		heart = unliked_heart;
-	}
-	return heart+"<a href='#' onclick=like(event) id="+id+"> "+likes+" Likes"+"</a>"; 		
 }
 
 function generateLikeBadge(id, likes) {
