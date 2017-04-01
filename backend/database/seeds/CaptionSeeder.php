@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 use App\Hashtag;
 use App\Caption;
 
@@ -33,13 +34,14 @@ class CaptionSeeder extends Seeder
             DB::table('images')->insert([
                 'file_path' => $image,
                 'md5' => md5_file ( storage_path('app/'. $test_images_path . $image)),
-                'likes' => $faker->numberBetween(1,100)
+                'likes' => $faker->numberBetween(1,100),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
 
         // seed character
         $factions = config('characters.factions');
-        
+
         foreach ($factions as $faction => $characters) {
             foreach ( $characters as $character => $path ) {
                 DB::table('characters')->insert([
@@ -58,7 +60,7 @@ class CaptionSeeder extends Seeder
             ]);
         }
 
-        // seed caption 
+        // seed caption
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('captions')->insert([
@@ -67,6 +69,7 @@ class CaptionSeeder extends Seeder
                 'likes' => $faker->numberBetween(1,100),
                 'approved' => true,
                 'character_id' => $faker->numberBetween(1, 12),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
 
         }

@@ -35,7 +35,7 @@ Route::post('image/{id}/delete', 'AdminController@deleteImage');
 Route::get('newlikes', 'CharacterNewLikeController@getAll');
 
 Route::get('/', 'HomeController@home');
-
+Route::get('newest', 'HomeController@latest');
 
 Route::get('admin', 'AdminController@admin');
 Route::get('admin/{id}', 'AdminController@adminCaption');

@@ -19,10 +19,21 @@ class HomeController extends Controller
         $images = Image::all()->sortByDesc('likes');
         foreach ($images as $i) {
           $i->caption = $i->captions->sortByDesc('likes')->first();
-          $i->caption->character;
+          if($i->caption){
+            $i->caption->character;
+          }
         }
 
         return view('home', ['result' => $images]);
-        return $images;
+    }
+
+    public function latest()
+    {
+        $captions = Caption::all()->sortByDesc('created_at');
+        foreach ($captions as $c) {
+          $c->image;
+        }
+
+        return view('latest', ['result' => $captions]);
     }
 }

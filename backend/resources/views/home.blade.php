@@ -109,6 +109,7 @@ Home
     </div>
   </div>
   @foreach($result as $r)
+  @if($r->caption)
   <div class="row">
     <div class="container">
       <div class="col-md-8">
@@ -120,7 +121,7 @@ Home
                   <div class="media">
                     <div class="media-body">
                       <a href="/detail/{{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
-                      <a href="#" class="anchor-time">51 mins</a>
+                      <a href="#" class="anchor-time">{{ $r->caption->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
                 </div>
@@ -154,6 +155,7 @@ Home
       </div>
     </div>
   </div>
+  @endif
   @endforeach
 </div>
 @endsection
