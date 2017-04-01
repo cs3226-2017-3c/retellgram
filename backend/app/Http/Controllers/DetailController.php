@@ -125,9 +125,6 @@ class DetailController extends Controller
     private function likeACaption($caption) {
         $caption->likes = $caption->likes + 1;
         $caption->save();
-        $image = Image::findOrFail($caption->image_id);
-        $image->likes = $image->likes + 1;
-        $image->save();
     }
     private function updateLikeTable(Request $request, $id) {
         $cookie = $request->cookie('laravel_session');
