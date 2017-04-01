@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+@import url(https://fonts.googleapis.com/css?family=Antic+Slab);
 
 /* Prevent Overflow #a0c4e5 */
 html, body {
@@ -36,31 +36,31 @@ body {
         margin-top: 7px;
         padding: 0;
     }
- 
+
     #custom-search-form .search-query {
         padding-right: 3px;
         padding-right: 4px \9;
         padding-left: 3px;
         padding-left: 4px \9;
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
- 
+
         margin-bottom: 0;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
- 
-    
- 
+
+
+
     .search-query:focus + button {
-        z-index: 3;   
+        z-index: 3;
     }
-	
+
 #login-nav input { margin-bottom: 15px; }
 
 #brand-logo {
 	margin-top: -4px;}
-	
+
 /* Sidebar */
 #wrapper {
     padding-left: 0;
@@ -198,7 +198,7 @@ a{
 }
 
 .anchor-username h4{
-    font-weight:bold;    
+    font-weight:bold;
 }
 
 .anchor-time{
@@ -209,12 +209,12 @@ a{
 .post-footer-comment-wrapper{
     background-color:#F6F7F8;
 }
-	
+
 /* Limit Image Size */
 #img-limit-size {
 	width:700px;
 	height:500px;}
-	
+
 .img-rounded{
 	max-width: 80%}
 
@@ -238,7 +238,7 @@ a{
 
 .panel{
 	background-color: #afc8e0;
-	
+
 }
 
 .panel-text-color{
@@ -250,11 +250,11 @@ a{
 	margin-left: 10%;
 	margin-top: auto;
 	margin-right: auto;}
-	
+
 .panel-resize-photo{
 	width:6%;
 	height:auto;}
-	
+
 .panel-caption{
 	background-color:#3e4b5e;
 	margin-top: auto;
@@ -295,7 +295,7 @@ a{
 
 
 .form-style-8 textarea,
-.form-style-8 select 
+.form-style-8 select
 {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -315,7 +315,7 @@ a{
     resize:none;
     overflow: hidden;
 }
-.form-style-8 input[type="button"], 
+.form-style-8 input[type="button"],
 .form-style-8 input[type="submit"]{
     -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
     -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
@@ -338,7 +338,7 @@ a{
 	font-family: 'Antic Slab', serif;
     font-size: 50px;
 	color: #2a89dd;}
-	
+
 /* Notice Board */
 .notice-board-style{
 	margin-top:10px;
@@ -348,11 +348,11 @@ a{
 .notice-board-resize-photo{
 	max-width: 20%;
 	height: auto;}
-	
+
 .notice-board-resize-winning-faction{
 	max-width: 30%;
 	height: auto;}
-	
+
 /* Placeholder */
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #3e4b5e;

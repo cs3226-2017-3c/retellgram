@@ -5,11 +5,11 @@ Home
 @section('header')
 @endsection
 @section('sidebar')
-  @foreach($hashtags as $t)
-  <li>
-      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
-  </li>
-  @endforeach
+@foreach($hashtags as $t)
+<li>
+  <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+</li>
+@endforeach
 @endsection
 @section('main-content')
 <div class="page-content-wrapper">
@@ -42,51 +42,50 @@ Home
                   <p>It's not about the photo, it's about telling a story. Everything burns!</p>
                   &nbsp
                   <p>Here's what you need to know: </p>
-                  Retellgram is where you can anonymously post any photos, and anonymously caption someone else's photos.
-                  <br>
+                  Retellgram is where you can anonymously post any photos, and anonymously caption someone else's photos.<br>
                   <p></p>
                   <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#intro">Okay, I'm listening <i class="fa fa-beer fa-2x" aria-hidden="true"></i></button>
                   <div id="intro" class="collapse">
                     <br>You come here when you're tired of your newsfeed constantly bombarded by
                     <p style="color:#afc8e0">#ItsOurTenthAnniversaryLetsTortureEveryoneWithOurFacebookPDA
                       #NoICantEatMyFoodBecauseItsNotOnInstagramYet #IRatherTweetThenHaveALegitConversationWithThePersonNextToMe
-                      #StopHashTaggingBecauseItDoesntEvenMakeSense</p>
-                      Or you see something you're dying to post to #insta #fb but then you hesitate because you have no guts and your friends will judge you.
-                      <br>Easy. Upload those photos to Retellgram and set fire to the photos with your dark sense of humor.
-                      <p></p>
-                    </div>
+                      #StopHashTaggingBecauseItDoesntEvenMakeSense
+                    </p>
+                    <p>Or you see something you're dying to post to #insta #fb but then you hesitate because you have no guts and your friends will judge you.<br>
+                      Easy. Upload those photos to Retellgram and set fire to the photos with your dark sense of humor.
+                    </p>
+                  </div>
+                  <p></p>
+                  &nbsp
+                  <p>The dramatic plot: </p>
+                  In Retellgram, you are an identity thief.
+                  <br>
+                  <p></p>
+                  <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#plot">Sounds Cool <i class="fa fa-sign-language fa-2x" aria-hidden="true"></i></button>
+                  <div id="plot" class="collapse">
+                    <br>You lurk in the shadows, masked behind one of Retellgram's nine characters.
+                    And your mission?
+                    <br>Usurp the throne and become Retellgram's most notorious ruler!
+                    <br>There's just one problem, however.
+                    The four great factions- Raid, Yaylou, Grin, Bluu have been at war since the ancient times.
+                    <br>Betrayal is common within the factions, and the 'Eye' has decided to keep the factions' member list a secret.
+                    This means that it is up to you to steal the identity of the reincarnates and uncover the ancient secret.
                     <p></p>
-                    &nbsp
-                    <p>The dramatic plot: </p>
-                    In Retellgram, you are an identity thief.
-                    <br>
-                    <p></p>
-                    <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#plot">Sounds Cool <i class="fa fa-sign-language fa-2x" aria-hidden="true"></i></button>
-                    <div id="plot" class="collapse">
-                      <br>You lurk in the shadows, masked behind one of Retellgram's nine characters.
-                      And your mission?
-                      <br>Usurp the throne and become Retellgram's most notorious ruler!
-                      <br>There's just one problem, however.
-                      The four great factions- Raid, Yaylou, Grin, Bluu have been at war since the ancient times.
-                      <br>Betrayal is common within the factions, and the 'Eye' has decided to keep the factions' member list a secret.
-                      This means that it is up to you to steal the identity of the reincarnates and uncover the ancient secret.
-                      <p></p>
-                    </div>
                   </div>
                 </div>
-                <div class="panel panel-caption">
-                  <div class="row caption-new page-header">
-                    <a href="#"><img src="logo/red.png" class="img-rounded panel-resize-photo"><font color="white"> Red Faction is the new ruler</font></a>
-                  </div>
-                  <div class="row caption-new">
-                    <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>
-                    <a href="#"><img src="logo/pro.png" class="img-rounded notice-board-resize-photo"></a>
-                    <a href="#"><img src="logo/threeWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
-                    <a href="#"><img src="logo/sixWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
-                  </div>
+              </div>
+              <div class="panel panel-caption">
+                <div class="row caption-new page-header">
+                  <a href="#"><img src="logo/red.png" class="img-rounded panel-resize-photo"><font color="white"> Red Faction is the new ruler</font></a>
                 </div>
-              </section>
-            </div>
+                <div class="row caption-new">
+                  <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>
+                  <a href="#"><img src="logo/pro.png" class="img-rounded notice-board-resize-photo"></a>
+                  <a href="#"><img src="logo/threeWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
+                  <a href="#"><img src="logo/sixWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
