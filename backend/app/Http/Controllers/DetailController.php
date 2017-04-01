@@ -63,7 +63,7 @@ class DetailController extends Controller
             } else {
                 $aCaption->liked = true;
             }
-            $aCaption->character->path = $path_end . $aCaption->character->path;
+            $aCaption->path = $path_end . $aCaption->character->path;
         }
 
     	return response()->json($caption->values());

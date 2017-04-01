@@ -97,7 +97,7 @@ function like(event){
 
 function updateCaptionDisplay(caption) {
 	var caption_content = "<p>"+caption['content']+"</p>";
-	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['character']['path']+"> "+caption['character']['name']+"</h5>";
+	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+"> "+caption['character']['name']+"</h5>";
 	var post_date;
 	if (caption['created_at'] == null) {
 		post_date = "";
