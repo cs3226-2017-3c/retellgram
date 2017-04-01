@@ -42,6 +42,13 @@ Tell
 
 </script>
 @endsection
+@section('sidebar')
+  @foreach($hashtags as $t)
+  <li>
+      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+  </li>
+  @endforeach
+@endsection
 @section('main-content')
   <div class="row">  
     <div class="col-md-2"></div>

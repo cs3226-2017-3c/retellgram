@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use App\Hashtag;
 use Intervention\Image\ImageManager;
 
 use Validator;
@@ -12,7 +13,9 @@ use Response;
 class UploadControllerNew extends Controller
 {
     public function viewUpload() {
-        return view('new_upload');
+        $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
+        
+        return view('new_upload',['hashtags' => $trending_hashtags]);
     }
    
 

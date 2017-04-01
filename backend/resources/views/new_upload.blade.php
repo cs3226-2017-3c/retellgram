@@ -5,6 +5,13 @@ Snap
 @section('header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
 @endsection
+@section('sidebar')
+  @foreach($hashtags as $t)
+  <li>
+      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+  </li>
+  @endforeach
+@endsection
 @section('main-content')
   <div class="row">
     <div class="col-md-2"></div>
