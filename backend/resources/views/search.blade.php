@@ -4,6 +4,13 @@ Snap
 @endsection
 @section('header')
 @endsection
+@section('sidebar')
+  @foreach($hashtags as $t)
+  <li>
+      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+  </li>
+  @endforeach
+@endsection
 @section('main-content')
 
 <div class="page-content-wrapper">
@@ -21,14 +28,14 @@ Snap
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="detail/{{$r->image_id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image_id}}</h4></a> 
+                      <a href="detail/{{$r->image_id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image_id}}</h4></a>
                       <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-1">
                 </div>
-              </div>             
+              </div>
             </section>
             <section class="post-body">
               <div class="panel panel-caption">
@@ -42,7 +49,7 @@ Snap
               <img src="storage/images/{{ $r->{'image_path'} }}" class="img-rounded panel-img-position">
             </section>
             <section class="post-footer">
-              <hr>  
+              <hr>
                 <div class="post-footer-option container">
                   <ul class="list-unstyled">
                     <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
@@ -52,12 +59,12 @@ Snap
                 </div>
             </section>
           </div>
-        </div>   
+        </div>
       </div>
     </div>
   </div>
   @endforeach
-  
+
 </div>
 <div class="col-md-7 col-sm-9 col-xs-10"></div>
   <div class="col-md-2 col-sm-2 col-xs-2">
