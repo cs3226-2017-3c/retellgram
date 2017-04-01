@@ -45,7 +45,6 @@ class UploadControllerNew extends Controller
       $img->save(public_path("storage/images/".$filename) , 70);
       	
       $new_image->file_path = $filename;
-    	$new_image->likes = 0;
 
     	$new_image->save();
 
