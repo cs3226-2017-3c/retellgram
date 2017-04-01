@@ -54,7 +54,7 @@ class CreateControllerNew extends Controller
 	    $new_caption->content = $censor->censorString($content)['clean'];
 	    $new_caption->likes = 0;
         $new_caption->character_id = $request->input('character_id');
-        $new_caption->approved = true;
+        //$new_caption->approved = true;
         $new_caption->save();
 
 
