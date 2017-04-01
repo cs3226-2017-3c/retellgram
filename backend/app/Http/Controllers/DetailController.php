@@ -33,6 +33,7 @@ class DetailController extends Controller
 
   	public function getCaptions(Request $request) {
   		$query = Input::all();
+        $path_end = "/characters/";
     	//step 1. validate url query
     	if (sizeof($query) == 0) {
     		return ;
@@ -41,7 +42,7 @@ class DetailController extends Controller
     	//step 2. retrieve data according to query
         if (array_key_exists('image_id', $query)) {
             $image_id = $query['image_id'];
-            $test = Caption::where('image_id', $image_id);
+            $test = Caption::with('character')->where('image_id', $image_id);
             $caption = $test->get();
             $test->firstOrFail();
         } else {
@@ -62,6 +63,7 @@ class DetailController extends Controller
             } else {
                 $aCaption->liked = true;
             }
+            $aCaption->character->path = $path_end . $aCaption->character->path;
         }
 
     	return response()->json($caption->values());
