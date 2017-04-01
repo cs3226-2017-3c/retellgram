@@ -83,7 +83,7 @@ function shareFB(event){
   window.event.preventDefault();
   FB.ui({
     method: 'share',
-    href: 'https://developers.facebook.com/docs/',
+    href: document.location.href,
   }, function(response){});
 }
 </script>

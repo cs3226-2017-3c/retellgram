@@ -39,8 +39,7 @@ function getCaptions(image_id, caption_id) {
       			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item active' href='#'>"+li_content+"</a>");
       			like_button = generateLike(object['id'], object['likes']);
 				$("#likes").html(like_button);
-				//$("#share").attr("href", generateShareLink(document.location.href));
-      			has_selected_caption = true;
+				has_selected_caption = true;
       		} else {
       			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item' href='#'>"+li_content+"</a>");
       		}
@@ -52,7 +51,6 @@ function getCaptions(image_id, caption_id) {
     		var like_button = generateLike(data[0]['id'], data[0]['likes']);
 			$("#likes").html(like_button);
 			var url = document.location.href+"?caption_id="+data[0]['id'];
-			//$("#share").attr("href", generateShareLink(url));
     	}
 	})
 }
@@ -80,7 +78,6 @@ function changeCaption(event){
 	var url = window.location.pathname.concat("?caption_id=");
 	url = url.concat(this_caption_id);
 	window.history.replaceState(null, null, url);
-	//$("#share").attr("href", generateShareLink(document.location.href));
 };
 
 function like(event){
