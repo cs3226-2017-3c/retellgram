@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -53,6 +53,18 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
     }
+
+    // public function showRegistrationForm()
+    // {
+    //     //return view('auth.register');
+    //      abort(404);  //this will throw a page not found exception
+    // }
+
+    // public function register()
+    // {
+    //     //return view('auth.register');
+    //      abort(404);  //this will throw a page not found exception
+    // }
 
     /**
      * Create a new user instance after a valid registration.

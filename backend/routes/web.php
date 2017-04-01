@@ -31,8 +31,7 @@ Route::get('caption/{id}', 'DetailController@getCaption');
 Route::put('caption/{id}', 'DetailController@likeCaption');
 
 // deleting and approving captions
-Route::post('caption/{id}/delete', 'DetailController@deleteCaption');
-Route::post('caption/{id}/approve', 'DetailController@approveCaption');
+Route::post('image/{id}/delete', 'AdminController@deleteImage');
 
 Route::get('newlikes', 'CharacterNewLikeController@getAll');
 
@@ -41,8 +40,6 @@ Route::get('/', 'HomeController@home');
 
 Route::get('admin', 'AdminController@admin');
 
-
-Route::get('/home', 'HomeController@index');
 
 // Authentication Routes...
 Route::get('123', 'Auth\LoginController@showLoginForm')->name('login');
