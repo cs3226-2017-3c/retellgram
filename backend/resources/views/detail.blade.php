@@ -6,7 +6,6 @@ Detail
 <meta property="fb:app_id" content="164946997359533" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{$og_title}}" />
-<meta property="og:description" content="{{$og_description}}" />
 <meta property="og:image:width" content="200" />
 <meta property="og:image:height" content="200" />
 <meta property="og:image" content="{{env('APP_URL')}}{{$image_path}}" />

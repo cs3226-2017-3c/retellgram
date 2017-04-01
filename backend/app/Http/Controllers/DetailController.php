@@ -19,10 +19,10 @@ class DetailController extends Controller
   		if (array_key_exists('caption_id', $query)) {
             $caption_id = $query['caption_id'];
             $caption = Caption::findOrFail($caption_id);
-            $og_description = $caption->content;
-            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title, 'og_description' => $og_description]);
+            $og_title = $caption->content;
+            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title]);
         } else {
-        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title, 'og_description' => ""]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title]);
         }
   	}
 
