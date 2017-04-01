@@ -138,14 +138,15 @@ Home
         </div>
       </div>
     </div>
-    @endforeach
-    {{ $result->links() }}
   </div>
+  @endforeach
+  {{ $result->links() }}
+</div>
   <div class="col-md-7 col-sm-9 col-xs-10"></div>
   <div class="col-md-2 col-sm-2 col-xs-2">
     <div class="page-header notice-board-style">
       Retellgram <i class="fa fa-copyright" aria-hidden="true"></i> 2017.
-    </div>
+    </dsiv>
   </div>
 </div>
 @endsection
