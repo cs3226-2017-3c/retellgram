@@ -14,18 +14,15 @@ class DetailController extends Controller
   	public function getView($id) {
         $image = Image::findOrFail($id);
         $path = "/storage/images/" . $image->file_path;
-
-        $og_url = "https://www.retellgram.com/detail/" . $id;
+        $og_title = "A place where you can find fun stories!";
   		$query = Input::all();
   		if (array_key_exists('caption_id', $query)) {
             $caption_id = $query['caption_id'];
             $caption = Caption::findOrFail($caption_id);
-            $og_title = $caption->content;
-            $og_url = $og_url . "?caption_id=" . $caption_id;
-            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_url' => $og_url, 'og_title' => $og_title]);
+            $og_description = $caption->content;
+            return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title, 'og_description' => $og_description]);
         } else {
-            $og_title = "Fun story";
-        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_url' => $og_url, 'og_title' => $og_title]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title]);
         }
   	}
 
