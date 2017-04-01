@@ -20,8 +20,6 @@ class CreateCaptionsTable extends Migration
 
             $table->string('content');
             $table->integer('likes')->default(0);
-            $table->boolean('approved')->default(false);
-
             $table->integer('character_id')->unsigned();
             $table->foreign('character_id')->references('id')->on('characters');
             

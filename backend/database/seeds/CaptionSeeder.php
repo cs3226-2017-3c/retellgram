@@ -66,7 +66,6 @@ class CaptionSeeder extends Seeder
                 'image_id' => $faker->numberBetween(1, sizeof( $test_images)),
                 'content' => $faker->text($maxNbChars = 50),
                 'likes' => $faker->numberBetween(1,100),
-                'approved' => true,
                 'character_id' => $faker->numberBetween(1, 12),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
