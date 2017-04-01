@@ -4,6 +4,13 @@ Home
 @endsection
 @section('header')
 @endsection
+@section('sidebar')
+  @foreach($hashtags as $t)
+  <li>
+      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+  </li>
+  @endforeach
+@endsection
 @section('main-content')
 <div class="page-content-wrapper">
   @if(Request::path()=="/")
@@ -97,7 +104,7 @@ Home
                 <div class="col-md-11">
                   <div class="media">
                     <div class="media-body">
-                      <a href="/detail/{{$r->image->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->image->id}}</h4></a>
+                      <a href="/detail/{{$r->image->id}}?caption_id={{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
                       <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                     </div>
                   </div>
