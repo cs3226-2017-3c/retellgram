@@ -1,6 +1,6 @@
 @extends('new_template_with_side_bar')
 @section('title')
-Detail
+Story
 @endsection
 @section('header')
 <meta property="fb:app_id" content="164946997359533" />
