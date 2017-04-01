@@ -22,7 +22,7 @@ class DetailController extends Controller
             $og_description = $caption->content;
             return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => $caption_id, 'og_title' => $og_title, 'og_description' => $og_description]);
         } else {
-        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title]);
+        	return view('detail',[ 'image_id' => $id, 'image_path' => $path, 'caption_id' => -1, 'og_title' => $og_title, 'og_description' => ""]);
         }
   	}
 
