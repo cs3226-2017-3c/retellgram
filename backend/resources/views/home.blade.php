@@ -5,11 +5,11 @@ Home
 @section('header')
 @endsection
 @section('sidebar')
-  @foreach($hashtags as $t)
-  <li>
-      <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
-  </li>
-  @endforeach
+@foreach($hashtags as $t)
+<li>
+  <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>
+</li>
+@endforeach
 @endsection
 @section('main-content')
 <div class="page-content-wrapper">
@@ -91,7 +91,6 @@ Home
         </div>
       </div>
     </div>
-  </div>
   @endif
   @foreach($result as $r)
   <div class="row">
@@ -144,22 +143,22 @@ Home
 @endsection
 @section('footer')
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : 164946997359533,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : 164946997359533,
+    xfbml      : true,
+    version    : 'v2.8'
+  });
+  FB.AppEvents.logPageView();
+};
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 <script>
 function shareFB(event){
