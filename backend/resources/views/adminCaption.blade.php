@@ -11,15 +11,15 @@ Admin
     <div class="container">
     	<div class="panel panel-default">
           <div class="panel-body">
-			@foreach ($images as $image)
+			@foreach ($captions as $caption)
 		    <div class="col-md-4">
 		    	<div style="width:200px;height:200px;position:relative;margin-bottom:20px;">
-			      	<a href="/admin/{{$image->id}}">
-			      		<img src="/storage/images/{{ $image->file_path }}" class="img-rounded">
-			      	</a>
-					<form action="image/{{$image->id}}/delete" method="post">
+			      	
+			      		<p>{{$caption->content}}</p>
+			      	
+					<form action="/caption/{{$caption->id}}/delete" method="post">
 						{{ csrf_field() }}
-						<button type="submit" style="position:absolute;">Delete Image</button>
+						<button type="submit" style="position:absolute;">Delete Caption</button>
 					</form>	
 				</div>
 			</div>

@@ -30,7 +30,6 @@ Route::get('caption', 'DetailController@getCaptions');
 Route::get('caption/{id}', 'DetailController@getCaption');
 Route::put('caption/{id}', 'DetailController@likeCaption');
 
-// deleting and approving captions
 Route::post('image/{id}/delete', 'AdminController@deleteImage');
 
 Route::get('newlikes', 'CharacterNewLikeController@getAll');
@@ -39,6 +38,8 @@ Route::get('/', 'HomeController@home');
 
 
 Route::get('admin', 'AdminController@admin');
+Route::get('admin/{id}', 'AdminController@adminCaption');
+Route::post('caption/{id}/delete', 'AdminController@deleteCaption');
 
 
 // Authentication Routes...
