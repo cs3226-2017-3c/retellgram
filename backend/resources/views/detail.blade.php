@@ -7,7 +7,7 @@ Detail
 <meta property="og:image:height" content="200" />
 <meta property="og:type" content="article" />
 <meta id="og-title" property="og:title" content="{{$og_title}}" />
-<meta property="og:image" content="http://www.retellgram.com{{$image_path}}" />
+<meta property="og:image" content="{{env('APP_URL')}}{{$image_path}}" />
 <link href="/css/scroll-area.css" rel="stylesheet">
 @endsection
 @section('main-content')
