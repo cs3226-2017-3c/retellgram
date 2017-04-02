@@ -67,6 +67,7 @@ Tell
   <div class="row">
     <div class="col-md-12">
       @include('flash::message')
+      {{ Session::forget('flash_notification') }}
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-8 tell-panel">

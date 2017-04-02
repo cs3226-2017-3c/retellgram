@@ -24,6 +24,7 @@ Story
 	<div class="row">
     <div class="col-md-12">
       @include('flash::message')
+      {{ Session::forget('flash_notification') }}
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-10 tell-panel">

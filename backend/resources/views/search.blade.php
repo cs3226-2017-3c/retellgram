@@ -20,6 +20,7 @@ Snap
     <div class="container">
     <div class="col-md-8">
       @include('flash::message')
+      {{ Session::forget('flash_notification') }}
     </div>
   </div>
 </div>

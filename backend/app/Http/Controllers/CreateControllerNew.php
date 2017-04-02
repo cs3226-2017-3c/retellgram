@@ -82,7 +82,7 @@ class CreateControllerNew extends Controller
             $new_caption->hashtags()->attach($tag_id);
         }
 
-        flash('Caption for image #'.$new_caption->image_id." was created successfully!", 'success')->important();
+        flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
 
         return redirect()->action('DetailController@getView',['id' => $new_caption->image_id]);
     }
