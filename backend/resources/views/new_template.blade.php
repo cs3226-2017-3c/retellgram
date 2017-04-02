@@ -9,22 +9,22 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="It's not about the photo, it's about telling a story. Everything burns! Retellgram is where you can anonymously post any photos, and anonymously caption someone else's photos.">
   <meta name="author" content="">
-    
+
   <link rel="icon" href="/logo/R.jpg">
   <title>@yield('title') - Retellgram</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-  
+
   <!-- Bootstrap theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  
-  <!-- Sweet alert -->     
+
+  <!-- Sweet alert -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
   <!-- Custom styles for this template -->
   <link href="/css/theme.css" rel="stylesheet">
 
@@ -34,13 +34,12 @@
 <body>
 
   @include('new_navigation')
-   
+
   @yield('main')
 
   <button class="cd-top" title="Go to top"></button>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="/js/docs.min.js"></script>
   <script src="/js/google-analytics.js"></script>
   <!-- JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -68,7 +67,7 @@
   //hide or show the "back to top" link
   $(window).scroll(function(){
     ( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
-    if( $(this).scrollTop() > offset_opacity ) { 
+    if( $(this).scrollTop() > offset_opacity ) {
       $back_to_top.addClass('cd-fade-out');
     }
   });
