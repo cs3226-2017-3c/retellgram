@@ -13,7 +13,7 @@ Admin
           <div class="panel-body">
 			@foreach ($images as $image)
 		    <div class="col-md-4">
-		    	<div style="width:200px;height:200px;position:relative;margin-bottom:20px;">
+		    	<div style="max-width:200px;max-height:200px;position:relative;margin-bottom:20px;">
 			      	<a href="/admin/{{$image->id}}">
 			      		<img src="/storage/images/{{ $image->file_path }}" class="img-rounded">
 			      	</a>
