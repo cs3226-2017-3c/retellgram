@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="description" content="">
+  <meta name="description" content="It's not about the photo, it's about telling a story. Everything burns! Here's what you need to know: Retellgram is where you can anonymously post any photos, and anonymously caption someone else's photos.">
   <meta name="author" content="">
     
   <link rel="icon" href="/logo/R.jpg">
