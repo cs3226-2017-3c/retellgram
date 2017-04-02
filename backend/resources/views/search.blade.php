@@ -1,6 +1,6 @@
 @extends('new_template_with_side_bar')
 @section('title')
-Snap
+Search
 @endsection
 @section('header')
 @endsection
