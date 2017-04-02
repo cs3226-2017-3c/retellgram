@@ -1,6 +1,6 @@
 @extends('new_template_with_side_bar')
 @section('title')
-Home
+ReTell Your Story
 @endsection
 @section('header')
 @endsection
