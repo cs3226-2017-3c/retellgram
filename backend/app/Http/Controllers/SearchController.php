@@ -105,7 +105,9 @@ class SearchController extends Controller
 
 
         flash('Search result for "'.$search_query.'".')->important();
+        $search_query = str_replace("#", "%23", $search_query);
+        $paginatedSearchResults->setPath('search?query='.$search_query);
 
-        return view('search', [ 'result' => $paginatedSearchResults, 'hashtags' => $trending_hashtags, 'query_string' => $search_query ] );
+        return view('search', [ 'result' => $paginatedSearchResults, 'hashtags' => $trending_hashtags] );
     }
 }

@@ -140,7 +140,20 @@ Home
     </div>
   </div>
   @endforeach
-  {{ $result->links() }}
+  <div class="row">
+      <div class="container">
+        <div class="col-md-8">
+          @if($result->previousPageUrl())
+            <a href="{{ $result->previousPageUrl() }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-circle-left"></i> Back</a>
+          @endif
+        
+        
+          @if($result->nextPageUrl())
+              <a href="{{ $result->nextPageUrl() }}" class="btn btn-success pull-right btn-sm">Next <i class="fa fa-arrow-circle-right"></i></a>
+          @endif
+      </div>
+    </div>
+  </div>
 </div>
   <div class="col-md-7 col-sm-9 col-xs-10"></div>
   <div class="col-md-2 col-sm-2 col-xs-2">
