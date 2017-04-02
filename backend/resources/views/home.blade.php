@@ -119,10 +119,10 @@ Home
                     <a href="#"><img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->character->name}}</font></a>
                   </div>
                   <div class="row caption-new panel-text-color">
-                    <img src="{{'/storage/images/'.$r->image->file_path}}" class="img-rounded panel-img-position">
                     <p>{{$r->content}}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
                   </div>
                 </div>
+                <img src="{{'/storage/images/'.$r->image->file_path}}" class="img-rounded panel-img-position">
               </section>
               <section class="post-footer">
                 <hr>
