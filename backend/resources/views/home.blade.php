@@ -68,7 +68,7 @@ ReTell Your Story
                       And your mission?
                       <br>Usurp the throne and become Retellgram's most notorious ruler!
                       <br>There's just one problem, however.
-                      The four great factions- Raid, Yaylou, Grin, Bluu have been at war since the ancient times.
+                      The four great factions- Red, Yellow, Green, Blue have been at war since the ancient times.
                       <br>Betrayal is common within the factions, and the 'Eye' has decided to keep the factions' member list a secret.
                       This means that it is up to you to steal the identity of the reincarnates and uncover the ancient secret.
                       <p></p>
