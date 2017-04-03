@@ -26,7 +26,7 @@ Admin
 					@if(Request::path()=="report")
 					<form action="image/{{$image->id}}/resetReports" method="post">
 						{{ csrf_field() }}
-						<button type="submit" style="position:absolute;">Reset Reports</button>
+						<button type="submit" style="position:absolute;">Reset Reports({{$image->reports}})</button>
 					</form>	
 					@endif
 				</div>
