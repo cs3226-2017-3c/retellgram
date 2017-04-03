@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use App\Report;
 use App\Hashtag;
 use Intervention\Image\ImageManager;
 
@@ -55,5 +56,39 @@ class UploadControllerNew extends Controller
 
     	return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $new_image->id]);
    	}
+
+    public function reportImage(Request $request, $id) {
+      $image = Image::findOrFail($id);
+      if (!$this->validateEligibleToReport($request, $id)) {
+        abort(400, "The IP has repoted this image");
+      }
+      $this->reportAnImage($image);
+      $this->updateReportTable($request, $id);
+      return response(204);
+    }
+
+    private function validateEligibleToReport(Request $request, $id) {
+      $cookie = $request->cookie('laravel_session');
+      $report = Report::where([
+          ['image_id', $id],
+          ['cookie', $cookie]
+      ])->get();
+      if (sizeof($report)>0) {
+          return false;
+      } else {
+          return true;
+      }
+    }
+
+    private function reportAnImage($image) {
+      $image->reports = $image->reports + 1;
+      $image->save();
+    }
+
+    private function updateReportTable(Request $request, $id) {
+      $cookie = $request->cookie('laravel_session');
+      Report::create([  'image_id' => $id, 
+                        'cookie'   => $cookie]);
+    }
 
 }

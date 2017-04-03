@@ -31,6 +31,7 @@ Route::get('caption/{id}', 'DetailController@getCaption');
 Route::put('caption/{id}', 'DetailController@likeCaption');
 
 Route::post('image/{id}/delete', 'AdminController@deleteImage');
+Route::put('image/{id}', 'UploadControllerNew@reportImage');
 
 Route::get('newlikes', 'CharacterNewLikeController@getAll');
 

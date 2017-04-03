@@ -2,6 +2,37 @@ var liked={};
 var liked_heart = "<i class='fa fa-heart' aria-hidden='true'></i>";
 var unliked_heart = "<i class='fa fa-heart-o' aria-hidden='true'></i>";
 
+function report(event){
+  event.preventDefault();
+  var this_image_id = $(event.target).context.id;
+  $.ajax({
+      type: 'PUT',
+      beforeSend: function(request) {
+        request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+        },
+        url: "/image/" + this_image_id, 
+        success: function(data) {
+          swal({
+            title: "Thank you for Reporting!",
+            text: "Our staff will verify your report soon.",
+            type: "success",
+          })
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          if (errorThrown == "Bad Request") {
+            swal({
+              title: "You have reported this image.",
+              type: "warning",
+            timer: 700,
+            showConfirmButton: false
+            });
+          } else {
+            console.log(textStatus, errorThrown);
+          }
+      }
+  });
+}
+
 function like(event){
 	event.preventDefault();
 	var this_caption_id = $(event.target).context.id;
