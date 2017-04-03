@@ -38,7 +38,7 @@ class CreateControllerNew extends Controller
 		    'image_id' => array('required'),
 		    'caption' => array('required','max:100'),
             'character_id' => array('required','in:1,2,3,4,5,6,7,8,9,10,11,12'),
-            'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){0,5}/'),
+            'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){1,5}/'),
 		])->validate();
 
         $censor = new CensorWords;
@@ -84,7 +84,7 @@ class CreateControllerNew extends Controller
 
         flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
 
-        return redirect()->action('DetailController@getView',['id' => $new_caption->image_id]);
+        return redirect()->action('DetailController@getView',['id' => $new_caption->image_id, 'caption_id' => $new_caption->id ]);
     }
     
 }
