@@ -16,6 +16,7 @@ class DetailController extends Controller
         $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
         
         $image = Image::findOrFail($id);
+        $this->validateImageNotReported($image);
         $path = "/storage/images/" . $image->file_path;
         $og_title = "A place where you can find fun stories!";
   		$query = Input::all();
@@ -122,6 +123,12 @@ class DetailController extends Controller
             return false;
         } else {
             return true;
+        }
+    }
+
+    private function validateImageNotReported($image) {
+        if ($image->reports > 10) {
+            abort(404);
         }
     }
 
