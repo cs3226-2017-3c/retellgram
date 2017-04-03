@@ -129,7 +129,7 @@ Tell
                   contribute to the total votes for each 
                   faction. Winning faction gets to rule 
                   over the rest. Factions get to 
-                  overthrow ruler every day.
+                  overthrow ruler every hour.
                 </div>
               </div>
             </div>
