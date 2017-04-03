@@ -5,10 +5,20 @@ var unliked_heart = "<i class='fa fa-heart-o' aria-hidden='true'></i>";
 function report(event){
   event.preventDefault();
   var this_image_id = $(event.target).context.id;
-  $.ajax({
-      type: 'PUT',
-      beforeSend: function(request) {
-        request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+  swal({
+    title: "Are you sure?",
+    text: "Only report inappropriate imagess to help build a clean community!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonClass: "btn-danger",
+    confirmButtonText: "Yes, report it!",
+    closeOnConfirm: false
+    },
+    function(){
+      $.ajax({
+        type: 'PUT',
+        beforeSend: function(request) {
+          request.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
         },
         url: "/image/" + this_image_id, 
         success: function(data) {
@@ -29,8 +39,9 @@ function report(event){
           } else {
             console.log(textStatus, errorThrown);
           }
-      }
-  });
+        }
+      });
+    });
 }
 
 function like(event){
