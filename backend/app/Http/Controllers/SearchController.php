@@ -14,6 +14,7 @@ use App\Hashtag;
 use Snipe\BanBuilder\CensorWords;
 use Validator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Mews\Purifier\Facades\Purifier;
 // error_reporting(-1); // reports all errors
 // ini_set("display_errors", "1"); // shows all errors
 // ini_set("log_errors", 1);
@@ -36,8 +37,9 @@ class SearchController extends Controller
         $badwords = $censor->setDictionary($langs);
 
         $search_query= $censor->censorString( trim($request->input('query')) )['clean'];
+        $search_query = Purifier::clean($search_query);
 
-        if (!$search_query || strpos( $censor->censorString($search_query)['clean'], "*" ) !== false || preg_match("/^[A-Za-z1-9!?;^:()&,._# ]+$/" ,$search_query) === 0) {
+        if (!$search_query || strpos( $censor->censorString($search_query)['clean'], "*" ) !== false ) {
           return view('search_not_found' );
         }
 

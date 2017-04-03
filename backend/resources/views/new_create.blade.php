@@ -208,7 +208,7 @@ Tell
             <div class="col-md-4"></div>
             <div class=" col-md-6">
               <div class="form-group form-style-8"> 
-                <textarea id="hashtags" name="hashtags" placeholder="#retellgram #hashtags #maximumFiveAllowed" onkeyup="adjust_textarea(this)">{!! old('hashtags') !!}</textarea>
+                <textarea id="hashtags" name="hashtags" placeholder="#English #hashtags #maximumFiveAllowed" onkeyup="adjust_textarea(this)">{!! old('hashtags') !!}</textarea>
               </div>  
             </div>
             <div class="col-md-6"></div>
