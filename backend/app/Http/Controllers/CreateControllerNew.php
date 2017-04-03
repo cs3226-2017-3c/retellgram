@@ -71,7 +71,7 @@ class CreateControllerNew extends Controller
                     array_push($tag_ids, $hashtag->id);
                 } else {
                     $new_tag = new Hashtag;
-                    $new_tag->name = trim($tag, " ");
+                    $new_tag->name = Purifier::clean(trim($tag, " "));
                     $new_tag->save();
                     array_push($tag_ids, $new_tag->id);
                 }
