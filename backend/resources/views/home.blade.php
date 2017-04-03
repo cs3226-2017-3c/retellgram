@@ -85,6 +85,9 @@ ReTell Your Story
                     <a href="#"><img src="logo/level_{{$level}}.gif" class="img-rounded notice-board-resize-photo"></a>
                   </div>
                   @endforeach
+                  <div class="row caption-new">  
+                    <font color="white">Ruler faction refreshing in:    <div style="display:inline;font-size:50px;" id="countdown"></div></font>
+                  </div>
                   <!-- <div class="row caption-new">
                     <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>
                     <a href="#"><img src="logo/pro.png" class="img-rounded notice-board-resize-photo"></a>
@@ -170,4 +173,42 @@ ReTell Your Story
 </div>
 @endsection
 @section('footer')
+<script>
+$(document).ready(function () {
+
+  function roundMinutes(date) {
+
+      date.setHours(date.getHours() + 1);
+      date.setMinutes(0);
+
+      return date;
+  }
+
+  var date = new Date();
+  countDownDate = roundMinutes(date); 
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    $("#countdown").html("    " + minutes + "m " + seconds + "s ");
+
+    // If the count down is finished, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      $("#countdown").html("    Refresh to see new ruler!");
+    }
+  }, 1000);
+});
+</script>
 @endsection
