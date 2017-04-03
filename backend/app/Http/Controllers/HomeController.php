@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Image;
 use App\Caption;
@@ -23,8 +24,8 @@ class HomeController extends Controller
         $c->image;
         $c->hashtags;
       }
-
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags]);
+      $top_char = DB::table('character_new_like')->orderBy('created_at','desc')->first();
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'char', $top_char]);
     }
 
     public function latest()

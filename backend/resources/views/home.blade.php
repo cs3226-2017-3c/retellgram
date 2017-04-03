@@ -77,14 +77,14 @@ ReTell Your Story
                 </div>
                 <div class="panel panel-caption">
                   <div class="row caption-new page-header">
-                    <a href="#"><img src="logo/red.png" class="img-rounded panel-resize-photo"><font color="white"> Red Faction is the new ruler</font></a>
+                    <a href="#"><img src="logo/{{$char->character->faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{$char->character->faction}} Faction is the new ruler</font></a>
                   </div>
-                  <div class="row caption-new">
+                  <!-- <div class="row caption-new">
                     <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>
                     <a href="#"><img src="logo/pro.png" class="img-rounded notice-board-resize-photo"></a>
                     <a href="#"><img src="logo/threeWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
                     <a href="#"><img src="logo/sixWeeksAllKill.png" class="img-rounded notice-board-resize-photo"></a>
-                  </div>
+                  </div> -->
                 </div>
               </section>
             </div>
@@ -146,8 +146,8 @@ ReTell Your Story
           @if($result->previousPageUrl())
             <a href="{{ $result->previousPageUrl() }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-circle-left"></i> Back</a>
           @endif
-        
-        
+
+
           @if($result->nextPageUrl())
               <a href="{{ $result->nextPageUrl() }}" class="btn btn-success pull-right btn-sm">Next <i class="fa fa-arrow-circle-right"></i></a>
           @endif
