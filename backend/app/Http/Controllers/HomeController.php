@@ -9,6 +9,7 @@ use App\Caption;
 use App\Hashtag;
 use App\CharacterNewLike;
 use App\Character;
+use DB;
 
 class HomeController extends Controller
 {
@@ -26,24 +27,48 @@ class HomeController extends Controller
         $c->hashtags;
       }
 
-      $lastest_like_time = CharacterNewLike::orderBy('created_at','desc')->first()->created_at;
-      $latest_likes = CharacterNewLike::where('created_at', $lastest_like_time)->get();
+      $champions = array();
 
-      $factions_likes = ['red'=>0,'yellow'=>0,'green'=>0,'blue'=>0];
-
-      foreach ( $latest_likes as $like ){
-        $faction = Character::findOrfail((int)$like->character_id)->faction;
-        $factions_likes[$faction]+= (int)$like->new_like;
+      $timestamps = DB::table('character_new_like')->select('created_at')->distinct()->get()->sortByDesc('created_at');
+      if ($timestamps->count() >= 5) {
+          $timestamps = $timestamps->slice(0,5);
       }
 
-      $rule_factions = array_keys($factions_likes, max($factions_likes));
+      foreach ($timestamps as $timestamp ) {
+        $latest_likes = array();
+        $latest_likes = CharacterNewLike::where('created_at', $timestamp->{'created_at'})->get();
+        $factions_likes = ['red'=>0,'yellow'=>0,'green'=>0,'blue'=>0];
+
+        foreach ( $latest_likes as $like ){
+          $faction = Character::findOrfail((int)$like->character_id)->faction;
+          $factions_likes[$faction]+= (int)$like->new_like;
+        }
+
+        $rule_factions = array_keys($factions_likes, max($factions_likes));
+        array_push($champions, $rule_factions);
+      }
+
+      $current_rulers = $champions[0];
+      $current_rulers_with_level = array();
+      foreach ($current_rulers as $ruler) {
+        $level = 0;
+        foreach ($champions as $champion){
+          if (!in_array($ruler, $champion)){
+            break;
+          }
+          $level+=1;
+        }
+        $current_rulers_with_level[$ruler] = $level;
+      }
+
+
 
       if (!$request->session()->has('retellgram_visited')) {
           $request->session()->put('retellgram_visited', 'true');
-          return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions, 'visited' => false]);
+          return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level, 'visited' => false]);
       }
 
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions,'visited' => true]);
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level,'visited' => true]);
     }
 
     public function latest()

@@ -87,11 +87,10 @@ class CaptionSeeder extends Seeder
         //seed caption new like
         for ($i = 0; $i < $limit; $i++) {
             DB::table('character_new_like')->insert([
-                'character_id' => $faker->numberBetween(1, 12),
-                'new_like' => $faker->numberBetween(1, 10),
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+                'character_id' => 1,
+                'new_like' => 1,
+                'created_at' => Carbon::now()->addHour($faker->numberBetween(0, 5))->format('Y-m-d H:i:s')
             ]);
-
         }
 
     }
