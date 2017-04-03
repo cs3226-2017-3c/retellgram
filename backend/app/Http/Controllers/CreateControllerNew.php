@@ -36,9 +36,9 @@ class CreateControllerNew extends Controller
     public function storeCreate(Request $request) {
     	Validator::make($request->all(), [ 
 		    'image_id' => array('required'),
-		    'caption' => array('required','max:100'),
+		    'caption' => array('required','min:2','max:100'),
             'character_id' => array('required','in:1,2,3,4,5,6,7,8,9,10,11,12'),
-            'hashtags' => array('nullable', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){1,5}/'),
+            'hashtags' => array('nullable', 'min:3', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){1,5}/'),
 		])->validate();
 
         $censor = new CensorWords;
@@ -53,7 +53,12 @@ class CreateControllerNew extends Controller
 	    $new_caption->image_id = $request->input('image_id');
 
         $content = Purifier::clean($request->input('caption'));
-	    $new_caption->content = $censor->censorString($content)['clean'];
+        $content = trim($content);
+        if (!$content) {
+            abort('404');
+        }
+
+        $new_caption->content = $censor->censorString($content)['clean'];
 	    $new_caption->likes = 0;
         $new_caption->character_id = $request->input('character_id');
         //$new_caption->approved = true;
