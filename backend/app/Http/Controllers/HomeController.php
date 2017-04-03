@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 use App\Image;
 use App\Caption;
 use App\Hashtag;
+use App\CharacterNewLike;
 
 class HomeController extends Controller
 {
@@ -24,8 +24,10 @@ class HomeController extends Controller
         $c->image;
         $c->hashtags;
       }
-      $top_char = DB::table('character_new_like')->orderBy('created_at','desc')->first();
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'char', $top_char]);
+      $top_char = CharacterNewLike::orderBy('created_at','desc')->first();
+      $top_char->character;
+      return $top_char;
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'top_char', $top_char]);
     }
 
     public function latest()
