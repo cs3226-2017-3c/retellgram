@@ -22,7 +22,12 @@ class HomeController extends Controller
     public function home(Request $request)
     {
       $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
-      $captions = Caption::orderBy('likes', 'desc')->get();
+      if ( strpos($request->url(), 'home') !== false  ) {
+        $captions = Caption::orderBy('likes', 'desc')->get();
+      } else {
+        $captions = Caption::orderBy('created_at', 'desc')->get();
+      }
+      
       $captions = $captions->keyBy('id');
       foreach ($captions as $c) {
         if ( Image::findOrFail($c->image_id)->reports > 10){
@@ -36,7 +41,11 @@ class HomeController extends Controller
 
       $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($captions), $perPage);
 
-      $paginatedSearchResults->setPath('/');
+      if ( strpos($request->url(), 'home') !== false  ) {
+        $paginatedSearchResults->setPath('/home');
+      } else {
+        $paginatedSearchResults->setPath('/');
+      }
 
       foreach ($paginatedSearchResults as $c) {
         $c->image;

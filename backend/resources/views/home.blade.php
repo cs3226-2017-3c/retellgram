@@ -15,7 +15,7 @@ ReTell Your Story
 <div class="page-content-wrapper">
   <div class="col-md-1"></div>
   <div class="col-md-2 gap-frm-top-posts">
-    @if(Request::path()=="/")
+    
     <div class="row">
       <div class="container">
         <div class="col-md-8">
@@ -101,7 +101,7 @@ ReTell Your Story
         </div>
       </div>
     </div>
-    @endif
+    
     @foreach($result as $r)
     <div class="row">
       <div class="container">

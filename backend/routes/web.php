@@ -35,8 +35,8 @@ Route::put('image/{id}', 'UploadControllerNew@reportImage');
 
 Route::get('newlikes', 'CharacterNewLikeController@getAll');
 
+Route::get('home', 'HomeController@home');
 Route::get('/', 'HomeController@home');
-Route::get('newest', 'HomeController@latest');
 
 Route::get('admin', 'AdminController@admin');
 Route::get('admin/{id}', 'AdminController@adminCaption');
