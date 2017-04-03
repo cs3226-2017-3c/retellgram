@@ -78,7 +78,14 @@ ReTell Your Story
                 <div class="panel panel-caption">
                   <!-- <div class="row caption-new page-header"> -->
                   <div class="row caption-new">
-                    <img src="logo/{{$rule_faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($rule_faction)}} Faction is the new ruler</font>
+                    @foreach ($rule_factions as $rule_faction)
+                    <img src="logo/{{$rule_faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($rule_faction)}} Faction </font> 
+                    @endforeach
+                    @if( sizeof($rule_factions) > 1 )
+                    <font color="white"> are new rulers</font>
+                    @else
+                    <font color="white"> is the new ruler</font>
+                    @endif
                   </div>
                   <!-- <div class="row caption-new">
                     <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>

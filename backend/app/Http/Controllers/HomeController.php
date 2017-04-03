@@ -32,12 +32,13 @@ class HomeController extends Controller
       $factions_likes = ['red'=>0,'yellow'=>0,'green'=>0,'blue'=>0];
 
       foreach ( $latest_likes as $like ){
-        $factions_likes[Character::get($like->character_id)->faction]+= (int)$like->new_like;
+        $faction = Character::findOrfail((int)$like->character_id)->faction;
+        $factions_likes[$faction]+= (int)$like->new_like;
       }
 
-      $rule_faction = array_keys($factions_likes, max($factions_likes));
+      $rule_factions = array_keys($factions_likes, max($factions_likes));
 
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_faction' => $rule_faction]);
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions]);
     }
 
     public function latest()
