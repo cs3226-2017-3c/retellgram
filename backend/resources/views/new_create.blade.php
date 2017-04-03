@@ -17,7 +17,7 @@
 Tell
 @endsection
 @section('header')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet">
+<!--link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet"-->
 <link href="css/image-picker.css" rel="stylesheet">
 <script type="text/javascript">
   //auto expand textarea
@@ -138,7 +138,7 @@ Tell
               <div class="panel panel-primary">
                 <div class="panel-body">
                   @if($image_id)
-                  <img class="mg-rounded" id="caption_image" src="storage/images/{{$image_path}}" alt="Image {{ $image_path }} ">
+                  <img class="img-rounded" id="caption_image" src="storage/images/{{$image_path}}" alt="Image {{ $image_path }} ">
                   @else
                   <img src="images/cat.jpg" id="caption_image" class="img-rounded">
                   @endif
@@ -227,7 +227,7 @@ Tell
 <script type="text/javascript" src="js/image-picker.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script-->
 <script>
   $(document).ready(function () {
 
@@ -238,20 +238,20 @@ Tell
       $(".character-chosen").text("Posted as " + name);
     }
    
-    $('#caption_image').croppie({
-      customClass:'mycrop',
-      showZoomer:false,
-      enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 200,
-            height: 200
-        }
-    });
+    // $('#caption_image').croppie({
+    //   customClass:'mycrop',
+    //   showZoomer:false,
+    //   enableExif: true,
+    //     viewport: {
+    //         width: 200,
+    //         height: 200,
+    //         type: 'square'
+    //     },
+    //     boundary: {
+    //         width: 200,
+    //         height: 200
+    //     }
+    // });
     $("#submitForm").on('click', function() {
         $("#chooseImageForm").submit();
     });
