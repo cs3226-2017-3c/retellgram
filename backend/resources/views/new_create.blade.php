@@ -78,8 +78,9 @@ Tell
           </div>
           <div class="panel-body">
             <div class=" col-md-4">
-              <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" 
+              <button type="button" class="btn btn-primary" data-toggle="modal" 
            data-target="#imageModal">pick a snap</button>
+              <i class="fa fa-hand-pointer-o fa-2x" aria-hidden="true"></i>
               <!--Select image modal-->
               <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
                 <div class="modal-dialog full-screen" role="document">
@@ -116,18 +117,19 @@ Tell
                 </div>
               </div>
 
+              <a href="/snap" type="button" class="btn btn-primary">upload a snap</a>
+
               <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
               <div class="panel panel-danger sub-panel-position">
                 <div class="panel-body notice-font">
-                  Retellgram has 5 factions and 9
+                  Retellgram has 4 factions and 12
                   characters. Each character belongs to
-                  1 of the 4 factions- Red, Yellow,
-                  Green, Blue. The last faction- White
-                  consists of non-fictional users. Votes
-                  earned by characters contribute to the
-                  total votes for each faction. Winning
-                  faction gets to rule over the rest. Factions
-                  get to overthrow ruler every week.
+                  one of the 4 factions - Red, Yellow,
+                  Green, Blue. Likes earned by characters 
+                  contribute to the total votes for each 
+                  faction. Winning faction gets to rule 
+                  over the rest. Factions get to 
+                  overthrow ruler every day.
                 </div>
               </div>
             </div>
