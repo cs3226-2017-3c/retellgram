@@ -8,6 +8,7 @@ use App\Image;
 use App\Caption;
 use App\Hashtag;
 use App\CharacterNewLike;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Character;
 use DB;
 
@@ -21,8 +22,23 @@ class HomeController extends Controller
     public function home(Request $request)
     {
       $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
-      $captions = Caption::orderBy('likes', 'desc')->simplePaginate(20);
+      $captions = Caption::orderBy('likes', 'desc')->get();
+      $captions = $captions->keyBy('id');
       foreach ($captions as $c) {
+        if ( Image::findOrFail($c->image_id)->reports > 10){
+          $captions->forget($c->id);
+        }
+      }
+
+      $currentPage = LengthAwarePaginator::resolveCurrentPage();
+      $perPage = 20;
+      $currentPageSearchResults = $captions->slice(($currentPage-1) * $perPage, $perPage)->all();
+
+      $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($captions), $perPage);
+
+      $paginatedSearchResults->setPath('/');
+
+      foreach ($paginatedSearchResults as $c) {
         $c->image;
         $c->hashtags;
       }
@@ -61,25 +77,38 @@ class HomeController extends Controller
         $current_rulers_with_level[$ruler] = $level;
       }
 
-
-
       if (!$request->session()->has('retellgram_visited')) {
           $request->session()->put('retellgram_visited', 'true');
-          return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level, 'visited' => false]);
+          return view('home', ['result' => $paginatedSearchResults, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level, 'visited' => false]);
       }
 
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level,'visited' => true]);
+      return view('home', ['result' => $paginatedSearchResults, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level,'visited' => true]);
     }
 
     public function latest()
     {
         $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
-        $captions = Caption::orderBy('created_at', 'desc')->simplePaginate(20);
+        $captions = Caption::orderBy('created_at', 'desc')->get();
+        $captions = $captions->keyBy('id');
+        foreach ($captions as $c) {
+          if ( Image::findOrFail($c->image_id)->reports > 10){
+            $captions->forget($c->id);
+          }
+        }
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 20;
+        $currentPageSearchResults = $captions->slice(($currentPage-1) * $perPage, $perPage)->all();
+
+        $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($captions), $perPage);
+
+     
         foreach ($captions as $c) {
           $c->image;
           $c->hashtags;
         }
+        $paginatedSearchResults->setPath('/newest');
 
-        return view('home', ['result' => $captions, 'hashtags' => $hashtags]);
+        return view('home', ['result' => $paginatedSearchResults, 'hashtags' => $hashtags]);
     }
 }

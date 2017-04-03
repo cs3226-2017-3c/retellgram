@@ -99,6 +99,17 @@ class SearchController extends Controller
             $r->{'character_name'} = Character::find($r->character_id)->name;
         }
 
+        $result = $result->keyBy('id');
+        foreach ($result as $r) {
+           if ( Image::findOrFail($r->image_id)->reports > 10){
+               $result->forget($r->id);
+           }
+        }
+
+        if (sizeof($result) == 0 ) {
+          return view('search_not_found' );
+        }
+
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 20;
         $currentPageSearchResults = $result->slice(($currentPage-1) * $perPage, $perPage)->all();
