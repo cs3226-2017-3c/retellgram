@@ -277,7 +277,9 @@ Tell
       $('.thumbnails').imagesLoaded().progress(function () {
         $('.thumbnails').masonry({
           itemSelector: '.thumbnail',
-          columnWidth : 150,
+          columnWidth : 180,
+          transitionDuration: "0.2",
+          isAnimated: true,
         });
       });
     });
@@ -286,7 +288,9 @@ Tell
       $('.thumbnails').imagesLoaded().progress(function () {
         $('.thumbnails').masonry({
           itemSelector: '.thumbnail',
-          columnWidth : 150,
+          columnWidth : 180,
+          transitionDuration: "0.2",
+          isAnimated: true,
         });
       });
     });
