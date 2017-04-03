@@ -96,11 +96,11 @@ Tell
                         <div class="modal-body">
                           <form role="form" action="/tell" id="chooseImageForm" method="get">
                             
-                            <div id="grid" class="form-group">
-                              <select id="image_id" name="image_id" class="image-picker form-control">
+                            <div class="form-group">
+                              <select id="image_id" name="image_id" class="image-picker masonry form-control">
                                 <option value=""></option>
                                 @foreach ($images as $image)
-                                <div class="grid_item"><option data-img-src='storage/images/{{$image->file_path}}' value='{{$image->id}}'>{{$image->file_path}}</option></div>
+                                <option data-img-src='storage/images/{{$image->file_path}}' value='{{$image->id}}'>{{$image->file_path}}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -225,6 +225,7 @@ Tell
 @endsection
 @section('footer')
 <script type="text/javascript" src="js/image-picker.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
 <script>
@@ -264,17 +265,32 @@ Tell
          limit_reached: function(){swal('Please select only one image.')}, 
     });
 
-    $('#grid').masonry({
-      itemSelector: '.grid-item',
-      columnWidth: 200
-    });
-
     $("#character_id").imagepicker({
         hide_select: true,
          limit: 1,
          show_label: true,
          limit_reached: function(){swal('Please select only one character.')}, 
     });
+
+
+    $('#imageModal').on( 'shown.bs.modal', function() {
+      $('.thumbnails').imagesLoaded().progress(function () {
+        $('.thumbnails').masonry({
+          itemSelector: '.thumbnail',
+          columnWidth : 150,
+        });
+      });
+    });
+
+    $('#characterModal').on( 'shown.bs.modal', function() {
+      $('.thumbnails').imagesLoaded().progress(function () {
+        $('.thumbnails').masonry({
+          itemSelector: '.thumbnail',
+          columnWidth : 150,
+        });
+      });
+    });
+
   });
 </script>
 @endsection
