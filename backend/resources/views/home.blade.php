@@ -35,6 +35,7 @@ ReTell Your Story
                 </div>
               </section>
               <section class="post-body">
+                @if (!$visited)
                 <div class="panel panel-caption">
                   <div class="row caption-new page-header">
                     <a href="#"><img src="characters/joker.png" class="img-rounded panel-resize-photo"><font color="white"> Welcome to Retellgram!</font></a>
@@ -75,6 +76,7 @@ ReTell Your Story
                     </div>
                   </div>
                 </div>
+                @endif
                 <div class="panel panel-caption">
                   <!-- <div class="row caption-new page-header"> -->
                   <div class="row caption-new">

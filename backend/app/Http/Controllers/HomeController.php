@@ -17,7 +17,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function home()
+    public function home(Request $request)
     {
       $hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
       $captions = Caption::orderBy('likes', 'desc')->simplePaginate(20);
@@ -38,7 +38,12 @@ class HomeController extends Controller
 
       $rule_factions = array_keys($factions_likes, max($factions_likes));
 
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions]);
+      if (!$request->session()->has('retellgram_visited')) {
+          $request->session()->put('retellgram_visited', 'true');
+          return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions, 'visited' => false]);
+      }
+
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_factions' => $rule_factions,'visited' => true]);
     }
 
     public function latest()
