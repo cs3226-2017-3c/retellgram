@@ -78,7 +78,7 @@ ReTell Your Story
                 <div class="panel panel-caption">
                   <!-- <div class="row caption-new page-header"> -->
                   <div class="row caption-new">
-                    <img src="logo/{{$top_char->character->faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($top_char->character->faction)}} Faction is the new ruler</font>
+                    <img src="logo/{{$rule_faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($rule_faction)}} Faction is the new ruler</font>
                   </div>
                   <!-- <div class="row caption-new">
                     <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>

@@ -8,6 +8,7 @@ use App\Image;
 use App\Caption;
 use App\Hashtag;
 use App\CharacterNewLike;
+use App\Character;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,19 @@ class HomeController extends Controller
         $c->image;
         $c->hashtags;
       }
-      $top_char = CharacterNewLike::orderBy('created_at','desc')->first();
-      $top_char->character;
-      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'top_char' => $top_char]);
+
+      $lastest_like_time = CharacterNewLike::orderBy('created_at','desc')->first()->created_at;
+      $latest_likes = CharacterNewLike::where('created_at', $lastest_like_time)->get();
+
+      $factions_likes = ['red':0,'yellow':0,'green':0,'blue':0];
+
+      foreach ( $latest_likes as $like ){
+        $factions_likes[Character::get($like->character_id)->faction]+= (int)$like->new_like;
+      }
+
+      $rule_faction = array_keys($factions_likes, max($factions_likes));
+
+      return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'rule_faction' => $rule_faction]);
     }
 
     public function latest()
