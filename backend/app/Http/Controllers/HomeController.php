@@ -26,7 +26,6 @@ class HomeController extends Controller
       }
       $top_char = CharacterNewLike::orderBy('created_at','desc')->first();
       $top_char->character;
-      return $top_char;
       return view('home', ['result' => $captions, 'hashtags' => $hashtags, 'top_char', $top_char]);
     }
 
