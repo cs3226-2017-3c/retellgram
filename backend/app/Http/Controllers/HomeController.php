@@ -29,7 +29,7 @@ class HomeController extends Controller
       $lastest_like_time = CharacterNewLike::orderBy('created_at','desc')->first()->created_at;
       $latest_likes = CharacterNewLike::where('created_at', $lastest_like_time)->get();
 
-      $factions_likes = ['red':0,'yellow':0,'green':0,'blue':0];
+      $factions_likes = ['red'=>0,'yellow'=>0,'green'=>0,'blue'=>0];
 
       foreach ( $latest_likes as $like ){
         $factions_likes[Character::get($like->character_id)->faction]+= (int)$like->new_like;
