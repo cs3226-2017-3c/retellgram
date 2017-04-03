@@ -23,6 +23,11 @@ class AdminController extends Controller
     return view('adminCaption',[ 'captions' => $captions]);
   }
 
+  public function adminReport() {
+    $images = Image::where("reports",">",10)->get();
+    return view('admin',[ 'images' => $images]);
+  }
+
   public function deleteImage(Request $request, $image_id) {
     $image = Image::findOrFail($image_id);
     $captions = $image->captions;
@@ -30,8 +35,15 @@ class AdminController extends Controller
       $caption->delete();
     }
     $image->delete();
-    $images = Image::All()->sortByDesc('created_at');
-    return redirect()->action('AdminController@admin',['images' => $images]);
+    return redirect()->action('AdminController@admin');
+  }
+
+  public function resetImageReport(Request $request, $image_id) {
+    $image = Image::findOrFail($image_id);
+    $image->reports = 0;
+    $image->save();
+
+    return redirect()->action('AdminController@adminReport');
   }
 
   public function deleteCaption(Request $request, $id) {

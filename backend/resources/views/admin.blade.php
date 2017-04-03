@@ -20,7 +20,15 @@ Admin
 					<form action="image/{{$image->id}}/delete" method="post">
 						{{ csrf_field() }}
 						<button type="submit" style="position:absolute;">Delete Image</button>
+					</form>
+					<br>
+					<br>	
+					@if(Request::path()=="report")
+					<form action="image/{{$image->id}}/resetReports" method="post">
+						{{ csrf_field() }}
+						<button type="submit" style="position:absolute;">Reset Reports</button>
 					</form>	
+					@endif
 				</div>
 			</div>
 			@endforeach

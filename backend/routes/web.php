@@ -39,7 +39,9 @@ Route::get('newest', 'HomeController@latest');
 
 Route::get('admin', 'AdminController@admin');
 Route::get('admin/{id}', 'AdminController@adminCaption');
+Route::get('report', 'AdminController@adminReport');
 Route::post('caption/{id}/delete', 'AdminController@deleteCaption');
+Route::post('image/{id}/resetReports', 'AdminController@resetImageReport'); 
 
 
 // Authentication Routes...
