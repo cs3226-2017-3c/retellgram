@@ -1,4 +1,4 @@
-var MAX_CONTENT_LENGTH = 35;
+var MAX_CONTENT_LENGTH = 25;
 var captions;
 
 

@@ -29,7 +29,7 @@ Story
     <div class="col-md-1"></div>
     <div class="col-md-10 tell-panel">
       <div class="page-content-wrapper">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="panel panel-default">
             <div class="panel-body">
               <section class="post-heading">
@@ -52,16 +52,15 @@ Story
                   <ul class="list-unstyled">
                     <li><div id="likes"></div></li>
                     <li><a href="/tell?image_id={{$image_id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                    <li><a href="#" onclick=shareFB(event)>
-                        <i class="glyphicon glyphicon-share-alt"></i> Share</a>
-                    </li>
+                    <li><a href="#" onclick=shareFB(event)><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                    <li><a href="#" onclick=report(event) id="{{$image_id}}"><i class="fa fa-eye" aria-hidden="true"></i> Report</a></li>
                   </ul>
                 </div>
               </section>
             </div>
           </div>
 		    </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div id="all_caption" class="list-group scroll-area"></div>
         </div>
 	    </div>
