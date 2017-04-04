@@ -35,7 +35,9 @@
 
   @include('new_navigation')
 
-  @yield('main')
+  <div style="margin-top:10px">
+    @yield('main')
+  </div>
 
   <button class="cd-top" title="Go to top"></button>
 
