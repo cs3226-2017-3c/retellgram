@@ -101,6 +101,23 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'image_id' => [
+            'required' => 'Please select or upload image first.',
+        ],
+        'caption' => [
+            'required' => 'Please fill in caption.',
+        ],
+        'character_id' => [
+            'required' => 'Please select character.',
+            'in' => 'Please select a valid character in the list.'
+        ],
+        'hashtags' => [
+            'regex' => 'Hashtag must be English characters. Maximum 5 hashtags are allowed.'
+        ],
+        'uploading' => [
+            'required' => 'Please select image to upload.',
+        ],
+
     ],
 
     /*
