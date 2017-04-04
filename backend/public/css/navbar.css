@@ -55,13 +55,17 @@ body {
   border-color: #afc8e0;
 }
 
+#custom-search-form {
+  border-color: white;
+}
+
 
 .cd-top {
   display: inline-block;
   height: 40px;
   width: 40px;
   position: fixed;
-  bottom: 40px;
+  bottom: 80px;
   right: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   /* image replacement properties */

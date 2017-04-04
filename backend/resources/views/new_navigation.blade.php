@@ -1,8 +1,8 @@
 <div class="row">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div data-step="1" data-intro="Click Snap to upload. Click Tell to add captions"   class="navbar-header">
+      <div id="hint-navbar" class="container">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </nav>
-    <div class="hidden-sm hidden-lg hidden-md">
+    <div id="hint-navbar" class="hidden-sm hidden-lg hidden-md">
       <nav class="bottom-nav">
         <ul>
           <li>
