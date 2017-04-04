@@ -55,6 +55,10 @@ body {
   border-color: #afc8e0;
 }
 
+#custom-search-form {
+  border-color: white;
+}
+
 
 .cd-top {
   display: inline-block;
