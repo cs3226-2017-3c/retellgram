@@ -3,6 +3,7 @@
 ReTell Your Story
 @endsection
 @section('header')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.5.0/introjs.min.css">
 @endsection
 @section('sidebar')
 @foreach($hashtags as $t)
@@ -36,7 +37,7 @@ ReTell Your Story
               </section>
               <section class="post-body">
                 @if (!$visited)
-                <div class="panel panel-caption">
+                <div id="introduction-panel" class="panel panel-caption">
                   <div class="row caption-new page-header">
                     <a href="#"><img src="characters/joker.png" class="img-rounded panel-resize-photo"><font color="white"> Welcome to Retellgram!</font></a>
                   </div>
@@ -77,10 +78,10 @@ ReTell Your Story
                   </div>
                 </div>
                 @endif
-                <div class="panel panel-caption">
+                <div data-step="2" data-intro="This is the ruler. Likes of each character contribute to faction. Ruler refreshes per hour." class="panel panel-caption">
                   <!-- <div class="row caption-new page-header"> -->
                   @foreach ($rule_factions as $rule_faction => $level)
-                  <div class="row caption-new">  
+                  <div data-step="3" data-intro="If a faction continues become ruler, it will level up." class="row caption-new">  
                     <img src="logo/{{$rule_faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($rule_faction)}} Faction is the new ruler</font>
                     <a href="#"><img src="logo/level_{{$level}}.gif" class="img-rounded notice-board-resize-photo"></a>
                   </div>
@@ -174,6 +175,7 @@ ReTell Your Story
 </div>
 @endsection
 @section('footer')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.5.0/intro.min.js"></script>
 <script>
 $(document).ready(function () {
 
@@ -210,6 +212,11 @@ $(document).ready(function () {
       $("#countdown").html("    Refresh to see new ruler!");
     }
   }, 1000);
+
+  if ($('#introduction-panel').length!=0){
+    introJs().start();
+  }
+  
 });
 </script>
 @endsection
