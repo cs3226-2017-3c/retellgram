@@ -73,4 +73,32 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    <div class="hidden-sm hidden-lg hidden-md">
+      <nav class="bottom-nav">
+        <ul>
+          <li>
+            <a href="/">
+              <i class="fa fa-coffee fa-2x"></i>
+              <span class="nav-text">Newest</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/snap">
+              <i class="fa fa-camera-retro fa-2x"></i>
+              <span class="nav-text">Snap</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/tell">
+              <i class="fa fa-bomb fa-2x"></i>
+              <span class="nav-text">Tell</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
 </div>
