@@ -3,7 +3,8 @@
 ReTell Your Story
 @endsection
 @section('header')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.5.0/introjs.min.css">
+<link href="/enjoyhint/enjoyhint.css" rel="stylesheet">
+ 
 @endsection
 @section('sidebar')
 @foreach($hashtags as $t)
@@ -66,7 +67,7 @@ ReTell Your Story
                     <p></p>
                     <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#plot">Sounds Cool <i class="fa fa-sign-language fa-2x" aria-hidden="true"></i></button>
                     <div id="plot" class="collapse">
-                      <br>You lurk in the shadows, masked behind one of Retellgram's nine characters.
+                      <br>You lurk in the shadows, masked behind one of Retellgram's 12 characters.
                       And your mission?
                       <br>Usurp the throne and become Retellgram's most notorious ruler!
                       <br>There's just one problem, however.
@@ -78,12 +79,12 @@ ReTell Your Story
                   </div>
                 </div>
                 @endif
-                <div data-step="2" data-intro="This is the ruler. Likes of each character contribute to faction. Ruler refreshes per hour." class="panel panel-caption">
+                <div class="panel panel-caption">
                   <!-- <div class="row caption-new page-header"> -->
                   @foreach ($rule_factions as $rule_faction => $level)
-                  <div data-step="3" data-intro="If a faction continues become ruler, it will level up." class="row caption-new">  
+                  <div id="rulers" class="row caption-new">  
                     <img src="logo/{{$rule_faction}}.png" class="img-rounded panel-resize-photo"><font color="white"> {{ucwords($rule_faction)}} Faction is the new ruler</font>
-                    <a href="#"><img src="logo/level_{{$level}}.gif" class="img-rounded notice-board-resize-photo"></a>
+                    <a id="levels" href="#"><img src="logo/level_{{$level}}.gif" class="img-rounded notice-board-resize-photo"></a>
                   </div>
                   @endforeach
                   <div class="row caption-new">  
@@ -175,7 +176,7 @@ ReTell Your Story
 </div>
 @endsection
 @section('footer')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.5.0/intro.min.js"></script>
+<script src="/enjoyhint/enjoyhint.min.js"></script>
 <script>
 $(document).ready(function () {
 
@@ -214,7 +215,33 @@ $(document).ready(function () {
   }, 1000);
 
   if ($('#introduction-panel').length!=0){
-    introJs().start();
+    var enjoyhint_instance = new EnjoyHint({});
+
+    //simple config. 
+    //Only one step - highlighting(with description) "New" button 
+    //hide EnjoyHint after a click on the button.
+    var enjoyhint_script_steps = [
+      {
+        'next #hint-navbar' : 'Click Snap to upload. Click Tell to add captions',
+      },
+      {
+        'next #rulers' : 'This ruler faction is based on number of likes in recent hour. <br>Four factions are Red, Yellow, Green, Blue. Each has 3 characters.',
+      },
+      {
+        'next #levels' : 'If a faction continues become ruler, it will level up. <br>We have five levels: Rookie, Amateur, Pro, Veteran, Legend.',
+        'shape': 'circle',
+        'radius':80
+      },
+      {
+        'next #countdown' : 'Time remaining to refresh ruler faction',
+      }
+    ];
+
+    //set script config
+    enjoyhint_instance.set(enjoyhint_script_steps);
+
+    //run Enjoyhint script
+    enjoyhint_instance.run();
   }
   
 });
