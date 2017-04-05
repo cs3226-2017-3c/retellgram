@@ -115,7 +115,7 @@ ReTell Your Story
                   <div class="col-md-11">
                     <div class="media">
                       <div class="media-body">
-                        <a href="/detail/{{$r->image->id}}?caption_id={{$r->id}}" class="anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
+                        <a href="/detail/{{$r->image->id}}?caption_id={{$r->id}}" class="caption-id anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
                         <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
                       </div>
                     </div>
@@ -234,6 +234,11 @@ $(document).ready(function () {
       },
       {
         'next #countdown' : 'Time remaining to refresh ruler faction',
+      },
+      {
+        'next .caption-id' : 'Read other stories of this photo.',
+        'shape': 'circle',
+        'radius':50
       },
       {
         'next .tell-link' : 'Retell your stories on the same image.',
