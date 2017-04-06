@@ -38,16 +38,16 @@ Route::get('newlikes', 'CharacterNewLikeController@getAll');
 Route::get('home', 'HomeController@home');
 Route::get('/', 'HomeController@home');
 
-Route::get('admin', 'AdminController@admin');
-Route::get('admin/{id}', 'AdminController@adminCaption');
-Route::get('report', 'AdminController@adminReport');
+Route::get('thisrouteshouldhidefromuseradmin', 'AdminController@admin');
+Route::get('thisrouteshouldhidefromuseradmin/{id}', 'AdminController@adminCaption');
+Route::get('thisrouteshouldhidefromuserreport', 'AdminController@adminReport');
 Route::post('caption/{id}/delete', 'AdminController@deleteCaption');
 Route::post('image/{id}/resetReports', 'AdminController@resetImageReport'); 
 
 
 // Authentication Routes...
-Route::get('123', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('123', 'Auth\LoginController@login');
+Route::get('thisrouteshouldhidefromuserlogin', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('thisrouteshouldhidefromuserlogin', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
@@ -55,7 +55,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset', function () {  abort('404');})->name('password.request');
+Route::post('password/email', function () { abort('404');})->name('password.email');
+Route::get('password/reset/{token}', function () { abort('404');})->name('password.reset');
+Route::post('password/reset', function () { abort('404');});
