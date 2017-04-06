@@ -88,7 +88,7 @@ ReTell Your Story
                   </div>
                   @endforeach
                   <div class="row caption-new">  
-                    <font color="white">Ruler faction refreshing in:    <div style="font-size:50px;" id="countdown"></div></font>
+                    <font color="white">Ruler faction refreshing in:    <h2 id="countdown"></h2>
                   </div>
                   <!-- <div class="row caption-new">
                     <a href="#"><img src="logo/rookie.png" class="img-rounded notice-board-resize-photo"></a>
