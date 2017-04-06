@@ -141,7 +141,7 @@ ReTell Your Story
                   <ul class="list-unstyled">
                     <li><a href="#" onclick=like(event) id="{{$r->id}}"><i class="fa fa-heart" aria-hidden="true"></i> {{$r->likes}} Likes</a></li>
                     <li class="tell-link"><a href="/tell?image_id={{$r->image->id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
-                    <li class="share-link"><a href="#" onclick=shareFB("{{env('APP_URL')}}","{{$r->image->id}}","{{$r->id}}")><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                    <li class="share-link"><a href="#" onclick=shareFB("{{env('APP_URL')}}","{{$r->image->id}}","{{$r->id}}")><i class="fa fa-facebook-official"></i> Share</a></li>
                     <li><a href="#" onclick=report(event) id="{{$r->image->id}}"><i class="fa fa-eye" aria-hidden="true"></i> Report</a></li>
                   </ul>
                 </div>
