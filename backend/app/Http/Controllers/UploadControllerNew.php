@@ -46,7 +46,7 @@ class UploadControllerNew extends Controller
       $name = time().uniqid();
       $filename = $name.'.'.$ext;
 
-      $img->save(public_path("storage/images/".$filename) , 50);
+      $img->save(public_path("storage/images/".$filename) , 100);
       	
       $new_image->file_path = $filename;
 
