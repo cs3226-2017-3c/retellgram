@@ -61,7 +61,9 @@ Story
           </div>
 		    </div>
         <div class="col-md-5">
-          <div id="all_caption" class="list-group scroll-area"></div>
+          <div class="scroll-area-container" >
+            <div id="all_caption" class="list-group scroll-area"></div>
+          </div>
         </div>
 	    </div>
     </div>

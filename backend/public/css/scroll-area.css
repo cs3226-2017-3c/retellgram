@@ -1,4 +1,9 @@
 div.scroll-area {
-	overflow:scroll;
+	overflow-y:auto;
 	height:400px;
+}
+
+div.scroll-area-container {
+	height:400px;
+	overflow:hidden;
 }
