@@ -43,7 +43,7 @@ class CreateControllerNew extends Controller
     public function storeCreate(Request $request) {
     	Validator::make($request->all(), [ 
 		    'image_id' => array('required'),
-		    'caption' => array('required','min:2','max:100'),
+		    'caption' => array('required','min:2','max:200'),
             'character_id' => array('required','in:1,2,3,4,5,6,7,8,9,10,11,12'),
             'hashtags' => array('nullable', 'min:3', 'max:50','regex:/(#[A-Za-z1-9]+(\s+)?){1,5}/'),
 		])->validate();
