@@ -20,9 +20,9 @@ class CreateControllerNew extends Controller
     public function viewCreate(Request $request) {
 
         $visited = true;
-        if (!$request->session()->has('retellgram_visited')) {
+        if (!$request->session()->has('retellgram_tell_visited')) {
             $visited = false;
-            $request->session()->put('retellgram_visited', 'true');
+            $request->session()->put('retellgram_tell_visited', 'true');
         }
 
         $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
