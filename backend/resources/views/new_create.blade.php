@@ -17,7 +17,7 @@
 Tell
 @endsection
 @section('header')
-<!--link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" rel="stylesheet"-->
+<link href="/enjoyhint/enjoyhint.css" rel="stylesheet">
 <link href="css/image-picker.css" rel="stylesheet">
 <script type="text/javascript">
   //auto expand textarea
@@ -77,9 +77,9 @@ Tell
             <h3 class="panel-title panel-tell-title">tell a different story</h3>
           </div>
           <div class="panel-body">
-            <div class=" col-md-4">
+            <!--div class=" col-md-4">
 
-              <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
+              <!--i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
               <div class="panel panel-danger sub-panel-position">
                 <div class="panel-body notice-font">
                   Retellgram has 4 factions and 12
@@ -92,9 +92,9 @@ Tell
                   overthrow ruler every hour.
                 </div>
               </div>
-            </div>
+            </div-->
 
-            <div class=" col-md-8">
+            <div class=" col-md-12">
               <div class="panel panel-primary">
                 <div class="panel-body">
                   @if($image_id)
@@ -107,7 +107,7 @@ Tell
             </div>
             <div class="col-md-8">
               <p class="character-chosen">Please choose character</p>
-              <button type="button" data-toggle="modal" data-target="#characterModal" class="btn btn-md btn-warning">choose someone famous <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button>
+              <button type="button" data-toggle="modal" data-target="#characterModal" class="choose-character btn btn-md btn-warning">choose someone famous <i class="fa fa-hand-lizard-o" aria-hidden="true"></i></button>
             </div>
 
             <!--Select character modal-->
@@ -173,7 +173,7 @@ Tell
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-8">
-              <button type="submit" class="btn btn-lg btn-success">retell <i class="fa fa-heart" aria-hidden="true"></i></button>
+              <button type="submit" id="retell-button" class="btn btn-lg btn-success">retell <i class="fa fa-heart" aria-hidden="true"></i></button>
             </div>
             {!! Form::close() !!}
 
@@ -187,7 +187,7 @@ Tell
 <script type="text/javascript" src="js/image-picker.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script-->
+<script src="/enjoyhint/enjoyhint.min.js"></script>
 <script>
   $(document).ready(function () {
 
@@ -254,6 +254,34 @@ Tell
         });
       });
     });
+
+    @if (!$visited)
+    var enjoyhint_instance = new EnjoyHint({});
+
+    var enjoyhint_script_steps = [
+      {
+        'next .choose-character' : 'Retellgram has 4 factions and 12 characters. Each character belongs to one of the 4 factions - Red, Yellow, Green, Blue. Likes earned by characters contribute to the total votes for each faction.',
+      },
+      {
+        'next #caption' : 'Tell your new story here',
+      },
+      {
+        'next #hashtags' : 'You may want to add hashtags for your post',
+      },
+      {
+        'next #retell-button' : 'Finally click Retell to post. Enjoy!',
+        'shape': 'circle',
+        'radius':50
+      }
+      
+    ];
+
+    //set script config
+    enjoyhint_instance.set(enjoyhint_script_steps);
+
+    //run Enjoyhint script
+    enjoyhint_instance.run();
+    @endif
 
   });
 </script>

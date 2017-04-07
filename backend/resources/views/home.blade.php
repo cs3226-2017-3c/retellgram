@@ -241,15 +241,16 @@ $(document).ready(function () {
         'radius':50
       },
       {
-        'next .tell-link' : 'Retell your stories on the same image.',
-        'shape': 'circle',
-        'radius':50
-      },
-      {
         'next .share-link' : 'Share this story on FB.',
         'shape': 'circle',
         'radius':50
       },
+      {
+        'click .tell-link' : 'Click to retell your story on the same image.',
+        'shape': 'circle',
+        'radius':50
+      }
+      
     ];
 
     //set script config
