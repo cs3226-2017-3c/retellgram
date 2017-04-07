@@ -127,7 +127,7 @@ ReTell Your Story
               <section class="post-body">
                 <div class="panel panel-caption">
                   <div class="row caption-new page-header">
-                    <a href="#"><img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->character->name}}</font></a>
+                    <img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->character->name}}</font>
                   </div>
                   <div class="row caption-new panel-text-color">
                     <p>{{$r->content}}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
