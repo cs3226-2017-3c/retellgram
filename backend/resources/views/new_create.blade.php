@@ -260,7 +260,7 @@ Tell
 
     var enjoyhint_script_steps = [
       {
-        'next .choose-character' : 'Retellgram has 4 factions and 12 characters. Each character belongs to one of the 4 factions - Red, Yellow, Green, Blue. Likes earned by characters contribute to the total votes for each faction.',
+        'next .choose-character' : 'Retellgram has 4 factions and 12 characters. <br>Each character belongs to one of the 4 factions - Red, Yellow, Green, Blue. <br>Likes earned by characters contribute to the total votes for each faction.',
       },
       {
         'next #caption' : 'Tell your new story here',
