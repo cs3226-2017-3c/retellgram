@@ -1,3 +1,10 @@
+<?php
+    $faction_colors = array( "red" => "#fd5f67", 
+              "yellow" => "#e4c556", 
+              "green" => "#58d774",
+              "blue" => "#65e9e9");
+?>
+
 @extends('new_template_with_side_bar')
 @section('title')
 ReTell Your Story
@@ -127,7 +134,7 @@ ReTell Your Story
               <section class="post-body">
                 <div class="panel panel-caption">
                   <div class="row caption-new page-header">
-                    <img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="white"> {{$r->character->name}}</font>
+                    <img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="{{$faction_colors[$r->character->faction]}}"> {{$r->character->name}}</font>
                   </div>
                   <div class="row caption-new panel-text-color">
                     <p>{{$r->content}}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
