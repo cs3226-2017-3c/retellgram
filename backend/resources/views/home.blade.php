@@ -137,7 +137,7 @@ ReTell Your Story
                     <img src="characters/{{$r->character->path}}" class="img-rounded panel-resize-photo"><font color="{{$faction_colors[$r->character->faction]}}"> {{$r->character->name}}</font>
                   </div>
                   <div class="row caption-new panel-text-color">
-                    <p>{{$r->content}}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
+                    <p><font color="{{$faction_colors[$r->character->faction]}}">{{$r->content}}</font><br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
                   </div>
                 </div>
                 <img src="{{'/storage/images/'.$r->image->file_path}}" class="img-rounded panel-img-position">
