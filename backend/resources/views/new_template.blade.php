@@ -11,6 +11,7 @@
   <meta name="author" content="">
 
   <link rel="icon" href="/logo/R.jpg">
+  <link rel="apple-touch-icon" href="/logo/R.jpg">
   <title>@yield('title') - Retellgram</title>
 
   <!-- Bootstrap core CSS -->
