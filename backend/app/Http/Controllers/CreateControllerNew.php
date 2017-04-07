@@ -97,9 +97,9 @@ class CreateControllerNew extends Controller
 
         $chosen_character = Character::find($new_caption->character_id);
 
-        //flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
+        flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
 
-        flash()->overlay($chosen_character->name." belong to faction ".$chosen_character->faction." <img src='/logo/".$chosen_character->faction.".png' class='img-rounded panel-resize-photo'>",'Tell successfully');
+        //flash()->overlay($chosen_character->name." belong to faction ".$chosen_character->faction." <img src='/logo/".$chosen_character->faction.".png' class='img-rounded panel-resize-photo'>",'Tell successfully');
 
         return redirect()->action('DetailController@getView',['id' => $new_caption->image_id, 'caption_id' => $new_caption->id ]);
     }
