@@ -238,17 +238,17 @@ $(document).ready(function () {
       {
         'next .caption-id' : 'Read other stories of this photo.',
         'shape': 'circle',
-        'radius':50
+        'radius':30
       },
       {
         'next .share-link' : 'Share this story on FB.',
         'shape': 'circle',
-        'radius':50
+        'radius':30
       },
       {
         'click .tell-link' : 'Click to retell your story on the same image.',
         'shape': 'circle',
-        'radius':50
+        'radius':30
       }
       
     ];

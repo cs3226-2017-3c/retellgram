@@ -255,34 +255,38 @@ Tell
       });
     });
 
-    @if (!$visited)
-    var enjoyhint_instance = new EnjoyHint({});
-
-    var enjoyhint_script_steps = [
-      {
-        'next .choose-character' : 'Retellgram has 4 factions and 12 characters. <br>Each character belongs to one of the 4 factions - Red, Yellow, Green, Blue. <br>Likes earned by characters contribute to the total votes for each faction.',
-      },
-      {
-        'next #caption' : 'Tell your new story here',
-      },
-      {
-        'next #hashtags' : 'You may want to add hashtags for your post',
-      },
-      {
-        'next #retell-button' : 'Finally click Retell to post. Enjoy!',
-        'shape': 'circle',
-        'radius':50
-      }
-      
-    ];
-
-    //set script config
-    enjoyhint_instance.set(enjoyhint_script_steps);
-
-    //run Enjoyhint script
-    enjoyhint_instance.run();
-    @endif
-
   });
 </script>
+@if (!$visited)
+<script>
+  $(document).ready(function () {
+        var enjoyhint_instance = new EnjoyHint({});
+
+        var enjoyhint_script_steps = [
+          {
+            'next .choose-character' : 'Retellgram has 4 factions and 12 characters. <br>Each character belongs to one of the 4 factions - Red, Yellow, Green, Blue. <br>Likes earned by characters contribute to the total votes for each faction.',
+          },
+          {
+            'next #caption' : 'Tell your new story here',
+          },
+          {
+            'next #hashtags' : 'You may want to add hashtags for your post',
+          },
+          {
+            'next #retell-button' : 'Finally click Retell to post. Enjoy!',
+            'shape': 'circle',
+            'radius':50
+          }
+          
+        ];
+
+        //set script config
+        enjoyhint_instance.set(enjoyhint_script_steps);
+
+        //run Enjoyhint script
+        enjoyhint_instance.run();
+       
+  });
+</script>
+@endif
 @endsection
