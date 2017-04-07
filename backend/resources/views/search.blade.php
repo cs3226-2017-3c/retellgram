@@ -56,7 +56,7 @@ Search
                 <a href="#"><img src="characters/{{ $r->{'character_path'} }}" class="img-rounded panel-resize-photo"><font color="{{$faction_colors[$r->character->faction]}}"> {{ $r->{'character_name'} }}</font></a>
               </div>
               <div class="row caption-new panel-text-color">
-                <p><font color="{{$faction_colors[$r->character->faction]}}">{{ $r->content }}</font><br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
+                <p>{{ $r->content }}<br>@foreach($r->hashtags as $t) <a class="hashtag" href="/search?query=%23{{$t->name}}">#{{$t->name}} </a>@endforeach</p>
               </div>
               </div>
               <img src="storage/images/{{ $r->{'image_path'} }}" class="img-rounded panel-img-position">
