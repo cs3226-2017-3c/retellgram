@@ -26,6 +26,7 @@ Story
       @include('flash::message')
       {{ Session::forget('flash_notification') }}
     </div>
+
     <div class="col-md-1"></div>
     <div class="col-md-10 tell-panel">
       <div class="page-content-wrapper">
@@ -71,6 +72,9 @@ Story
 @endsection
 @section('footer')
 <script src="/js/detail.js"></script>
+<script>
+$('#flash-overlay-modal').modal();
+</script>
 <script>
 $( document ).ready(function() {
   getCaptions("{{$image_id}}", "{{$caption_id}}");
