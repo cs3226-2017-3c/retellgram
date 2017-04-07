@@ -29,7 +29,7 @@ class UploadControllerNew extends Controller
 
       $img = $manager->make( $request->file('uploading'));
 
-      $img->resize(1000, null, function ($constraint) {
+      $img->resize(500, null, function ($constraint) {
           $constraint->aspectRatio();
           $constraint->upsize();
       });
@@ -46,7 +46,7 @@ class UploadControllerNew extends Controller
       $name = time().uniqid();
       $filename = $name.'.'.$ext;
 
-      $img->save(public_path("storage/images/".$filename) , 70);
+      $img->save(public_path("storage/images/".$filename) , 50);
       	
       $new_image->file_path = $filename;
 
