@@ -1,7 +1,10 @@
 var MAX_CONTENT_LENGTH = 25;
+var FACTION_COLOR = new Array();
+FACTION_COLOR["red"]="#fd5f67";
+FACTION_COLOR["yellow"]="#e4c556"; 
+FACTION_COLOR["green"]="#58d774";
+FACTION_COLOR["blue"]="#65e9e9";
 var captions;
-
-
 function getCaptions(image_id, caption_id) {
 	var url = "/caption?likes=1&image_id=";
 	var has_selected_caption = false;
@@ -75,7 +78,7 @@ function updateCaptionDisplay(caption) {
 		hashtags=hashtags+aTag;
 	};
 	var caption_content = "<p>"+caption['content']+"</p>";
-	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+"> "+caption['character']['name']+"</h5>";
+	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+">"+"<font color="+FACTION_COLOR[caption['character']['faction']]+"> "+caption['character']['name']+"</font></h5>";
 	var post_date;
 	if (caption['created_at'] == null) {
 		post_date = "";
