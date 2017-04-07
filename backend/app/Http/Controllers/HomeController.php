@@ -36,7 +36,7 @@ class HomeController extends Controller
       }
 
       $currentPage = LengthAwarePaginator::resolveCurrentPage();
-      $perPage = 20;
+      $perPage = 10;
       $currentPageSearchResults = $captions->slice(($currentPage-1) * $perPage, $perPage)->all();
 
       $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($captions), $perPage);
@@ -106,7 +106,7 @@ class HomeController extends Controller
         }
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = 20;
+        $perPage = 10;
         $currentPageSearchResults = $captions->slice(($currentPage-1) * $perPage, $perPage)->all();
 
         $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($captions), $perPage);

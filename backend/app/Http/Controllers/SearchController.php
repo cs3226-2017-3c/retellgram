@@ -111,7 +111,7 @@ class SearchController extends Controller
         }
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = 20;
+        $perPage = 10;
         $currentPageSearchResults = $result->slice(($currentPage-1) * $perPage, $perPage)->all();
 
         $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($result), $perPage);
