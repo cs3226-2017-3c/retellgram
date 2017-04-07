@@ -78,7 +78,7 @@ function updateCaptionDisplay(caption) {
 		hashtags=hashtags+aTag;
 	};
 	var caption_content = "<p>"+caption['content']+"</p>";
-	var post_by = "<h5>"+"<img class='img-rounded panel-resize-photo' src="+caption['path']+">"+"<font color="+FACTION_COLOR[caption['character']['faction']]+"> "+caption['character']['name']+"</font></h5>";
+	var post_by = "<img class='img-rounded panel-resize-photo' src="+caption['path']+">"+"<font color="+FACTION_COLOR[caption['character']['faction']]+"> "+caption['character']['name']+"</font>";
 	var post_date;
 	if (caption['created_at'] == null) {
 		post_date = "";

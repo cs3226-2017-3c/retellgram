@@ -35,7 +35,7 @@ ReTell Your Story
                   <div class="col-md-11">
                     <div class="media">
                       <div class="media-body">
-                        <a href="#" class="anchor-username"><h4 class="media-heading">Welcome</h4></a>
+                        <p class="anchor-username"><h4 class="media-heading">Welcome</h4></p>
                       </div>
                     </div>
                   </div>
@@ -123,7 +123,7 @@ ReTell Your Story
                     <div class="media">
                       <div class="media-body">
                         <a href="/detail/{{$r->image->id}}?caption_id={{$r->id}}" class="caption-id anchor-username"><h4 class="media-heading">#{{$r->id}}</h4></a>
-                        <a href="#" class="anchor-time">{{ $r->created_at->diffForHumans() }}</a>
+                        <p class="anchor-time">{{ $r->created_at->diffForHumans() }}</p>
                       </div>
                     </div>
                   </div>
