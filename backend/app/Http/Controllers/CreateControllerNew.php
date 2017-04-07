@@ -20,16 +20,16 @@ class CreateControllerNew extends Controller
     public function viewCreate(Request $request) {
         $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
         
-        $images = Image::inRandomOrder()->where('reports','<=',10)->get()->slice(0,20);
+        //$images = Image::inRandomOrder()->where('reports','<=',10)->get()->slice(0,20);
         $characters = Character::all();
 
     	if ($image_id = $request->input('image_id')){
     		$image = Image::find($image_id);
 
-        	return view('new_create', [ 'characters' => $characters ,'images' => $images,'image_path' => $image->file_path, 'image_id' => $image_id, 'hashtags' => $trending_hashtags ]);
+        	return view('new_create', [ 'characters' => $characters ,'image_path' => $image->file_path, 'image_id' => $image_id, 'hashtags' => $trending_hashtags ]);
     	}
 
-    	return view('new_create', ['characters' => $characters, 'images' => $images, 'image_path' => "", 'image_id' => $image_id, 'hashtags' => $trending_hashtags ]);
+    	return view('new_create', ['characters' => $characters, 'image_path' => "", 'image_id' => $image_id, 'hashtags' => $trending_hashtags ]);
         
     }
 

@@ -78,46 +78,6 @@ Tell
           </div>
           <div class="panel-body">
             <div class=" col-md-4">
-              <button type="button" class="btn btn-primary" data-toggle="modal" 
-           data-target="#imageModal">pick a snap</button>
-              <i class="fa fa-hand-pointer-o fa-2x" aria-hidden="true"></i>
-              <!--Select image modal-->
-              <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
-                <div class="modal-dialog full-screen" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" 
-                              data-dismiss="modal" 
-                              aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="imageModalLabel">Choose Image</h4>
-                        </div>
-                     
-                        <div class="modal-body">
-                          <form role="form" action="/tell" id="chooseImageForm" method="get">
-                            
-                            <div class="form-group">
-                              <select id="image_id" name="image_id" class="image-picker masonry form-control">
-                                <option value=""></option>
-                                @foreach ($images as $image)
-                                <option data-img-src='storage/images/{{$image->file_path}}' value='{{$image->id}}'>{{$image->file_path}}</option>
-                                @endforeach
-                              </select>
-                            </div>
-                          </form>
-                        </div>  
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <span class="pull-right">
-                              <input id="submitForm" type="submit" value="Choose Image" class="btn btn-primary"/>
-                          </span>
-                        </div>  
-                    </div>
-                </div>
-              </div>
-
-              <a href="/snap" type="button" class="btn btn-primary">upload a snap</a>
 
               <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
               <div class="panel panel-danger sub-panel-position">
@@ -252,18 +212,18 @@ Tell
     //         height: 200
     //     }
     // });
-    $("#submitForm").on('click', function() {
-        $("#chooseImageForm").submit();
-    });
+    // $("#submitForm").on('click', function() {
+    //     $("#chooseImageForm").submit();
+    // });
     $("#submitCharacterForm").on('click', function() {
         $("#chooseCharacterForm").submit();
     });
 
-    $("#image_id").imagepicker({
-        hide_select: true,
-         limit: 1,
-         limit_reached: function(){swal('Please select only one image.')}, 
-    });
+    // $("#image_id").imagepicker({
+    //     hide_select: true,
+    //      limit: 1,
+    //      limit_reached: function(){swal('Please select only one image.')}, 
+    // });
 
     $("#character_id").imagepicker({
         hide_select: true,
@@ -273,16 +233,16 @@ Tell
     });
 
 
-    $('#imageModal').on( 'shown.bs.modal', function() {
-      $('.thumbnails').imagesLoaded().progress(function () {
-        $('.thumbnails').masonry({
-          itemSelector: '.thumbnail',
-          columnWidth : 180,
-          transitionDuration: "0.2",
-          isAnimated: true,
-        });
-      });
-    });
+    // $('#imageModal').on( 'shown.bs.modal', function() {
+    //   $('.thumbnails').imagesLoaded().progress(function () {
+    //     $('.thumbnails').masonry({
+    //       itemSelector: '.thumbnail',
+    //       columnWidth : 180,
+    //       transitionDuration: "0.2",
+    //       isAnimated: true,
+    //     });
+    //   });
+    // });
 
     $('#characterModal').on( 'shown.bs.modal', function() {
       $('.thumbnails').imagesLoaded().progress(function () {

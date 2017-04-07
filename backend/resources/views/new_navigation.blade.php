@@ -31,8 +31,8 @@
           <ul class="nav navbar-nav">
             <li @if(Request::path()=="home")class="active"@endif><a href="/home" title="Trending">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="/")class="active"@endif><a href="/" title="NewestStories">Newest <i class="fa fa-coffee" aria-hidden="true"></i></a></li>
-            <li @if(Request::path()=="snap")class="active"@endif><a href="/snap" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
-            <li @if(Request::path()=="tell")class="active"@endif><a href="/tell" title="Caption Photo Anonymously">Tell <i class="fa fa-bomb" aria-hidden="true"></i></a></li>
+            <!--li @if(Request::path()=="snap")class="active"@endif><a href="/snap" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li-->
+            <li @if(Request::path()=="snap" || Request::path()=="tell")class="active"@endif><a href="/snap" title="Caption Photo Anonymously">Tell <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
           </ul>
         </div>
       </div>
@@ -48,15 +48,15 @@
           </li>
 
           <li>
-            <a href="/snap">
-              <i class="fa fa-camera-retro fa-2x"></i>
-              <span class="nav-text">Snap</span>
+            <a href="/home">
+              <i class="fa fa-hand-spock-o fa-2x"></i>
+              <span class="nav-text">Trending</span>
             </a>
           </li>
 
           <li>
-            <a href="/tell">
-              <i class="fa fa-bomb fa-2x"></i>
+            <a href="/snap">
+              <i class="fa fa-camera-retro fa-2x"></i>
               <span class="nav-text">Tell</span>
             </a>
           </li>
