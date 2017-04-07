@@ -173,7 +173,7 @@ Tell
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-8">
-              <button type="submit" id="retell-button" class="btn btn-lg btn-success">retell <i class="fa fa-heart" aria-hidden="true"></i></button>
+              <button type="submit" id="retell-button" class="btn btn-lg btn-success">Post <i class="fa fa-heart" aria-hidden="true"></i></button>
             </div>
             {!! Form::close() !!}
 

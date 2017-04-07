@@ -51,7 +51,7 @@ Story
                 <div class="post-footer-option container">
                   <ul class="list-unstyled">
                     <li><div id="likes"></div></li>
-                    <li><a href="/tell?image_id={{$image_id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Tell</a></li>
+                    <li><a href="/tell?image_id={{$image_id}}"><i class="fa fa-bomb" aria-hidden="true"></i> Retell</a></li>
                     <li><a href="#" onclick=shareFB(event)><i class="fa fa-facebook-official"></i> Share</a></li>
                     <li><a href="#" onclick=report(event) id="{{$image_id}}"><i class="fa fa-eye" aria-hidden="true"></i> Report</a></li>
                   </ul>
