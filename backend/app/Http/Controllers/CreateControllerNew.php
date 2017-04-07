@@ -97,7 +97,14 @@ class CreateControllerNew extends Controller
 
         $chosen_character = Character::find($new_caption->character_id);
 
-        flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
+        $faction_colors = array( "red" => "#fd5f67", 
+              "yellow" => "#afa818", 
+              "green" => "#58d774",
+              "blue" => "#65e9e9");
+
+        flash("Tell successfully! ".$chosen_character->name." belongs to <font color='".$faction_colors[$chosen_character->faction]."'>".$chosen_character->faction."</font> faction.",'success')->important();
+
+        //flash('Caption #'.$new_caption->id." was created successfully!", 'success')->important();
 
         //flash()->overlay($chosen_character->name." belong to faction ".$chosen_character->faction." <img src='/logo/".$chosen_character->faction.".png' class='img-rounded panel-resize-photo'>",'Tell successfully');
 
