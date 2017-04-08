@@ -77,22 +77,6 @@ Tell
             <h3 class="panel-title panel-tell-title">tell a different story</h3>
           </div>
           <div class="panel-body">
-            <!--div class=" col-md-4">
-
-              <!--i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
-              <div class="panel panel-danger sub-panel-position">
-                <div class="panel-body notice-font">
-                  Retellgram has 4 factions and 12
-                  characters. Each character belongs to
-                  one of the 4 factions - Red, Yellow,
-                  Green, Blue. Likes earned by characters 
-                  contribute to the total votes for each 
-                  faction. Winning faction gets to rule 
-                  over the rest. Factions get to 
-                  overthrow ruler every hour.
-                </div>
-              </div>
-            </div-->
 
             <div class=" col-md-12">
               <div class="panel panel-primary">
@@ -185,8 +169,6 @@ Tell
 @endsection
 @section('footer')
 <script type="text/javascript" src="js/image-picker.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="/enjoyhint/enjoyhint.min.js"></script>
 <script>
   $(document).ready(function () {
@@ -198,61 +180,15 @@ Tell
       $(".character-chosen").text("Posted as " + name);
     }
    
-    // $('#caption_image').croppie({
-    //   customClass:'mycrop',
-    //   showZoomer:false,
-    //   enableExif: true,
-    //     viewport: {
-    //         width: 200,
-    //         height: 200,
-    //         type: 'square'
-    //     },
-    //     boundary: {
-    //         width: 200,
-    //         height: 200
-    //     }
-    // });
-    // $("#submitForm").on('click', function() {
-    //     $("#chooseImageForm").submit();
-    // });
     $("#submitCharacterForm").on('click', function() {
         $("#chooseCharacterForm").submit();
     });
-
-    // $("#image_id").imagepicker({
-    //     hide_select: true,
-    //      limit: 1,
-    //      limit_reached: function(){swal('Please select only one image.')}, 
-    // });
 
     $("#character_id").imagepicker({
         hide_select: true,
          limit: 1,
          show_label: true,
          limit_reached: function(){swal('Please select only one character.')}, 
-    });
-
-
-    // $('#imageModal').on( 'shown.bs.modal', function() {
-    //   $('.thumbnails').imagesLoaded().progress(function () {
-    //     $('.thumbnails').masonry({
-    //       itemSelector: '.thumbnail',
-    //       columnWidth : 180,
-    //       transitionDuration: "0.2",
-    //       isAnimated: true,
-    //     });
-    //   });
-    // });
-
-    $('#characterModal').on( 'shown.bs.modal', function() {
-      $('.thumbnails').imagesLoaded().progress(function () {
-        $('.thumbnails').masonry({
-          itemSelector: '.thumbnail',
-          columnWidth : 180,
-          transitionDuration: "0.2",
-          isAnimated: true,
-        });
-      });
     });
 
   });

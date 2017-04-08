@@ -135,6 +135,10 @@ body {
     background:transparent;
 }
 
+.thumbnail>p {
+  font-size:12px;
+}
+
 @media (max-width:767px) {
     
     .bottom-nav {
