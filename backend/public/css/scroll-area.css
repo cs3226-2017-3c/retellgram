@@ -1,14 +1,14 @@
 div.scroll-area {
 	overflow-y:auto;
-	height:600px;
+	height:500px;
 }
 
 div.scroll-area-container {
-	height:600px;
+	height:500px;
 	overflow:hidden;
 }
 
-.list-group-item {
+.list-text {
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	overflow:hidden;
