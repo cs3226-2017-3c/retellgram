@@ -5,6 +5,7 @@ FACTION_COLOR["yellow"]="#e4c556";
 FACTION_COLOR["green"]="#58d774";
 FACTION_COLOR["blue"]="#65e9e9";
 var captions;
+
 function getCaptions(image_id, caption_id) {
 	var url = "/caption?likes=1&image_id=";
 	var has_selected_caption = false;
@@ -19,17 +20,17 @@ function getCaptions(image_id, caption_id) {
 			}
 
 	  		var like_button = generateLikeBadge(object['id'], object['likes']);
-	  		var caption_content = shrinkContent(object['content']);
+	  		var caption_content = "<div class='list-text'>"+object['content']+"</div>";
 	  		var li_content = caption_content + like_button;
       		
       		if (caption_id == object['id']) {
       			updateCaptionDisplay(object);
-      			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item active' href='#'>"+li_content+"</a>");
+      			$("#all_caption").append("<li class='list-group-item clearfix active' href='#'>"+li_content+"</li>");
       			like_button = generateLike(object['id'], object['likes']);
 				$("#likes").html(like_button);
 				has_selected_caption = true;
       		} else {
-      			$("#all_caption").append("<a onclick=changeCaption(event) class='list-group-item' href='#'>"+li_content+"</a>");
+      			$("#all_caption").append("<a class='list-group-item clearfix' href='#'>"+li_content+"</a>");
       		}
     	});
 
@@ -40,6 +41,8 @@ function getCaptions(image_id, caption_id) {
 			$("#likes").html(like_button);
 			var url = document.location.href+"?caption_id="+data[0]['id'];
     	}
+
+    	$(".list-group-item").on("click", changeCaption);
 	}).error(function(){
 		$("#caption_panel").css("display","none");
 	});
@@ -47,12 +50,17 @@ function getCaptions(image_id, caption_id) {
 
 function changeCaption(event){
 	event.preventDefault();
-	if (!$(event.target).is("a")) {
-		return ;
+	var a_tag;
+	if ($(event.target).is("a")) {
+		a_tag = $(event.target);
+	} else if ($(event.target).is("div")){
+		a_tag = $(event.target).parent();
+	} else {
+		return;
 	}
+	var this_caption_id = a_tag.children().last().attr("id");
 	$(".active").removeClass("active");
-	$(event.target).addClass("active");
-	var this_caption_id = $(event.target).children().first().attr("id");
+	a_tag.addClass("active");
 
 	var this_caption;
 	$.each(captions, function(i, object){
@@ -62,7 +70,7 @@ function changeCaption(event){
 	});
 	updateCaptionDisplay(this_caption);
 	
-	var this_likes = $(event.target).children().first().html();
+	var this_likes = a_tag.children().last().html();
 	var like_button = generateLike(this_caption_id, this_likes);
 	$("#likes").html(like_button);
 	var url = window.location.pathname.concat("?caption_id=");
@@ -102,14 +110,6 @@ function shareFB(event){
         method: 'share',
         href: hyper_link,
     }, function(response){});
-}
-
-function shrinkContent(content) {
-	if (content.length>MAX_CONTENT_LENGTH) {
-		return content.substring(0,MAX_CONTENT_LENGTH) + "...";
-	} else {
-		return content;
-	}
 }
 
 function generateLikeBadge(id, likes) {
