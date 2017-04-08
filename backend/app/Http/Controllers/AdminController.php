@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Caption;
 use App\Image;
+use Storage;
 class AdminController extends Controller
 {
 
@@ -34,6 +35,7 @@ class AdminController extends Controller
     foreach($captions as $caption){
       $caption->delete();
     }
+    Storage::delete('public/images/'.$image->file_path);
     $image->delete();
     return redirect()->action('AdminController@admin');
   }
