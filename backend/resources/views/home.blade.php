@@ -222,7 +222,7 @@ $(document).ready(function () {
     }
   }, 1000);
 
-  //if ($('#introduction-panel').length!=0){
+  if ($('#introduction-panel').length!=0){
     var enjoyhint_script_steps =null;
     if ( $(window).width() >= 768 ) {
       enjoyhint_script_steps = [
@@ -301,7 +301,7 @@ $(document).ready(function () {
 
     //run Enjoyhint script
     enjoyhint_instance.run();
-  //}
+  }
   
 });
 </script>
