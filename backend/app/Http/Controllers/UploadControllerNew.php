@@ -25,29 +25,37 @@ class UploadControllerNew extends Controller
 		    'uploading' => 'required|min:5|max:20480|image',
 		  ])->validate();
 
-      $manager = new ImageManager();
+      $ext = $request->file('uploading')->extension();
 
-      $img = $manager->make( $request->file('uploading'));
+      $new_image = new Image();
+      $new_image->md5 = md5_file ($request->file('uploading'));
 
-      $img->resize(500, null, function ($constraint) {
+      if ( $exist_image = Image::where('md5', $new_image->md5)->first() ) {
+        flash('Image #'.$new_image->id." exists, add caption directly.", 'success');
+        return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $exist_image->id]);
+      }
+
+      $filename = '';
+
+      if ($ext!='gif') {
+        $manager = new ImageManager();
+
+        $img = $manager->make( $request->file('uploading'));
+        
+        $name = time().uniqid();
+        $filename = $name.'.'.$ext;
+
+        $img->resize(500, null, function ($constraint) {
           $constraint->aspectRatio();
           $constraint->upsize();
-      });
+        });
+      
+        $img->save(public_path("storage/images/".$filename));
 
-   		$new_image = new Image();
-	    $new_image->md5 = md5_file ($request->file('uploading'));
-
-	   	if ( $exist_image = Image::where('md5', $new_image->md5)->first() ) {
-        flash('Image #'.$new_image->id." exists, add caption directly.", 'success');
-		    return redirect()->action('CreateControllerNew@viewCreate',[ 'image_id' => $exist_image->id]);
-		  }
-	    
-      $ext = $request->file('uploading')->extension();
-      $name = time().uniqid();
-      $filename = $name.'.'.$ext;
-
-      $img->save(public_path("storage/images/".$filename) , 100);
-      	
+      } else {
+        $filename = basename ($request->file('uploading')->store("public/images"));
+      }
+      
       $new_image->file_path = $filename;
 
     	$new_image->save();
