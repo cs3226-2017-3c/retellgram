@@ -19,7 +19,7 @@ function getCaptions(image_id, caption_id) {
 			}
 
 	  		var like_button = generateLikeBadge(object['id'], object['likes']);
-	  		var caption_content = shrinkContent(object['content']);
+	  		var caption_content = object['content'];
 	  		var li_content = caption_content + like_button;
       		
       		if (caption_id == object['id']) {
@@ -102,14 +102,6 @@ function shareFB(event){
         method: 'share',
         href: hyper_link,
     }, function(response){});
-}
-
-function shrinkContent(content) {
-	if (content.length>MAX_CONTENT_LENGTH) {
-		return content.substring(0,MAX_CONTENT_LENGTH) + "...";
-	} else {
-		return content;
-	}
 }
 
 function generateLikeBadge(id, likes) {
