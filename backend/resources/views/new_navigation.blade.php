@@ -1,7 +1,7 @@
 <div class="row">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div id="hint-navbar" class="container">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -32,12 +32,12 @@
             <li @if(Request::path()=="home")class="active"@endif><a href="/home" title="Trending">Trending <i class="fa fa-hand-spock-o" aria-hidden="true"></i></a></li>
             <li @if(Request::path()=="/")class="active"@endif><a href="/" title="NewestStories">Newest <i class="fa fa-coffee" aria-hidden="true"></i></a></li>
             <!--li @if(Request::path()=="snap")class="active"@endif><a href="/snap" title="Post Photos">Snap <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li-->
-            <li @if(Request::path()=="snap" || Request::path()=="tell")class="active"@endif><a href="/snap" title="Caption Photo Anonymously">Tell <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
+            <li id="hint-navbar" @if(Request::path()=="snap" || Request::path()=="tell")class="active"@endif><a href="/snap" title="Caption Photo Anonymously">Tell <i class="fa fa-camera-retro" aria-hidden="true"></i></a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <div id="hint-navbar" class="hidden-sm hidden-lg hidden-md">
+    <div class="hidden-sm hidden-lg hidden-md">
       <nav class="bottom-nav">
         <ul>
           <li>
@@ -54,7 +54,7 @@
             </a>
           </li>
 
-          <li>
+          <li id="hint-bottom-navbar">
             <a href="/snap">
               <i class="fa fa-camera-retro fa-2x"></i>
               <span class="nav-text">Tell</span>
