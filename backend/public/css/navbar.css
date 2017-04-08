@@ -39,7 +39,8 @@ body {
     overflow-y: initial 
 }
 .modal-body{
-    height:500px;
+    position: relative;
+    max-height: 400px;
     overflow-y: auto;
 }
 
