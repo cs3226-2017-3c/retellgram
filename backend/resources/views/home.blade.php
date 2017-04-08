@@ -229,7 +229,7 @@ $(document).ready(function () {
     //hide EnjoyHint after a click on the button.
     var enjoyhint_script_steps = [
       {
-        'next #hint-navbar' : 'Click Snap to upload. Click Tell to add captions',
+        'next #hint-navbar' : 'Click Tell to tell your stories',
       },
       {
         'next #rulers' : 'This ruler faction is based on number of likes in recent hour. <br>Four factions are Red, Yellow, Green, Blue. Each has 3 characters.',
