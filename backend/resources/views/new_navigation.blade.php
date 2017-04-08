@@ -54,7 +54,7 @@
             </a>
           </li>
 
-          <li id="hint-bottom-navbar">
+          <li id="hint-navbar">
             <a href="/snap">
               <i class="fa fa-camera-retro fa-2x"></i>
               <span class="nav-text">Tell</span>

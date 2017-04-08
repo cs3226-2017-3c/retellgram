@@ -223,9 +223,7 @@ $(document).ready(function () {
   }, 1000);
 
   if ($('#introduction-panel').length!=0){
-    var enjoyhint_script_steps =null;
-    if ( $(window).width() >= 768 ) {
-      enjoyhint_script_steps = [
+    var enjoyhint_script_steps = [
       {
         'next #hint-navbar' : 'Click Tell to tell your stories',
         'shape': 'circle',
@@ -257,43 +255,7 @@ $(document).ready(function () {
         'shape': 'circle',
         'radius':30
       }
-      ];
-    } else {
-       enjoyhint_script_steps = [
-      {
-        'next #hint-bottom-navbar' : 'Click Tell to tell your stories',
-        'shape': 'circle',
-        'radius':30
-      },
-      {
-        'next #rulers' : 'This ruler faction is based on number of likes in recent hour. <br>Four factions are Red, Yellow, Green, Blue. Each has 3 characters.',
-      },
-      {
-        'next #levels' : 'If a faction continues become ruler, it will level up. <br>We have five levels: Rookie, Amateur, Pro, Veteran, Legend.',
-        'shape': 'circle',
-        'radius':80
-      },
-      {
-        'next #countdown' : 'Time remaining to refresh ruler faction',
-      },
-      {
-        'next .caption-id' : 'Read other stories of this photo.',
-        'shape': 'circle',
-        'radius':30
-      },
-      {
-        'next .share-link' : 'Share this story on FB.',
-        'shape': 'circle',
-        'radius':30
-      },
-      {
-        'click .tell-link' : 'Click to retell your story on the same image.',
-        'shape': 'circle',
-        'radius':30
-      }
-      ];
-    }
-
+    ];
     enjoyhint_instance = new EnjoyHint({});
 
     //set script config
