@@ -88,7 +88,9 @@ class HomeController extends Controller
       }
 
       if (!isset($_COOKIE['retellgram_visited'])) {
+
           setcookie('retellgram_visited', "true", time() + (86400 * 30));
+
           return view('home', ['result' => $paginatedSearchResults, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level, 'visited' => false]);
       }
 

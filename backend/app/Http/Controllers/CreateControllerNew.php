@@ -21,7 +21,9 @@ class CreateControllerNew extends Controller
 
         $visited = true;
         if (!isset($_COOKIE['retell_visited'])) {
+
             setcookie('retell_visited', "true", time() +86400 * 30);
+            
             $visited = false;
         }
 
