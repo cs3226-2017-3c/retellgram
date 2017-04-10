@@ -15,7 +15,7 @@ Admin
 		    <div class="col-md-4">
 		    	<div style="position:relative;margin-bottom:20px;">
 			      	<a href="/thisrouteshouldhidefromuseradmin/{{$image->id}}">
-			      		<img style="max-width:200px;max-height:200px;" src="/storage/images/{{ $image->file_path }}" class="img-rounded">
+			      		<img style="width:200px;height:200px;" src="/storage/images/{{ $image->file_path }}" class="img-rounded">
 			      	</a>
 					<form action="image/{{$image->id}}/delete" method="post">
 						{{ csrf_field() }}
