@@ -11,6 +11,7 @@ use App\CharacterNewLike;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Character;
 use DB;
+use Cookie;
 
 class HomeController extends Controller
 {
@@ -86,8 +87,8 @@ class HomeController extends Controller
         $current_rulers_with_level[$ruler] = $level;
       }
 
-      if (!$request->session()->has('retellgram_visited')) {
-          $request->session()->put('retellgram_visited', 'true');
+      if (!isset($_COOKIE['retellgram_visited'])) {
+          setcookie('retellgram_visited', "true", time() + (86400 * 30));
           return view('home', ['result' => $paginatedSearchResults, 'hashtags' => $hashtags, 'rule_factions' => $current_rulers_with_level, 'visited' => false]);
       }
 

@@ -20,9 +20,9 @@ class CreateControllerNew extends Controller
     public function viewCreate(Request $request) {
 
         $visited = true;
-        if (!$request->session()->has('retellgram_tell_visited')) {
+        if (!isset($_COOKIE['retell_visited'])) {
+            setcookie('retell_visited', "true", time() +86400 * 30);
             $visited = false;
-            $request->session()->put('retellgram_tell_visited', 'true');
         }
 
         $trending_hashtags = Hashtag::withCount('captions')->get()->sortByDesc('captions_count')->slice(0, 10);
