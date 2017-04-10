@@ -22,6 +22,7 @@ Admin
 						<button type="submit" style="position:absolute;">Delete Image</button>
 					</form>
 					<br>
+					<br>
 					@if(Request::path()=="thisrouteshouldhidefromuserreport")
 					<form action="image/{{$image->id}}/resetReports" method="post">
 						{{ csrf_field() }}
