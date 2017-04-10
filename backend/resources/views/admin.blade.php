@@ -13,7 +13,7 @@ Admin
           <div class="panel-body">
 			@foreach ($images as $image)
 		    <div class="col-md-4">
-		    	<div style="width:300px;height:200px;position:relative;margin-bottom:20px;">
+		    	<div style="margin-down:20px;width:300px;height:200px;position:relative;margin-bottom:20px;">
 			      	<a href="/thisrouteshouldhidefromuseradmin/{{$image->id}}">
 			      		<img style="width:200px;height:200px;" src="/storage/images/{{ $image->file_path }}" class="img-rounded">
 			      	</a>
@@ -22,14 +22,14 @@ Admin
 						<button type="submit" style="position:absolute;">Delete Image</button>
 					</form>
 					<br>
-					
+					<br>
 					@if(Request::path()=="thisrouteshouldhidefromuserreport")
 					<form action="image/{{$image->id}}/resetReports" method="post">
 						{{ csrf_field() }}
 						<button type="submit" style="position:absolute;">Reset Reports({{$image->reports}})</button>
 					</form>	
 					@endif
-					<br>
+
 				</div>
 			</div>
 			@endforeach
