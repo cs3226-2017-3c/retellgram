@@ -25,7 +25,7 @@ class AdminController extends Controller
   }
 
   public function adminReport() {
-    $images = Image::where("reports",">",10)->get();
+    $images = Image::where("reports",">",0)->get();
     return view('admin',[ 'images' => $images]);
   }
 
